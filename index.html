@@ -677,11 +677,6 @@ async function loadFromSheets() {
 function restoreMainContent() {
   const el = document.getElementById("sheets-overlay");
   if(el) el.remove();
-  // Re-attach tab pages if they were wiped
-  const mc = document.getElementById("main-content");
-  if(mc && !document.getElementById("page-apzvalga")) {
-    mc.innerHTML = window._originalContent;
-  }
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
