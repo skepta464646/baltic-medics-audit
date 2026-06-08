@@ -358,6 +358,7 @@ function showPage(name) {
   document.querySelectorAll(".tab-page").forEach(el=>el.classList.remove("active","fade-in"));
   document.querySelectorAll(".nav-link").forEach(el=>el.classList.remove("active"));
   const pg = document.getElementById("page-"+name);
+  if(!pg) { console.error("Page not found:", name); return; }
   pg.classList.add("active","fade-in");
   document.getElementById("nav-"+name).classList.add("active");
   const titles = {apzvalga:"Apžvalga",kriterijai:"Audito kriterijai",zemelapis:"Standartų žemėlapis",rekomendacijos:"Rekomendacijos",ataskaitos:"Ataskaitų archyvas"};
@@ -676,6 +677,11 @@ async function loadFromSheets() {
 function restoreMainContent() {
   const el = document.getElementById("sheets-overlay");
   if(el) el.remove();
+  // Re-attach tab pages if they were wiped
+  const mc = document.getElementById("main-content");
+  if(mc && !document.getElementById("page-apzvalga")) {
+    mc.innerHTML = window._originalContent;
+  }
 }
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
