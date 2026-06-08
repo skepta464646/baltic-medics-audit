@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Baltic Medics — Audito Portalas</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      "surface":"#f9f9ff","surface-low":"#f2f3fc","surface-container":"#ecedf6",
+      "surface-high":"#e7e8f1","surface-lowest":"#ffffff",
+      "on-surface":"#191c22","on-surface-variant":"#424753",
+      "primary":"#0059ba","primary-container":"#2c72d9","on-primary":"#ffffff",
+      "outline":"#727784","outline-variant":"#c2c6d5",
+      "error":"#ba1a1a","error-container":"#ffdad6","on-error-container":"#93000a",
+      "inverse-surface":"#2e3037",
+    },
+    fontFamily: { mono: ["JetBrains Mono","monospace"] }
+  }}
+}
+</script>
+<style>
+*{box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#f9f9ff;color:#191c22;margin:0;overflow:hidden;}
+.tab-page{display:none;}.tab-page.active{display:flex;flex-direction:column;gap:1.5rem;}
+.expand-transition{max-height:0;opacity:0;overflow:hidden;transition:max-height .3s ease,opacity .3s ease,padding .3s ease;padding-top:0;padding-bottom:0;}
+.expanded .expand-transition{max-height:600px;opacity:1;padding-top:1rem;padding-bottom:1rem;}
+.expanded .expand-icon{transform:rotate(180deg);}
+.expand-icon{transition:transform .2s ease;}
+.fade-in{animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(3px);}to{opacity:1;transform:translateY(0);}}
+.bar-fill{transition:width .7s cubic-bezier(.4,0,.2,1);}
+.hm-cell{width:26px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;cursor:default;transition:transform .1s;}
+.hm-cell:hover{transform:scale(1.2);z-index:10;position:relative;}
+.nav-link{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:6px;color:rgba(255,255,255,.65);cursor:pointer;font-size:13px;transition:all .15s;border-left:3px solid transparent;}
+.nav-link:hover{background:rgba(255,255,255,.08);color:#fff;}
+.nav-link.active{background:rgba(255,255,255,.12);color:#fff;border-left-color:#4f8ef7;font-weight:600;}
+.nav-link .material-symbols-outlined{font-size:18px;}
+.kpi-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px 20px;position:relative;overflow:hidden;}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.pill{display:inline-flex;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600;}
+.filter-btn{padding:5px 14px;border-radius:20px;border:1px solid #e5e7eb;background:#fff;color:#374151;font-size:12px;font-weight:500;cursor:pointer;transition:all .12s;font-family:'Inter',sans-serif;}
+.filter-btn.active{background:#0059ba;color:#fff;border-color:#0059ba;}
+.filter-btn:hover:not(.active){background:#f3f4f6;}
+.data-row{border-bottom:1px solid #f3f4f6;cursor:pointer;}
+.data-row:hover td,.data-row:hover>div{background:#f9f9ff;}
+.ai-block{background:linear-gradient(135deg,rgba(0,89,186,.05),rgba(45,212,191,.03));border:1px solid rgba(0,89,186,.15);border-radius:10px;padding:18px;}
+.ai-dot{width:7px;height:7px;border-radius:50%;background:#0059ba;display:inline-block;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+::-webkit-scrollbar{width:5px;height:5px;}
+::-webkit-scrollbar-thumb{background:#c2c6d5;border-radius:3px;}
+</style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+<!-- SIDEBAR -->
+<nav style="width:240px;min-width:240px;background:#1e2336;display:flex;flex-direction:column;height:100vh;padding:0;z-index:50;overflow:hidden;">
+  <div style="padding:20px 16px 16px;border-bottom:1px solid rgba(255,255,255,.1);">
+    <div style="width:32px;height:32px;background:#0059ba;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;">
+      <span class="material-symbols-outlined" style="color:#fff;font-size:18px;">clinical_notes</span>
+    </div>
+    <div style="font-size:15px;font-weight:700;color:#fff;letter-spacing:-.01em;">Baltic Medics</div>
+    <div style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-top:2px;">Audito portalas</div>
+  </div>
+
+  <div style="padding:12px 8px 8px;">
+    <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 12px;">
+      <div style="font-size:12px;font-weight:700;color:#4f8ef7;font-family:'JetBrains Mono',monospace;">1VA/2025</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;line-height:1.4;">Taikos pr. 48B, Klaipėda</div>
+      <div style="margin-top:6px;display:inline-flex;align-items:center;gap:4px;font-size:10px;color:#2dd4bf;background:rgba(45,212,191,.1);padding:2px 8px;border-radius:20px;font-weight:600;">
+        <span style="width:5px;height:5px;border-radius:50%;background:#2dd4bf;"></span>
+        Laboratorija · ISO 15189
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:8px 8px 0;font-size:10px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.07em;text-transform:uppercase;padding-left:14px;margin-top:6px;">Navigacija</div>
+  <div style="padding:4px 8px;flex:1;">
+    <div class="nav-link active" onclick="showPage('apzvalga')" id="nav-apzvalga">
+      <span class="material-symbols-outlined">dashboard</span>Apžvalga
+    </div>
+    <div class="nav-link" onclick="showPage('kriterijai')" id="nav-kriterijai">
+      <span class="material-symbols-outlined">fact_check</span>Audito kriterijai
+    </div>
+    <div class="nav-link" onclick="showPage('zemelapis')" id="nav-zemelapis">
+      <span class="material-symbols-outlined">grid_view</span>Standartų žemėlapis
+    </div>
+    <div class="nav-link" onclick="showPage('rekomendacijos')" id="nav-rekomendacijos">
+      <span class="material-symbols-outlined">assignment_turned_in</span>Rekomendacijos
+    </div>
+    <div class="nav-link" onclick="showPage('ataskaitos')" id="nav-ataskaitos">
+      <span class="material-symbols-outlined">description</span>Ataskaitų archyvas
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div style="flex:1;display:flex;flex-direction:column;height:100vh;overflow:hidden;min-width:0;">
+
+  <!-- TOPBAR -->
+  <header style="height:52px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 24px;flex-shrink:0;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="font-size:13px;color:#9ca3af;">Baltic Medics /</span>
+      <span id="page-title" style="font-size:14px;font-weight:700;color:#111827;">Apžvalga</span>
+    </div>
+    <div id="topbar-right" style="display:flex;align-items:center;gap:8px;">
+      <a href="https://docs.google.com/document/d/1dWEiged0R9QnkKHN1oSQFd4GTVRSQ-Nr/edit" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;color:#374151;text-decoration:none;background:#fff;">
+        <span class="material-symbols-outlined" style="font-size:14px;">open_in_new</span>Šaltinio dokumentas
+      </a>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div style="flex:1;overflow-y:auto;padding:24px;" id="main-content">
+
+    <!-- ===== APŽVALGA ===== -->
+    <div class="tab-page active fade-in" id="page-apzvalga">
+
+      <!-- KPI ROW -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;" id="kpi-row"></div>
+
+      <!-- CRITICAL ALERT -->
+      <div id="critical-alert"></div>
+
+      <!-- TWO COL -->
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:16px;">
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;">
+          <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;">
+            <div style="font-size:13px;font-weight:700;color:#111827;">Atitikties rodikliai pagal skyrių</div>
+            <div style="font-size:11px;color:#9ca3af;margin-top:2px;">ISO 15189:2023 · 5 skyriai</div>
+          </div>
+          <div style="padding:18px;" id="section-bars"></div>
+        </div>
+        <div class="ai-block">
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:10px;">
+            <span class="ai-dot"></span>
+            <span style="font-size:10px;font-weight:700;color:#0059ba;text-transform:uppercase;letter-spacing:.06em;">AI analizė</span>
+          </div>
+          <div id="ai-text" style="font-size:12px;color:#374151;line-height:1.75;"></div>
+        </div>
+      </div>
+
+      <!-- PROGRESS TABLE -->
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;">
+        <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;">
+          <div style="font-size:13px;font-weight:700;color:#111827;">Progreso sekimas</div>
+          <div style="font-size:11px;color:#9ca3af;margin-top:2px;">Palyginimas su ankstesniu auditu — ↑ pagerėjo, ↓ pablogėjo</div>
+        </div>
+        <div id="progress-table" style="overflow-x:auto;"></div>
+      </div>
+    </div>
+
+    <!-- ===== KRITERIJAI ===== -->
+    <div class="tab-page" id="page-kriterijai">
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;">
+        <div style="padding:12px 16px;border-bottom:1px solid #f3f4f6;display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+          <span style="font-size:11px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Skyrius:</span>
+          <div id="section-pills" style="display:flex;gap:5px;flex-wrap:wrap;"></div>
+        </div>
+        <table style="width:100%;border-collapse:collapse;" id="criteria-table">
+          <thead>
+            <tr style="background:#f9fafb;">
+              <th style="padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;white-space:nowrap;">Kodas</th>
+              <th style="padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Kriterijus</th>
+              <th style="padding:9px 14px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Balas</th>
+              <th style="padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Statusas</th>
+              <th style="padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Auditoriaus pastaba</th>
+            </tr>
+          </thead>
+          <tbody id="criteria-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ===== ŽEMĖLAPIS ===== -->
+    <div class="tab-page" id="page-zemelapis">
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;">
+        <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;">
+          <div style="font-size:13px;font-weight:700;color:#111827;">Standartų atitikties žemėlapis</div>
+          <div style="font-size:11px;color:#9ca3af;margin-top:2px;">Eilutės = klinikos · Stulpeliai = ISO 15189 standartai · Spalva = balas</div>
+        </div>
+        <div style="padding:18px;overflow-x:auto;" id="heatmap-wrap"></div>
+        <div style="padding:0 18px 14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <span style="font-size:10px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Balas:</span>
+          <span class="pill" style="background:#fee2e2;color:#991b1b;">0 — Neatitinka</span>
+          <span class="pill" style="background:#fef3c7;color:#92400e;">1 — Iš dalies</span>
+          <span class="pill" style="background:#dbeafe;color:#1e40af;">2 — Iš esmės</span>
+          <span class="pill" style="background:#d1fae5;color:#065f46;">3 — Pilnai</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== REKOMENDACIJOS ===== -->
+    <div class="tab-page" id="page-rekomendacijos">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" id="rec-kpis"></div>
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;">
+        <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#111827;">Rekomendacijų veiklos gerinimui registras</div>
+            <div style="font-size:11px;color:#9ca3af;margin-top:2px;">1VA/2025 · Taikos pr. 48B, Klaipėda · ISO 15189:2023</div>
+          </div>
+          <button onclick="exportWord()" style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:#0059ba;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">
+            <span class="material-symbols-outlined" style="font-size:15px;">download</span>Atsisiųsti Word
+          </button>
+        </div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:12px;">
+            <thead>
+              <tr style="background:#f9fafb;">
+                <th rowspan="2" style="border:1px solid #e5e7eb;padding:7px 8px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;width:36px;">Nr.</th>
+                <th rowspan="2" style="border:1px solid #e5e7eb;padding:7px 8px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;min-width:100px;">Audito Nr.<br>ir data</th>
+                <th rowspan="2" style="border:1px solid #e5e7eb;padding:7px 8px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;">Rekomendacija</th>
+                <th colspan="2" style="border:1px solid #e5e7eb;padding:7px 8px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;">Standartas</th>
+                <th rowspan="2" style="border:1px solid #e5e7eb;padding:7px 8px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;min-width:100px;">Procesas/<br>veikla</th>
+                <th rowspan="2" style="border:1px solid #e5e7eb;padding:7px 8px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;min-width:110px;">Atsakingas</th>
+                <th rowspan="2" style="border:1px solid #e5e7eb;padding:7px 8px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;">Planuojama<br>data</th>
+                <th rowspan="2" style="border:1px solid #e5e7eb;padding:7px 8px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;">Įvykdyta</th>
+              </tr>
+              <tr style="background:#f9fafb;">
+                <th style="border:1px solid #e5e7eb;padding:5px 8px;text-align:center;font-size:10px;font-weight:600;color:#6b7280;width:60px;">VASPVT</th>
+                <th style="border:1px solid #e5e7eb;padding:5px 8px;text-align:center;font-size:10px;font-weight:600;color:#6b7280;width:80px;">ISO 15189</th>
+              </tr>
+            </thead>
+            <tbody id="rec-tbody"></tbody>
+          </table>
+        </div>
+        <div style="padding:10px 16px;font-size:10px;color:#9ca3af;border-top:1px solid #f3f4f6;line-height:1.6;">
+          ¹ Stulpelis pildomas, jeigu rekomendacija rašoma ne vidaus audito, o bet kurio kito proceso/veiklos vertinimo metu.<br>
+          ² Valstybinės akreditavimo sveikatos priežiūros veiklai tarnybos Nacionaliniai akreditavimo standartai.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== ATASKAITOS ===== -->
+    <div class="tab-page" id="page-ataskaitos">
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;">
+        <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;">
+          <div style="font-size:13px;font-weight:700;color:#111827;">Atlikti auditai</div>
+        </div>
+        <table style="width:100%;border-collapse:collapse;">
+          <thead>
+            <tr style="background:#f9fafb;">
+              <th style="padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Audito ID</th>
+              <th style="padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Padalinys</th>
+              <th style="padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Tipas</th>
+              <th style="padding:9px 14px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Atitiktis</th>
+              <th style="padding:9px 14px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Kritiniai</th>
+              <th style="padding:9px 14px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;">Dokumentas</th>
+            </tr>
+          </thead>
+          <tbody id="reports-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ─── DATA ────────────────────────────────────────────────────────────────────
+const AUDITS = [{
+  id:"1VA/2025", location:"Taikos pr. 48B, Klaipėda", type:"Laboratorija",
+  standard:"ISO 15189:2023", auditor:"Jonas Petraitis",
+  url:"https://docs.google.com/document/d/1dWEiged0R9QnkKHN1oSQFd4GTVRSQ-Nr/edit",
+  criteria:[
+    {s:"4. Bendrieji reikalavimai",c:"4.1",n:"Nešališkumas",v:3,k:"Organizacinė struktūra aiškiai apibrėžta. Nenustatyti interesų konfliktai."},
+    {s:"4. Bendrieji reikalavimai",c:"4.2",n:"Konfidencialumas",v:3,k:"Darbuotojai pasirašę konfidencialumo įsipareigojimus."},
+    {s:"4. Bendrieji reikalavimai",c:"4.3",n:"Reikalavimai pacientams",v:3,k:"Pacientams teikiama aktuali informacija svetainėje."},
+    {s:"5. Struktūriniai reikalavimai",c:"5.1",n:"Juridinis asmuo",v:3,k:"Laboratorija yra juridinis asmuo."},
+    {s:"5. Struktūriniai reikalavimai",c:"5.2",n:"Laboratorijos direktorius",v:3,k:"Direktoriaus kvalifikacija dokumentuota."},
+    {s:"5. Struktūriniai reikalavimai",c:"5.4",n:"Struktūra ir įgaliojimai",v:3,k:"Organizacinė struktūra dokumentuota."},
+    {s:"5. Struktūriniai reikalavimai",c:"5.5",n:"Tikslai ir politika",v:2,k:"Ne visiems tikslams apibrėžti išmatuojami rodikliai."},
+    {s:"5. Struktūriniai reikalavimai",c:"5.6",n:"Rizikos valdymas",v:1,k:"Rizikų vertinimas neapima visų proceso etapų."},
+    {s:"6. Reikalavimai ištekliams",c:"6.1",n:"Bendrieji ištekliai",v:3,k:"Laboratorija turi pakankamai išteklių."},
+    {s:"6. Reikalavimai ištekliams",c:"6.2",n:"Personalas",v:3,k:"Kompetentingi darbuotojai. Metinis vertinimas 6F-PA-10."},
+    {s:"6. Reikalavimai ištekliams",c:"6.3",n:"Patalpos ir aplinkos sąlygos",v:3,k:"Patalpos atitinka veiklos poreikius."},
+    {s:"6. Reikalavimai ištekliams",c:"6.4",n:"Įranga",v:3,k:"Visa įranga identifikuota ir prižiūrima pagal planą."},
+    {s:"6. Reikalavimai ištekliams",c:"6.5",n:"Kalibravimas",v:3,k:"Kalibravimai pagal planą 3F-PA-13."},
+    {s:"6. Reikalavimai ištekliams",c:"6.6.2",n:"Reagentų priėmimas ir saugojimas",v:0,k:"NEATITIKTIS: Šaldytuvas +10°C (norma +2–8°C). Tiesioginė rizika tyrimų rezultatų patikimumui."},
+    {s:"6. Reikalavimai ištekliams",c:"6.6.4",n:"Reagentų atsargų valdymas",v:0,k:"NEATITIKTIS: Priimti ir nepriimti reagentai laikomi kartu."},
+    {s:"6. Reikalavimai ištekliams",c:"6.7",n:"Paslaugų teikimo sutartys",v:3,k:"Patvirtinta procedūra PA-2."},
+    {s:"6. Reikalavimai ištekliams",c:"6.8",n:"Išorės tiekiami produktai",v:3,k:"Tiekėjai atrenkami ir vertinami kasmet."},
+    {s:"7. Proceso reikalavimai",c:"7.1",n:"Proceso rizikos valdymas",v:3,k:"Rizikų valdymo planas 6F-PA-8 parengtas."},
+    {s:"7. Proceso reikalavimai",c:"7.2",n:"Procesai prieš tyrimą",v:3,k:"Procedūros dokumentuotos PA-14."},
+    {s:"7. Proceso reikalavimai",c:"7.3",n:"Tyrimo procesai",v:3,k:"Naudojami validuoti metodai, peržiūrimi kasmet."},
+    {s:"7. Proceso reikalavimai",c:"7.3.7",n:"Rezultatų patikimumo monitoringas",v:2,k:"Monitoringas vykdomas, tačiau tendencijų analizė nepakankama."},
+    {s:"7. Proceso reikalavimai",c:"7.4",n:"Procesai po tyrimo",v:3,k:"Rezultatai pateikiami pagal procedūrą PA-17."},
+    {s:"7. Proceso reikalavimai",c:"7.4.2",n:"Mėginių tvarkymas po tyrimo",v:0,k:"NEATITIKTIS: Mėginiai laikomi kambario temperatūroje (reikia 2–8°C)."},
+    {s:"7. Proceso reikalavimai",c:"7.5",n:"Neatitiktinis darbas",v:3,k:"Procedūra PA-5 parengta."},
+    {s:"7. Proceso reikalavimai",c:"7.6",n:"Duomenų valdymas",v:3,k:"Prieigos teisės valdomos pagal pareigas."},
+    {s:"8. Vadybos reikalavimai",c:"8.1",n:"Vadybos sistema",v:3,k:"Kokybės vadovas parengtas pagal ISO 15189."},
+    {s:"8. Vadybos reikalavimai",c:"8.2",n:"Vadybos sistemos dokumentai",v:3,k:"Visi darbuotojai supažindinti su kokybės politika."},
+    {s:"8. Vadybos reikalavimai",c:"8.3",n:"Dokumentų valdymas",v:3,k:"Dokumentai valdomi DVS."},
+    {s:"8. Vadybos reikalavimai",c:"8.4.2",n:"Įrašų keitimas",v:1,k:"Įrašų pakeitimų atsekamumas ne visada užtikrinamas."},
+    {s:"8. Vadybos reikalavimai",c:"8.5",n:"Rizikos ir gerinimo veiksmai",v:3,k:"Procedūra PA-8 parengta."},
+    {s:"8. Vadybos reikalavimai",c:"8.6",n:"Gerinimas",v:3,k:"Gerinimo planas 2F-PA-6 parengtas."},
+    {s:"8. Vadybos reikalavimai",c:"8.7",n:"Neatitiktys ir korekciniai veiksmai",v:3,k:"Procedūra PA-5 veikia."},
+    {s:"8. Vadybos reikalavimai",c:"8.8",n:"Vidaus auditai",v:3,k:"Auditai vykdomi pagal planą 1F-PA-8."},
+    {s:"8. Vadybos reikalavimai",c:"8.9",n:"Vadybos vertinamoji analizė",v:3,k:"Atliekama kartą per metus."},
+  ]
+}];
+
+const PREV = {"6.6.2":0,"6.6.4":1,"7.4.2":1,"8.4.2":1,"5.6":0,"7.3.7":1,"5.5":2};
+
+const RECS = [
+  {c:"6.6.2",p:"critical",t:"Nedelsiant patikrinti šaldytuvo temperatūros reguliavimo sistemą. Užtikrinti +2–8°C. Patikrinti reagentų tinkamumą.",r:"Laboratorijos vedėjas",d:"2025-07-15",done:false},
+  {c:"6.6.4",p:"critical",t:"Fiziškai atskirti priimtus ir nepriimtus reagentus (skirtingos lentynos + vizualiniai ženklai).",r:"Laboratorijos vedėjas",d:"2025-07-20",done:false},
+  {c:"7.4.2",p:"critical",t:"Pakeisti mėginių laikymo po tyrimo tvarką — visi mėginiai 2–8°C. Atnaujinti procedūrą PA-11.",r:"Laboratorijos vedėjas",d:"2025-07-25",done:false},
+  {c:"8.4.2",p:"medium",t:"Įdiegti sistemingą įrašų pakeitimų sekimo mechanizmą su data ir atsakingu asmeniu.",r:"Kokybės vadovas",d:"2025-08-01",done:false},
+  {c:"7.3.7",p:"medium",t:"Parengti mėnesinę tendencijų analizės procedūrą su konkrečiais rodikliais.",r:"Laboratorijos vedėjas",d:"2025-08-15",done:false},
+  {c:"5.6",p:"low",t:"Papildyti rizikų valdymo planą 6F-PA-8 visais trimis proceso etapais.",r:"Kokybės vadovas",d:"2025-09-01",done:false},
+];
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+let activePage = "apzvalga";
+let activeSectionFilter = "visi";
+let expandedRow = null;
+
+// ─── HELPERS ─────────────────────────────────────────────────────────────────
+function getStats(audit) {
+  const c = audit.criteria;
+  const total = c.reduce((a,x)=>a+x.v,0);
+  const max = c.length*3;
+  const pct = Math.round(total/max*100);
+  const critical = c.filter(x=>x.v===0);
+  const sections = {};
+  c.forEach(x=>{if(!sections[x.s])sections[x.s]=[];sections[x.s].push(x);});
+  return {pct,total,max,critical,sections};
+}
+
+function scoreBg(v) {
+  return v===0?"background:#fee2e2;color:#991b1b;border:1px solid #f87171;"
+       :v===1?"background:#fef3c7;color:#92400e;border:1px solid #fbbf24;"
+       :v===2?"background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;"
+       :"background:#d1fae5;color:#065f46;border:1px solid #6ee7b7;";
+}
+function statusLbl(v){return["Neatitinka","Iš dalies atitinka","Iš esmės atitinka","Visiškai atitinka"][v];}
+function statusStyle(v){
+  return v===0?"background:#fee2e2;color:#991b1b;"
+       :v===1?"background:#fef3c7;color:#92400e;"
+       :v===2?"background:#dbeafe;color:#1e40af;"
+       :"background:#d1fae5;color:#065f46;";
+}
+function prioStyle(p){
+  return p==="critical"?"background:#fee2e2;color:#991b1b;"
+       :p==="medium"?"background:#fef3c7;color:#92400e;"
+       :"background:#d1fae5;color:#065f46;";
+}
+function prioLbl(p){return p==="critical"?"Kritinė":p==="medium"?"Vidutinė":"Žema";}
+
+// ─── NAVIGATION ──────────────────────────────────────────────────────────────
+function showPage(name) {
+  activePage = name;
+  document.querySelectorAll(".tab-page").forEach(el=>el.classList.remove("active","fade-in"));
+  document.querySelectorAll(".nav-link").forEach(el=>el.classList.remove("active"));
+  const pg = document.getElementById("page-"+name);
+  pg.classList.add("active","fade-in");
+  document.getElementById("nav-"+name).classList.add("active");
+  const titles = {apzvalga:"Apžvalga",kriterijai:"Audito kriterijai",zemelapis:"Standartų žemėlapis",rekomendacijos:"Rekomendacijos",ataskaitos:"Ataskaitų archyvas"};
+  document.getElementById("page-title").textContent = titles[name];
+
+  // Update topbar button
+  const tb = document.getElementById("topbar-right");
+  if(name==="rekomendacijos") {
+    tb.innerHTML = `<button onclick="exportWord()" style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:#0059ba;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;"><span class="material-symbols-outlined" style="font-size:14px;">download</span>Atsisiųsti Word</button>`;
+  } else {
+    tb.innerHTML = `<a href="https://docs.google.com/document/d/1dWEiged0R9QnkKHN1oSQFd4GTVRSQ-Nr/edit" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;color:#374151;text-decoration:none;background:#fff;"><span class="material-symbols-outlined" style="font-size:14px;">open_in_new</span>Šaltinio dokumentas</a>`;
+  }
+
+  if(name==="apzvalga") renderOverview();
+  else if(name==="kriterijai") renderCriteria();
+  else if(name==="zemelapis") renderHeatmap();
+  else if(name==="rekomendacijos") renderRec();
+  else if(name==="ataskaitos") renderReports();
+}
+
+// ─── OVERVIEW ────────────────────────────────────────────────────────────────
+function renderOverview() {
+  const audit = AUDITS[0];
+  const {pct,critical,sections} = getStats(audit);
+
+  // KPIs
+  document.getElementById("kpi-row").innerHTML = [
+    {l:"Bendra atitiktis",v:pct+"%",s:"ISO 15189:2023",c:"#0059ba",b:"#0059ba"},
+    {l:"Kriterijai įvertinti",v:audit.criteria.length,s:"Skyriai 4–8",c:"#059669",b:"#059669"},
+    {l:"Kritinės neatitiktys",v:critical.length,s:"Balas = 0, skubi reakcija",c:"#dc2626",b:"#dc2626"},
+    {l:"Atviros rekomendacijos",v:RECS.filter(r=>!r.done).length,s:"Laukiama įgyvendinimo",c:"#d97706",b:"#d97706"},
+  ].map(k=>`<div class="kpi-card" style="--bc:${k.b};">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${k.b};border-radius:10px 10px 0 0;"></div>
+    <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">${k.l}</div>
+    <div style="font-size:28px;font-weight:300;color:${k.c};letter-spacing:-.02em;line-height:1;">${k.v}</div>
+    <div style="font-size:11px;color:#9ca3af;margin-top:6px;">${k.s}</div>
+  </div>`).join("");
+
+  // Alert
+  if(critical.length>0){
+    document.getElementById("critical-alert").innerHTML=`<div style="background:#fef2f2;border:1px solid #fca5a5;border-left:3px solid #dc2626;border-radius:10px;padding:14px 18px;">
+      <div style="font-weight:700;color:#991b1b;font-size:12px;margin-bottom:8px;">⚠ ${critical.length} kritinė neatitiktis — skubi reakcija būtina</div>
+      ${critical.map(c=>`<div style="font-size:12px;color:#7f1d1d;margin-bottom:3px;"><span style="font-family:'JetBrains Mono',monospace;font-weight:700;">${c.c}</span> — ${c.n}: ${c.k.replace("NEATITIKTIS: ","")}</div>`).join("")}
+    </div>`;
+  }
+
+  // Section bars
+  document.getElementById("section-bars").innerHTML = Object.entries(sections).map(([name,items])=>{
+    const avg = items.reduce((a,c)=>a+c.v,0)/items.length;
+    const crit = items.filter(i=>i.v===0).length;
+    const col = avg<1?"#dc2626":avg<2?"#d97706":avg<2.5?"#3b82f6":"#059669";
+    return`<div style="margin-bottom:14px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;">
+        <span style="font-size:12px;color:#374151;">${name.replace(/^\d+\. /,"")}</span>
+        <span style="font-size:12px;font-weight:700;color:${col};font-family:'JetBrains Mono',monospace;">${avg.toFixed(1)}/3.0${crit>0?` <span style="color:#dc2626;font-size:11px;">· ${crit} kritinė</span>`:""}</span>
+      </div>
+      <div style="height:4px;background:#f3f4f6;border-radius:2px;overflow:hidden;">
+        <div class="bar-fill" style="height:100%;width:0%;background:${col};border-radius:2px;" data-target="${(avg/3*100).toFixed(0)}"></div>
+      </div>
+    </div>`;
+  }).join("");
+  // Animate bars
+  setTimeout(()=>{
+    document.querySelectorAll(".bar-fill").forEach(el=>{el.style.width=el.dataset.target+"%";});
+  },50);
+
+  // AI summary
+  document.getElementById("ai-text").innerHTML=`<strong>Bendra atitiktis: ${pct}%</strong> — laboratorija turi tvirtą kokybės vadybos sistemos pagrindą pagal ISO 15189:2023.<br><br>
+  <strong>Kritinė sritis: 6 skyrius</strong> — 2 kritinės neatitiktys susijusios su temperatūros kontrole (6.6.2 šaldytuvas +10°C; 7.4.2 mėginiai kambario temperatūroje). Tiesioginė rizika pacientų saugai.<br><br>
+  <strong>Prioritetai:</strong> (1) šaldytuvo temperatūra — nedelsiant; (2) reagentų atskyrimas — per 1 savaitę; (3) mėginių laikymas — per 1 savaitę; (4) įrašų atsekamumas — per 1 mėnesį.`;
+
+  // Progress table
+  const changed = AUDITS[0].criteria.filter(c=>PREV[c.c]!==undefined&&PREV[c.c]!==c.v);
+  document.getElementById("progress-table").innerHTML=`<table style="width:100%;border-collapse:collapse;">
+    <thead><tr style="background:#f9fafb;">
+      <th style="padding:8px 14px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;text-align:left;">Kodas</th>
+      <th style="padding:8px 14px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;text-align:left;">Kriterijus</th>
+      <th style="padding:8px 14px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;text-align:center;">Ankstesnis</th>
+      <th style="padding:8px 14px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;text-align:center;">Dabartinis</th>
+      <th style="padding:8px 14px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;text-align:center;">Pokytis</th>
+    </tr></thead>
+    <tbody>${changed.map(c=>{
+      const prev=PREV[c.c]; const diff=c.v-prev;
+      const arrow=diff>0?`<span style="color:#059669;font-weight:700;">↑ +${diff} pagerėjo</span>`:diff<0?`<span style="color:#dc2626;font-weight:700;">↓ ${diff} pablogėjo</span>`:`<span style="color:#9ca3af;">= nepakito</span>`;
+      return`<tr style="border-bottom:1px solid #f3f4f6;">
+        <td style="padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#6b7280;">${c.c}</td>
+        <td style="padding:10px 14px;font-size:13px;color:#374151;">${c.n}</td>
+        <td style="padding:10px 14px;text-align:center;"><span style="display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border-radius:5px;font-weight:700;font-size:12px;${scoreBg(prev)}">${prev}</span></td>
+        <td style="padding:10px 14px;text-align:center;"><span style="display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border-radius:5px;font-weight:700;font-size:12px;${scoreBg(c.v)}">${c.v}</span></td>
+        <td style="padding:10px 14px;text-align:center;font-size:12px;">${arrow}</td>
+      </tr>`;
+    }).join("")}${changed.length===0?`<tr><td colspan="5" style="padding:20px;text-align:center;color:#9ca3af;font-size:12px;">Nėra ankstesnių duomenų palyginimui.</td></tr>`:""}</tbody>
+  </table>`;
+}
+
+// ─── CRITERIA ────────────────────────────────────────────────────────────────
+function renderCriteria() {
+  const audit = AUDITS[0];
+  const sections = [...new Set(audit.criteria.map(c=>c.s))];
+
+  document.getElementById("section-pills").innerHTML = ["visi",...sections].map(s=>`
+    <button class="filter-btn ${activeSectionFilter===s?"active":""}" onclick="activeSectionFilter='${s}';renderCriteria();">
+      ${s==="visi"?"Visi":s.replace(/^\d+\. /,"")}
+    </button>`).join("");
+
+  const filtered = activeSectionFilter==="visi" ? audit.criteria : audit.criteria.filter(c=>c.s===activeSectionFilter);
+  document.getElementById("criteria-tbody").innerHTML = filtered.map((c,i)=>`
+    <tr class="data-row ${c.v===0?"border-l-2":""}" style="${c.v===0?"border-left:2px solid #dc2626;":c.v===1?"border-left:2px solid #fbbf24;":""}" onclick="toggleRow(${i})">
+      <td style="padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;color:#6b7280;white-space:nowrap;">${c.c}</td>
+      <td style="padding:10px 14px;font-size:13px;color:#111827;font-weight:${c.v<=1?600:400};">${c.n}</td>
+      <td style="padding:10px 14px;text-align:center;"><span style="display:inline-flex;width:26px;height:26px;align-items:center;justify-content:center;border-radius:5px;font-weight:700;font-size:13px;${scoreBg(c.v)}">${c.v}</span></td>
+      <td style="padding:10px 14px;"><span class="pill" style="${statusStyle(c.v)}">${statusLbl(c.v)}</span></td>
+      <td style="padding:10px 14px;font-size:12px;color:#6b7280;max-width:260px;">${c.v<=1?c.k.replace("NEATITIKTIS: ",""):"—"}</td>
+    </tr>
+    ${expandedRow===i?`<tr style="background:#f0fdf9;"><td colspan="5" style="padding:12px 14px 16px 22px;border-bottom:1px solid #e5e7eb;">
+      <div style="font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;">${c.s} › <span style="color:#0059ba;">${c.c}</span></div>
+      <div style="font-size:13px;font-weight:600;color:#111827;margin-bottom:6px;">${c.n}</div>
+      <div style="font-size:12px;color:#374151;line-height:1.65;margin-bottom:10px;">${c.k}</div>
+      <a href="${audit.url}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#0059ba;background:#eff6ff;padding:4px 10px;border-radius:5px;text-decoration:none;font-weight:500;">
+        <span class="material-symbols-outlined" style="font-size:13px;">description</span>Peržiūrėti šaltinio dokumentą →
+      </a>
+    </td></tr>`:""}
+  `).join("");
+}
+function toggleRow(i){expandedRow=expandedRow===i?null:i;renderCriteria();}
+
+// ─── HEATMAP ─────────────────────────────────────────────────────────────────
+function renderHeatmap() {
+  const audit = AUDITS[0];
+  const codes = audit.criteria.map(c=>c.c);
+  const scoreMap = {};
+  audit.criteria.forEach(c=>{scoreMap[c.c]=c.v;});
+  function hmStyle(v){
+    if(v===undefined) return "background:#f3f4f6;color:#9ca3af;";
+    if(v===0) return "background:#fee2e2;color:#991b1b;";
+    if(v===1) return "background:#fef3c7;color:#92400e;";
+    if(v<3) return "background:#dbeafe;color:#1e40af;";
+    return "background:#d1fae5;color:#065f46;";
+  }
+  document.getElementById("heatmap-wrap").innerHTML=`<table style="border-collapse:separate;border-spacing:3px;">
+    <thead><tr>
+      <td style="min-width:180px;"></td>
+      ${codes.map(c=>`<th style="writing-mode:vertical-lr;transform:rotate(180deg);padding:3px 1px;font-size:10px;font-weight:600;color:#374151;height:75px;text-align:left;white-space:nowrap;">${c}</th>`).join("")}
+    </tr></thead>
+    <tbody><tr>
+      <td style="font-size:12px;font-weight:500;color:#374151;padding-right:12px;white-space:nowrap;">${audit.location}</td>
+      ${codes.map(c=>`<td><div class="hm-cell" style="${hmStyle(scoreMap[c])}" title="${c}: ${scoreMap[c]!==undefined?scoreMap[c]+'/3':'N/A'}">${scoreMap[c]!==undefined?scoreMap[c]:"—"}</div></td>`).join("")}
+    </tr></tbody>
+  </table>`;
+}
+
+// ─── RECOMMENDATIONS ─────────────────────────────────────────────────────────
+function renderRec() {
+  const audit = AUDITS[0];
+  const done = RECS.filter(r=>r.done).length;
+  const overdue = RECS.filter(r=>!r.done&&new Date(r.d)<new Date()).length;
+  document.getElementById("rec-kpis").innerHTML=[
+    {l:"Iš viso rekomendacijų",v:RECS.length,s:"Auditas 1VA/2025",c:"#0059ba"},
+    {l:"Įvykdyta",v:done,s:`${Math.round(done/RECS.length*100)||0}% išspręsta`,c:"#059669"},
+    {l:"Vėluoja",v:overdue,s:"Praėjo planuojama data",c:"#dc2626"},
+  ].map(k=>`<div class="kpi-card">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:${k.c};border-radius:10px 10px 0 0;"></div>
+    <div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">${k.l}</div>
+    <div style="font-size:28px;font-weight:300;color:${k.c};letter-spacing:-.02em;line-height:1;">${k.v}</div>
+    <div style="font-size:11px;color:#9ca3af;margin-top:6px;">${k.s}</div>
+  </div>`).join("");
+
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("rec-tbody").innerHTML = RECS.map((r,i)=>{
+    const crit = AUDITS[0].criteria.find(c=>c.c===r.c);
+    const process = crit?crit.s.replace(/^\d+\. /,""):"";
+    const overRow = !r.done&&new Date(r.d)<new Date();
+    return`<tr style="${overRow?"background:#fff7f7;":""}">
+      <td style="border:1px solid #e5e7eb;padding:8px;text-align:center;font-size:12px;color:#6b7280;">${i+1}</td>
+      <td style="border:1px solid #e5e7eb;padding:8px;font-size:11px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#0059ba;">${audit.id}</div>
+        <div style="color:#9ca3af;margin-top:2px;">${today}</div>
+      </td>
+      <td style="border:1px solid #e5e7eb;padding:8px;font-size:12px;color:#111827;">
+        ${r.t}
+        <div style="margin-top:5px;"><span class="pill" style="${prioStyle(r.p)}">${prioLbl(r.p)}</span></div>
+      </td>
+      <td style="border:1px solid #e5e7eb;padding:8px;text-align:center;"></td>
+      <td style="border:1px solid #e5e7eb;padding:8px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#0059ba;">${r.c}</td>
+      <td style="border:1px solid #e5e7eb;padding:8px;font-size:11px;color:#374151;">${process}</td>
+      <td style="border:1px solid #e5e7eb;padding:8px;font-size:12px;color:#374151;">${r.r}</td>
+      <td style="border:1px solid #e5e7eb;padding:8px;text-align:center;font-size:11px;color:${overRow?"#dc2626":"#374151"};">${r.d}</td>
+      <td style="border:1px solid #e5e7eb;padding:8px;text-align:center;font-size:13px;color:#059669;">${r.done?"✓":""}</td>
+    </tr>`;
+  }).join("");
+}
+
+// ─── REPORTS ─────────────────────────────────────────────────────────────────
+function renderReports() {
+  document.getElementById("reports-tbody").innerHTML = AUDITS.map(a=>{
+    const {pct,critical} = getStats(a);
+    const col = pct>=80?"#059669":pct>=50?"#d97706":"#dc2626";
+    return`<tr style="border-bottom:1px solid #f3f4f6;">
+      <td style="padding:12px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;color:#0059ba;">${a.id}</td>
+      <td style="padding:12px 14px;font-size:13px;color:#374151;">${a.location}</td>
+      <td style="padding:12px 14px;"><span class="pill" style="background:#dbeafe;color:#1e40af;">${a.type}</span></td>
+      <td style="padding:12px 14px;text-align:center;font-size:18px;font-weight:300;color:${col};font-family:'JetBrains Mono',monospace;">${pct}%</td>
+      <td style="padding:12px 14px;text-align:center;font-size:14px;font-weight:700;color:${critical.length>0?"#dc2626":"#059669"};">${critical.length}</td>
+      <td style="padding:12px 14px;">
+        <a href="${a.url}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#0059ba;background:#eff6ff;padding:4px 10px;border-radius:5px;text-decoration:none;font-weight:600;">
+          <span class="material-symbols-outlined" style="font-size:13px;">open_in_new</span>Atidaryti
+        </a>
+      </td>
+    </tr>`;
+  }).join("");
+}
+
+// ─── WORD EXPORT ─────────────────────────────────────────────────────────────
+function exportWord() {
+  const audit = AUDITS[0];
+  const today = new Date().toISOString().split("T")[0];
+  const rows = RECS.map((r,i)=>{
+    const crit = audit.criteria.find(c=>c.c===r.c);
+    const process = crit?crit.s.replace(/^\d+\. /,""):"";
+    return`<tr>
+      <td style="border:1px solid #000;padding:5px 6px;text-align:center;font-size:10pt;">${i+1}</td>
+      <td style="border:1px solid #000;padding:5px 6px;font-size:10pt;">${audit.id}<br>${today}</td>
+      <td style="border:1px solid #000;padding:5px 6px;font-size:10pt;">${r.t}</td>
+      <td style="border:1px solid #000;padding:5px 6px;text-align:center;font-size:10pt;"></td>
+      <td style="border:1px solid #000;padding:5px 6px;text-align:center;font-size:10pt;">${r.c}</td>
+      <td style="border:1px solid #000;padding:5px 6px;font-size:10pt;">${process}</td>
+      <td style="border:1px solid #000;padding:5px 6px;font-size:10pt;">${r.r}</td>
+      <td style="border:1px solid #000;padding:5px 6px;text-align:center;font-size:10pt;">${r.d}</td>
+      <td style="border:1px solid #000;padding:5px 6px;font-size:10pt;"></td>
+    </tr>`;
+  }).join("");
+  const html=`<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+  <head><meta charset='utf-8'><style>body{font-family:Times New Roman,serif;font-size:12pt;margin:1.5cm 2cm;}h1,h2{text-align:center;}h1{font-size:13pt;}h2{font-size:12pt;margin-bottom:14pt;}.m{font-size:11pt;margin-bottom:4pt;}table{border-collapse:collapse;width:100%;margin-top:10pt;}th{border:1px solid #000;padding:5px;background:#d9d9d9;font-size:9pt;text-align:center;}.fn{font-size:8pt;margin-top:8pt;color:#444;}</style></head>
+  <body>
+  <h1>UŽDAROSIOS AKCINĖS BENDROVĖS „BALTIC MEDICS"</h1>
+  <h2>REKOMENDACIJŲ VEIKLOS GERINIMUI REGISTRAS</h2>
+  <p class="m"><strong>Audito Nr.:</strong> ${audit.id} &nbsp; <strong>Data:</strong> ${today}</p>
+  <p class="m"><strong>Padalinys:</strong> ${audit.location} &nbsp; <strong>Tipas:</strong> ${audit.type} (${audit.standard})</p>
+  <p class="m"><strong>Auditorius:</strong> ${audit.auditor}</p>
+  <table><thead>
+    <tr><th rowspan="2">Nr.</th><th rowspan="2">Audito Nr.<br>ir data¹</th><th rowspan="2">Rekomendacija</th><th colspan="2">Standartas</th><th rowspan="2">Procesas/veikla</th><th rowspan="2">Atsakingas</th><th rowspan="2">Planuojama data</th><th rowspan="2">Įvykdyta</th></tr>
+    <tr><th>VASPVT²</th><th>ISO 15189</th></tr>
+  </thead><tbody>${rows}</tbody></table>
+  <p class="fn">¹ Stulpelis pildomas, jeigu rekomendacija rašoma ne vidaus audito metu.</p>
+  <p class="fn">² Valstybinės akreditavimo sveikatos priežiūros veiklai tarnybos Nacionaliniai akreditavimo standartai.</p>
+  <div style="margin-top:28pt;font-size:11pt;">
+    <p><strong>Audito vadovas:</strong></p><br><br>
+    <p>______________________________ &nbsp;&nbsp; ______________________________</p>
+    <p style="font-size:10pt;">(Vardas, pavardė) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Parašas)</p>
+    <p style="margin-top:12pt;"><strong>Data:</strong> _______________________</p>
+  </div></body></html>`;
+  const blob=new Blob(["\ufeff"+html],{type:"application/msword"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;a.download=`Rekomendaciju_registras_${audit.id.replace("/","-")}_${today}.doc`;
+  a.click();URL.revokeObjectURL(url);
+}
+
+// ─── APPS SCRIPT API URL ─────────────────────────────────────────────────────
+const API_URL = "https://script.google.com/a/macros/signontab.com/s/AKfycbzY0nHj2kXDdXUrnThoflRe1ZFXOJrlr109jZJJsxOZ9yjKQuG4T42P6UtxYg3XfVci/exec";
+
+
+
+// ─── LOAD FROM SHEETS ─────────────────────────────────────────────────────────
+function showLoader(msg) {
+  document.getElementById("main-content").innerHTML = `
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:60vh;gap:16px;">
+      <div style="width:36px;height:36px;border:3px solid #e5e7eb;border-top-color:#0059ba;border-radius:50%;animation:spin .8s linear infinite;"></div>
+      <div style="font-size:13px;color:#6b7280;">${msg}</div>
+    </div>
+    <style>@keyframes spin{to{transform:rotate(360deg);}}</style>`;
+}
+
+function showError(msg) {
+  document.getElementById("main-content").innerHTML = `
+    <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:20px 24px;margin:20px 0;">
+      <div style="font-weight:700;color:#991b1b;margin-bottom:6px;">⚠ Nepavyko įkelti duomenų</div>
+      <div style="font-size:12px;color:#7f1d1d;">${msg}</div>
+      <button onclick="loadFromSheets()" style="margin-top:12px;padding:6px 14px;background:#0059ba;color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;">Bandyti dar kartą</button>
+    </div>`;
+}
+
+async function loadFromSheets() {
+  showLoader("Kraunami duomenys iš Google Sheets...");
+  try {
+    const [critRes, recRes] = await Promise.all([
+      fetch(API_URL + "?sheet=criteria_scores"),
+      fetch(API_URL + "?sheet=recommendations")
+    ]);
+    if (!critRes.ok) throw new Error("criteria_scores: HTTP " + critRes.status);
+    if (!recRes.ok)  throw new Error("recommendations: HTTP " + recRes.status);
+
+    const critRows = await critRes.json();
+    const recRows  = await recRes.json();
+
+    // Group criteria by audit_id
+    const auditMap = {};
+    critRows.forEach(row => {
+      if (!row.audit_id || !row.standard_code) return;
+      const id = row.audit_id;
+      if (!auditMap[id]) {
+        auditMap[id] = {
+          id,
+          location: row.location || "",
+          type: row.audit_type || "Laboratorija",
+          standard: "ISO 15189:2023",
+          auditor: row.auditor || "",
+          url: row.audit_url || "",
+          criteria: []
+        };
+      }
+      auditMap[id].criteria.push({
+        s: row.section || "",
+        c: row.standard_code || "",
+        n: row.standard_name || "",
+        v: parseInt(row.score) || 0,
+        k: row.auditor_comment || ""
+      });
+    });
+
+    // Build AUDITS array (newest first by id)
+    const loaded = Object.values(auditMap);
+    if (loaded.length === 0) throw new Error("Sheets yra tuščias — nėra įrašų criteria_scores lape.");
+
+    // Update global AUDITS
+    AUDITS.length = 0;
+    loaded.forEach(a => AUDITS.push(a));
+
+    // Build RECS
+    RECS.length = 0;
+    recRows.forEach(row => {
+      if (!row.audit_id || !row.standard_code) return;
+      RECS.push({
+        auditId: row.audit_id,
+        c: row.standard_code,
+        p: row.recommendation_text && row.recommendation_text.toLowerCase().includes("nedelsiant") ? "critical" : "medium",
+        t: row.recommendation_text || "",
+        r: row.responsible_person || "",
+        d: row.planned_date || "",
+        done: !!(row.completed_date && row.completed_date.trim())
+      });
+    });
+
+    // Rebuild sidebar audit badge
+    const a = AUDITS[0];
+    document.querySelector("nav div[style*='background:rgba']").innerHTML = `
+      <div style="font-size:12px;font-weight:700;color:#4f8ef7;font-family:'JetBrains Mono',monospace;">${a.id}</div>
+      <div style="font-size:11px;color:rgba(255,255,255,.5);margin-top:3px;line-height:1.4;">${a.location}</div>
+      <div style="margin-top:6px;display:inline-flex;align-items:center;gap:4px;font-size:10px;color:#2dd4bf;background:rgba(45,212,191,.1);padding:2px 8px;border-radius:20px;font-weight:600;">
+        <span style="width:5px;height:5px;border-radius:50%;background:#2dd4bf;"></span>
+        ${a.type} · ISO 15189
+      </div>`;
+
+    // Restore main content and render
+    restoreMainContent();
+    showPage("apzvalga");
+
+  } catch(err) {
+    console.error(err);
+    showError(err.message);
+  }
+}
+
+// ─── HIDE LOADER ─────────────────────────────────────────────────────────────
+function restoreMainContent() {
+  const el = document.getElementById("sheets-overlay");
+  if(el) el.remove();
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+loadFromSheets();
+</script>
+</body>
+</html>
