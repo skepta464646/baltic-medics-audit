@@ -623,22 +623,11 @@ const DATA_URL = "https://raw.githubusercontent.com/skepta464646/baltic-medics-a
 
 
 // ─── LOAD FROM SHEETS ─────────────────────────────────────────────────────────
-function showLoader(msg) {
-  document.getElementById("main-content").innerHTML = `
-    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:60vh;gap:16px;">
-      <div style="width:36px;height:36px;border:3px solid #e5e7eb;border-top-color:#0059ba;border-radius:50%;animation:spin .8s linear infinite;"></div>
-      <div style="font-size:13px;color:#6b7280;">${msg}</div>
-    </div>
-    <style>@keyframes spin{to{transform:rotate(360deg);}}</style>`;
-}
+function showLoader(msg) {}  // no-op, tabs stay intact
 
 function showError(msg) {
-  document.getElementById("main-content").innerHTML = `
-    <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:10px;padding:20px 24px;margin:20px 0;">
-      <div style="font-weight:700;color:#991b1b;margin-bottom:6px;">⚠ Nepavyko įkelti duomenų</div>
-      <div style="font-size:12px;color:#7f1d1d;">${msg}</div>
-      <button onclick="loadFromSheets()" style="margin-top:12px;padding:6px 14px;background:#0059ba;color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;">Bandyti dar kartą</button>
-    </div>`;
+  const pg = document.getElementById("page-apzvalga");
+  if(pg) pg.innerHTML = '<div style="background:#fef2f2;border:1px solid #fca5a5;border-left:3px solid #dc2626;border-radius:10px;padding:20px 24px;"><div style="font-weight:700;color:#991b1b;margin-bottom:6px;">&#9888; Nepavyko įkelti duomenų</div><div style="font-size:12px;color:#7f1d1d;">' + msg + '</div><button onclick="loadFromSheets()" style="margin-top:12px;padding:6px 14px;background:#0059ba;color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">Bandyti dar kartą</button></div>';
 }
 
 async function loadFromSheets() {
@@ -673,11 +662,8 @@ async function loadFromSheets() {
   }
 }
 
-// ─── HIDE LOADER ─────────────────────────────────────────────────────────────
-function restoreMainContent() {
-  const el = document.getElementById("sheets-overlay");
-  if(el) el.remove();
-}
+// ─── RESTORE ─────────────────────────────────────────────────────────────────
+function restoreMainContent() {}  // tabs are intact, nothing to restore
 
 // ─── INIT ─────────────────────────────────────────────────────────────────────
 loadFromSheets();
