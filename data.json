@@ -4,248 +4,248 @@
     {
       "id": "1VA/2025",
       "location": "Taikos pr. 48B, Klaipėda",
-      "type": "Laboratorija",
+      "type": "Laboratory",
       "standard": "ISO 15189:2023",
       "auditor": "Jonas Petraitis",
       "url": "https://docs.google.com/document/d/1dWEiged0R9QnkKHN1oSQFd4GTVRSQ-Nr/edit",
       "criteria": [
         {
-          "s": "4. Bendrieji reikalavimai",
+          "s": "4. General requirements",
           "c": "4.1",
-          "n": "Nešališkumas",
+          "n": "Impartiality",
           "v": 3,
-          "k": "Organizacinė struktūra aiškiai apibrėžta."
+          "k": "Organizational structure clearly defined. No conflicts of interest identified."
         },
         {
-          "s": "4. Bendrieji reikalavimai",
+          "s": "4. General requirements",
           "c": "4.2",
-          "n": "Konfidencialumas",
+          "n": "Confidentiality",
           "v": 3,
-          "k": "Darbuotojai pasirašę konfidencialumo įsipareigojimus."
+          "k": "Staff have signed confidentiality agreements."
         },
         {
-          "s": "4. Bendrieji reikalavimai",
+          "s": "4. General requirements",
           "c": "4.3",
-          "n": "Reikalavimai pacientams",
+          "n": "Patient requirements",
           "v": 3,
-          "k": "Informacija prieinama svetainėje."
+          "k": "Information available on website."
         },
         {
-          "s": "5. Struktūriniai reikalavimai",
+          "s": "5. Structural requirements",
           "c": "5.1",
-          "n": "Juridinis asmuo",
+          "n": "Legal entity",
           "v": 3,
-          "k": "Laboratorija yra juridinis asmuo."
+          "k": "Laboratory is a legal entity."
         },
         {
-          "s": "5. Struktūriniai reikalavimai",
+          "s": "5. Structural requirements",
           "c": "5.2",
-          "n": "Laboratorijos direktorius",
+          "n": "Laboratory director",
           "v": 3,
-          "k": "Direktoriaus kvalifikacija dokumentuota."
+          "k": "Director qualifications documented."
         },
         {
-          "s": "5. Struktūriniai reikalavimai",
+          "s": "5. Structural requirements",
           "c": "5.4",
-          "n": "Struktūra ir įgaliojimai",
+          "n": "Structure and authority",
           "v": 3,
-          "k": "Organizacinė struktūra dokumentuota."
+          "k": "Organizational structure documented."
         },
         {
-          "s": "5. Struktūriniai reikalavimai",
+          "s": "5. Structural requirements",
           "c": "5.5",
-          "n": "Tikslai ir politika",
+          "n": "Objectives and policies",
           "v": 2,
-          "k": "Ne visiems tikslams apibrėžti išmatuojami rodikliai."
+          "k": "Not all objectives have measurable indicators defined."
         },
         {
-          "s": "5. Struktūriniai reikalavimai",
+          "s": "5. Structural requirements",
           "c": "5.6",
-          "n": "Rizikos valdymas",
+          "n": "Risk management",
           "v": 1,
-          "k": "Rizikų vertinimas neapima visų proceso etapų."
+          "k": "Risk assessment does not cover all process stages."
         },
         {
-          "s": "6. Reikalavimai ištekliams",
+          "s": "6. Resource requirements",
           "c": "6.1",
-          "n": "Bendrieji ištekliai",
+          "n": "General resources",
           "v": 3,
-          "k": "Pakankami ištekliai."
+          "k": "Adequate resources available."
         },
         {
-          "s": "6. Reikalavimai ištekliams",
+          "s": "6. Resource requirements",
           "c": "6.2",
-          "n": "Personalas",
+          "n": "Personnel",
           "v": 3,
-          "k": "Kompetentingi darbuotojai."
+          "k": "Competent staff. Annual competency assessment 6F-PA-10."
         },
         {
-          "s": "6. Reikalavimai ištekliams",
+          "s": "6. Resource requirements",
           "c": "6.3",
-          "n": "Patalpos ir aplinkos sąlygos",
+          "n": "Facilities and environmental conditions",
           "v": 3,
-          "k": "Patalpos atitinka poreikius."
+          "k": "Facilities meet operational needs."
         },
         {
-          "s": "6. Reikalavimai ištekliams",
+          "s": "6. Resource requirements",
           "c": "6.4",
-          "n": "Įranga",
+          "n": "Equipment",
           "v": 3,
-          "k": "Visa įranga identifikuota."
+          "k": "All equipment identified and maintained per plan."
         },
         {
-          "s": "6. Reikalavimai ištekliams",
+          "s": "6. Resource requirements",
           "c": "6.5",
-          "n": "Kalibravimas",
+          "n": "Calibration",
           "v": 3,
-          "k": "Kalibravimai pagal planą 3F-PA-13."
+          "k": "Calibrations per plan 3F-PA-13."
         },
         {
-          "s": "6. Reikalavimai ištekliams",
+          "s": "6. Resource requirements",
           "c": "6.6.2",
-          "n": "Reagentų priėmimas ir saugojimas",
+          "n": "Reagent receipt and storage",
           "v": 0,
-          "k": "NEATITIKTIS: Šaldytuvas +10°C (norma +2–8°C). Tiesioginė rizika."
+          "k": "NON-CONFORMITY: Refrigerator +10°C (required +2–8°C). Direct risk to result reliability."
         },
         {
-          "s": "6. Reikalavimai ištekliams",
+          "s": "6. Resource requirements",
           "c": "6.6.4",
-          "n": "Reagentų atsargų valdymas",
+          "n": "Reagent inventory management",
           "v": 0,
-          "k": "NEATITIKTIS: Priimti ir nepriimti reagentai laikomi kartu."
+          "k": "NON-CONFORMITY: Accepted and unverified reagents stored together."
         },
         {
-          "s": "6. Reikalavimai ištekliams",
+          "s": "6. Resource requirements",
           "c": "6.7",
-          "n": "Paslaugų teikimo sutartys",
+          "n": "Service agreements",
           "v": 3,
-          "k": "Procedūra PA-2."
+          "k": "Procedure PA-2 approved."
         },
         {
-          "s": "6. Reikalavimai ištekliams",
+          "s": "6. Resource requirements",
           "c": "6.8",
-          "n": "Išorės tiekiami produktai",
+          "n": "Externally provided products",
           "v": 3,
-          "k": "Tiekėjai vertinami kasmet."
+          "k": "Suppliers selected and evaluated annually."
         },
         {
-          "s": "7. Proceso reikalavimai",
+          "s": "7. Process requirements",
           "c": "7.1",
-          "n": "Proceso rizikos valdymas",
+          "n": "Process risk management",
           "v": 3,
-          "k": "Rizikų valdymo planas 6F-PA-8."
+          "k": "Risk management plan 6F-PA-8 prepared."
         },
         {
-          "s": "7. Proceso reikalavimai",
+          "s": "7. Process requirements",
           "c": "7.2",
-          "n": "Procesai prieš tyrimą",
+          "n": "Pre-examination processes",
           "v": 3,
-          "k": "Procedūros PA-14."
+          "k": "Procedures documented PA-14."
         },
         {
-          "s": "7. Proceso reikalavimai",
+          "s": "7. Process requirements",
           "c": "7.3",
-          "n": "Tyrimo procesai",
+          "n": "Examination processes",
           "v": 3,
-          "k": "Validuoti metodai."
+          "k": "Validated methods, reviewed annually."
         },
         {
-          "s": "7. Proceso reikalavimai",
+          "s": "7. Process requirements",
           "c": "7.3.7",
-          "n": "Rezultatų monitoringas",
+          "n": "Result reliability monitoring",
           "v": 2,
-          "k": "Tendencijų analizė nepakankama."
+          "k": "Monitoring conducted, but trend analysis insufficient."
         },
         {
-          "s": "7. Proceso reikalavimai",
+          "s": "7. Process requirements",
           "c": "7.4",
-          "n": "Procesai po tyrimo",
+          "n": "Post-examination processes",
           "v": 3,
-          "k": "Rezultatai pagal PA-17."
+          "k": "Results issued per procedure PA-17."
         },
         {
-          "s": "7. Proceso reikalavimai",
+          "s": "7. Process requirements",
           "c": "7.4.2",
-          "n": "Mėginių tvarkymas po tyrimo",
+          "n": "Sample handling post-examination",
           "v": 0,
-          "k": "NEATITIKTIS: Mėginiai kambario temperatūroje (reikia 2–8°C)."
+          "k": "NON-CONFORMITY: Samples stored at room temperature (requires 2–8°C)."
         },
         {
-          "s": "7. Proceso reikalavimai",
+          "s": "7. Process requirements",
           "c": "7.5",
-          "n": "Neatitiktinis darbas",
+          "n": "Nonconforming work",
           "v": 3,
-          "k": "Procedūra PA-5."
+          "k": "Procedure PA-5 prepared."
         },
         {
-          "s": "7. Proceso reikalavimai",
+          "s": "7. Process requirements",
           "c": "7.6",
-          "n": "Duomenų valdymas",
+          "n": "Data management",
           "v": 3,
-          "k": "Prieigos teisės valdomos pagal pareigas."
+          "k": "Access rights managed per role."
         },
         {
-          "s": "8. Vadybos reikalavimai",
+          "s": "8. Management requirements",
           "c": "8.1",
-          "n": "Vadybos sistema",
+          "n": "Management system",
           "v": 3,
-          "k": "Kokybės vadovas pagal ISO 15189."
+          "k": "Quality manual prepared per ISO 15189."
         },
         {
-          "s": "8. Vadybos reikalavimai",
+          "s": "8. Management requirements",
           "c": "8.2",
-          "n": "Vadybos sistemos dokumentai",
+          "n": "Management system documentation",
           "v": 3,
-          "k": "Darbuotojai supažindinti."
+          "k": "All staff familiarized with quality policy."
         },
         {
-          "s": "8. Vadybos reikalavimai",
+          "s": "8. Management requirements",
           "c": "8.3",
-          "n": "Dokumentų valdymas",
+          "n": "Document control",
           "v": 3,
-          "k": "Dokumentai DVS."
+          "k": "Documents managed in DMS."
         },
         {
-          "s": "8. Vadybos reikalavimai",
+          "s": "8. Management requirements",
           "c": "8.4.2",
-          "n": "Įrašų keitimas",
+          "n": "Record amendments",
           "v": 1,
-          "k": "Atsekamumas ne visada užtikrinamas."
+          "k": "Record traceability not always ensured."
         },
         {
-          "s": "8. Vadybos reikalavimai",
+          "s": "8. Management requirements",
           "c": "8.5",
-          "n": "Rizikos ir gerinimo veiksmai",
+          "n": "Risk and improvement actions",
           "v": 3,
-          "k": "Procedūra PA-8."
+          "k": "Procedure PA-8 prepared."
         },
         {
-          "s": "8. Vadybos reikalavimai",
+          "s": "8. Management requirements",
           "c": "8.6",
-          "n": "Gerinimas",
+          "n": "Improvement",
           "v": 3,
-          "k": "Gerinimo planas 2F-PA-6."
+          "k": "Improvement plan 2F-PA-6 prepared."
         },
         {
-          "s": "8. Vadybos reikalavimai",
+          "s": "8. Management requirements",
           "c": "8.7",
-          "n": "Neatitiktys ir korekciniai veiksmai",
+          "n": "Nonconformities and corrective actions",
           "v": 3,
-          "k": "Procedūra PA-5."
+          "k": "Procedure PA-5 operational."
         },
         {
-          "s": "8. Vadybos reikalavimai",
+          "s": "8. Management requirements",
           "c": "8.8",
-          "n": "Vidaus auditai",
+          "n": "Internal audits",
           "v": 3,
-          "k": "Auditai pagal planą 1F-PA-8."
+          "k": "Audits per plan 1F-PA-8."
         },
         {
-          "s": "8. Vadybos reikalavimai",
+          "s": "8. Management requirements",
           "c": "8.9",
-          "n": "Vadybos vertinamoji analizė",
+          "n": "Management review",
           "v": 3,
-          "k": "Atliekama kartą per metus."
+          "k": "Conducted once per year."
         }
       ]
     }
@@ -255,8 +255,8 @@
       "auditId": "1VA/2025",
       "c": "6.6.2",
       "p": "critical",
-      "t": "Nedelsiant patikrinti šaldytuvo temperatūros reguliavimo sistemą. Užtikrinti +2–8°C.",
-      "r": "Laboratorijos vedėjas",
+      "t": "Immediately check refrigerator temperature control system. Ensure +2–8°C. Check all reagents for viability.",
+      "r": "Laboratory manager",
       "d": "2025-07-15",
       "done": false
     },
@@ -264,8 +264,8 @@
       "auditId": "1VA/2025",
       "c": "6.6.4",
       "p": "critical",
-      "t": "Fiziškai atskirti priimtus ir nepriimtus reagentus.",
-      "r": "Laboratorijos vedėjas",
+      "t": "Physically separate accepted and unverified reagents (separate shelves + visual markers).",
+      "r": "Laboratory manager",
       "d": "2025-07-20",
       "done": false
     },
@@ -273,8 +273,8 @@
       "auditId": "1VA/2025",
       "c": "7.4.2",
       "p": "critical",
-      "t": "Pakeisti mėginių laikymo tvarką — visi mėginiai 2–8°C.",
-      "r": "Laboratorijos vedėjas",
+      "t": "Change post-examination sample storage procedure — all samples at 2–8°C. Update PA-11.",
+      "r": "Laboratory manager",
       "d": "2025-07-25",
       "done": false
     },
@@ -282,8 +282,8 @@
       "auditId": "1VA/2025",
       "c": "8.4.2",
       "p": "medium",
-      "t": "Įdiegti sistemingą įrašų pakeitimų sekimo mechanizmą.",
-      "r": "Kokybės vadovas",
+      "t": "Implement systematic record change tracking mechanism with date and responsible person.",
+      "r": "Quality manager",
       "d": "2025-08-01",
       "done": false
     },
@@ -291,8 +291,8 @@
       "auditId": "1VA/2025",
       "c": "7.3.7",
       "p": "medium",
-      "t": "Parengti mėnesinę tendencijų analizės procedūrą.",
-      "r": "Laboratorijos vedėjas",
+      "t": "Prepare monthly trend analysis procedure with specific indicators and review frequency.",
+      "r": "Laboratory manager",
       "d": "2025-08-15",
       "done": false
     },
@@ -300,8 +300,8 @@
       "auditId": "1VA/2025",
       "c": "5.6",
       "p": "low",
-      "t": "Papildyti rizikų valdymo planą 6F-PA-8 visais trimis proceso etapais.",
-      "r": "Kokybės vadovas",
+      "t": "Extend risk management plan 6F-PA-8 to cover all three process stages: pre-, during and post-examination.",
+      "r": "Quality manager",
       "d": "2025-09-01",
       "done": false
     }
