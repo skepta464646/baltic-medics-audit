@@ -616,8 +616,8 @@ function exportWord() {
   a.click();URL.revokeObjectURL(url);
 }
 
-// ─── APPS SCRIPT API URL ─────────────────────────────────────────────────────
-const API_URL = "https://script.google.com/a/macros/signontab.com/s/AKfycbzY0nHj2kXDdXUrnThoflRe1ZFXOJrlr109jZJJsxOZ9yjKQuG4T42P6UtxYg3XfVci/exec";
+// ─── DATA SOURCE ─────────────────────────────────────────────────────────────
+const DATA_URL = "https://raw.githubusercontent.com/skepta464646/baltic-medics-audit/main/data.json";
 
 
 
@@ -641,67 +641,19 @@ function showError(msg) {
 }
 
 async function loadFromSheets() {
-  showLoader("Kraunami duomenys iš Google Sheets...");
+  showLoader("Kraunami duomenys...");
   try {
-    const [critRes, recRes] = await Promise.all([
-      fetch(API_URL + "?sheet=criteria_scores"),
-      fetch(API_URL + "?sheet=recommendations")
-    ]);
-    if (!critRes.ok) throw new Error("criteria_scores: HTTP " + critRes.status);
-    if (!recRes.ok)  throw new Error("recommendations: HTTP " + recRes.status);
+    const res = await fetch(DATA_URL + "?t=" + Date.now());
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
 
-    const critRows = await critRes.json();
-    const recRows  = await recRes.json();
-
-    // Group criteria by audit_id
-    const auditMap = {};
-    critRows.forEach(row => {
-      if (!row.audit_id || !row.standard_code) return;
-      const id = row.audit_id;
-      if (!auditMap[id]) {
-        auditMap[id] = {
-          id,
-          location: row.location || "",
-          type: row.audit_type || "Laboratorija",
-          standard: "ISO 15189:2023",
-          auditor: row.auditor || "",
-          url: row.audit_url || "",
-          criteria: []
-        };
-      }
-      auditMap[id].criteria.push({
-        s: row.section || "",
-        c: row.standard_code || "",
-        n: row.standard_name || "",
-        v: parseInt(row.score) || 0,
-        k: row.auditor_comment || ""
-      });
-    });
-
-    // Build AUDITS array (newest first by id)
-    const loaded = Object.values(auditMap);
-    if (loaded.length === 0) throw new Error("Sheets yra tuščias — nėra įrašų criteria_scores lape.");
-
-    // Update global AUDITS
     AUDITS.length = 0;
-    loaded.forEach(a => AUDITS.push(a));
+    data.audits.forEach(a => AUDITS.push(a));
 
-    // Build RECS
     RECS.length = 0;
-    recRows.forEach(row => {
-      if (!row.audit_id || !row.standard_code) return;
-      RECS.push({
-        auditId: row.audit_id,
-        c: row.standard_code,
-        p: row.recommendation_text && row.recommendation_text.toLowerCase().includes("nedelsiant") ? "critical" : "medium",
-        t: row.recommendation_text || "",
-        r: row.responsible_person || "",
-        d: row.planned_date || "",
-        done: !!(row.completed_date && row.completed_date.trim())
-      });
-    });
+    data.recommendations.forEach(r => RECS.push(r));
 
-    // Rebuild sidebar audit badge
+    // Update sidebar badge
     const a = AUDITS[0];
     document.querySelector("nav div[style*='background:rgba']").innerHTML = `
       <div style="font-size:12px;font-weight:700;color:#4f8ef7;font-family:'JetBrains Mono',monospace;">${a.id}</div>
@@ -711,7 +663,6 @@ async function loadFromSheets() {
         ${a.type} · ISO 15189
       </div>`;
 
-    // Restore main content and render
     restoreMainContent();
     showPage("apzvalga");
 
