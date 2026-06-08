@@ -1,0 +1,309 @@
+{
+  "lastUpdated": "2025-06-08",
+  "audits": [
+    {
+      "id": "1VA/2025",
+      "location": "Taikos pr. 48B, Klaipėda",
+      "type": "Laboratorija",
+      "standard": "ISO 15189:2023",
+      "auditor": "Jonas Petraitis",
+      "url": "https://docs.google.com/document/d/1dWEiged0R9QnkKHN1oSQFd4GTVRSQ-Nr/edit",
+      "criteria": [
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.1",
+          "n": "Nešališkumas",
+          "v": 3,
+          "k": "Organizacinė struktūra aiškiai apibrėžta."
+        },
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.2",
+          "n": "Konfidencialumas",
+          "v": 3,
+          "k": "Darbuotojai pasirašę konfidencialumo įsipareigojimus."
+        },
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.3",
+          "n": "Reikalavimai pacientams",
+          "v": 3,
+          "k": "Informacija prieinama svetainėje."
+        },
+        {
+          "s": "5. Struktūriniai reikalavimai",
+          "c": "5.1",
+          "n": "Juridinis asmuo",
+          "v": 3,
+          "k": "Laboratorija yra juridinis asmuo."
+        },
+        {
+          "s": "5. Struktūriniai reikalavimai",
+          "c": "5.2",
+          "n": "Laboratorijos direktorius",
+          "v": 3,
+          "k": "Direktoriaus kvalifikacija dokumentuota."
+        },
+        {
+          "s": "5. Struktūriniai reikalavimai",
+          "c": "5.4",
+          "n": "Struktūra ir įgaliojimai",
+          "v": 3,
+          "k": "Organizacinė struktūra dokumentuota."
+        },
+        {
+          "s": "5. Struktūriniai reikalavimai",
+          "c": "5.5",
+          "n": "Tikslai ir politika",
+          "v": 2,
+          "k": "Ne visiems tikslams apibrėžti išmatuojami rodikliai."
+        },
+        {
+          "s": "5. Struktūriniai reikalavimai",
+          "c": "5.6",
+          "n": "Rizikos valdymas",
+          "v": 1,
+          "k": "Rizikų vertinimas neapima visų proceso etapų."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.1",
+          "n": "Bendrieji ištekliai",
+          "v": 3,
+          "k": "Pakankami ištekliai."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.2",
+          "n": "Personalas",
+          "v": 3,
+          "k": "Kompetentingi darbuotojai."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.3",
+          "n": "Patalpos ir aplinkos sąlygos",
+          "v": 3,
+          "k": "Patalpos atitinka poreikius."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.4",
+          "n": "Įranga",
+          "v": 3,
+          "k": "Visa įranga identifikuota."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.5",
+          "n": "Kalibravimas",
+          "v": 3,
+          "k": "Kalibravimai pagal planą 3F-PA-13."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.2",
+          "n": "Reagentų priėmimas ir saugojimas",
+          "v": 0,
+          "k": "NEATITIKTIS: Šaldytuvas +10°C (norma +2–8°C). Tiesioginė rizika."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.4",
+          "n": "Reagentų atsargų valdymas",
+          "v": 0,
+          "k": "NEATITIKTIS: Priimti ir nepriimti reagentai laikomi kartu."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.7",
+          "n": "Paslaugų teikimo sutartys",
+          "v": 3,
+          "k": "Procedūra PA-2."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.8",
+          "n": "Išorės tiekiami produktai",
+          "v": 3,
+          "k": "Tiekėjai vertinami kasmet."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.1",
+          "n": "Proceso rizikos valdymas",
+          "v": 3,
+          "k": "Rizikų valdymo planas 6F-PA-8."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.2",
+          "n": "Procesai prieš tyrimą",
+          "v": 3,
+          "k": "Procedūros PA-14."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3",
+          "n": "Tyrimo procesai",
+          "v": 3,
+          "k": "Validuoti metodai."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3.7",
+          "n": "Rezultatų monitoringas",
+          "v": 2,
+          "k": "Tendencijų analizė nepakankama."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.4",
+          "n": "Procesai po tyrimo",
+          "v": 3,
+          "k": "Rezultatai pagal PA-17."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.4.2",
+          "n": "Mėginių tvarkymas po tyrimo",
+          "v": 0,
+          "k": "NEATITIKTIS: Mėginiai kambario temperatūroje (reikia 2–8°C)."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.5",
+          "n": "Neatitiktinis darbas",
+          "v": 3,
+          "k": "Procedūra PA-5."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.6",
+          "n": "Duomenų valdymas",
+          "v": 3,
+          "k": "Prieigos teisės valdomos pagal pareigas."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.1",
+          "n": "Vadybos sistema",
+          "v": 3,
+          "k": "Kokybės vadovas pagal ISO 15189."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.2",
+          "n": "Vadybos sistemos dokumentai",
+          "v": 3,
+          "k": "Darbuotojai supažindinti."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.3",
+          "n": "Dokumentų valdymas",
+          "v": 3,
+          "k": "Dokumentai DVS."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.4.2",
+          "n": "Įrašų keitimas",
+          "v": 1,
+          "k": "Atsekamumas ne visada užtikrinamas."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.5",
+          "n": "Rizikos ir gerinimo veiksmai",
+          "v": 3,
+          "k": "Procedūra PA-8."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.6",
+          "n": "Gerinimas",
+          "v": 3,
+          "k": "Gerinimo planas 2F-PA-6."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.7",
+          "n": "Neatitiktys ir korekciniai veiksmai",
+          "v": 3,
+          "k": "Procedūra PA-5."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.8",
+          "n": "Vidaus auditai",
+          "v": 3,
+          "k": "Auditai pagal planą 1F-PA-8."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.9",
+          "n": "Vadybos vertinamoji analizė",
+          "v": 3,
+          "k": "Atliekama kartą per metus."
+        }
+      ]
+    }
+  ],
+  "recommendations": [
+    {
+      "auditId": "1VA/2025",
+      "c": "6.6.2",
+      "p": "critical",
+      "t": "Nedelsiant patikrinti šaldytuvo temperatūros reguliavimo sistemą. Užtikrinti +2–8°C.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2025-07-15",
+      "done": false
+    },
+    {
+      "auditId": "1VA/2025",
+      "c": "6.6.4",
+      "p": "critical",
+      "t": "Fiziškai atskirti priimtus ir nepriimtus reagentus.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2025-07-20",
+      "done": false
+    },
+    {
+      "auditId": "1VA/2025",
+      "c": "7.4.2",
+      "p": "critical",
+      "t": "Pakeisti mėginių laikymo tvarką — visi mėginiai 2–8°C.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2025-07-25",
+      "done": false
+    },
+    {
+      "auditId": "1VA/2025",
+      "c": "8.4.2",
+      "p": "medium",
+      "t": "Įdiegti sistemingą įrašų pakeitimų sekimo mechanizmą.",
+      "r": "Kokybės vadovas",
+      "d": "2025-08-01",
+      "done": false
+    },
+    {
+      "auditId": "1VA/2025",
+      "c": "7.3.7",
+      "p": "medium",
+      "t": "Parengti mėnesinę tendencijų analizės procedūrą.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2025-08-15",
+      "done": false
+    },
+    {
+      "auditId": "1VA/2025",
+      "c": "5.6",
+      "p": "low",
+      "t": "Papildyti rizikų valdymo planą 6F-PA-8 visais trimis proceso etapais.",
+      "r": "Kokybės vadovas",
+      "d": "2025-09-01",
+      "done": false
+    }
+  ]
+}
