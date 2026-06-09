@@ -27,62 +27,62 @@ body{font-family:'Inter',system-ui,sans-serif;}
 .hm-cell:hover{transform:scale(1.2);z-index:10;position:relative;}
 .hm0{background:#fee2e2;color:#991b1b;}.hm1{background:#fff7ed;color:#9a3412;}.hm2{background:#dbeafe;color:#1e40af;}.hm3{background:#dcfce7;color:#166534;}.hmx{background:#f3f4f6;color:#9ca3af;}
 .tbl{width:100%;border-collapse:collapse;}
-.tbl th{padding:9px 14px;text-align:left;font-size:11px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,.06);background:#151720;white-space:nowrap;}
-.tbl td{padding:10px 14px;font-size:13px;color:#c8cad2;border-bottom:1px solid rgba(255,255,255,.04);}
-.tbl tr:hover td{background:rgba(255,255,255,.02);}
+.tbl th{padding:9px 14px;text-align:left;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e5e7eb;background:#f9fafb;white-space:nowrap;}
+.tbl td{padding:10px 14px;font-size:13px;color:#374151;border-bottom:1px solid #f3f4f6;}
+.tbl tr:hover td{background:#f9fafb;}
 .tbl tr.row-crit td{border-left:2px solid #ef4444;}
 .tbl tr.row-part td{border-left:2px solid #f59e0b;}
-.exp-row td{background:rgba(79,142,247,.04)!important;}
+.exp-row td{background:#f0fdf9!important;}
 .rtbl{width:100%;border-collapse:collapse;font-size:12px;}
-.rtbl th{padding:7px 8px;text-align:left;font-size:10px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.05em;border:1px solid rgba(255,255,255,.06);background:#151720;}
-.rtbl td{padding:7px 8px;border:1px solid rgba(255,255,255,.05);color:#c8cad2;vertical-align:top;}
-.rtbl tr:hover td{background:rgba(255,255,255,.02);}
-.rtbl tr.ov td{background:rgba(239,68,68,.05);}
+.rtbl th{padding:7px 8px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;border:1px solid #e5e7eb;background:#f9fafb;}
+.rtbl td{padding:7px 8px;border:1px solid #f3f4f6;color:#374151;vertical-align:top;}
+.rtbl tr:hover td{background:#f9fafb;}
+.rtbl tr.ov td{background:#fff7f7;}
 .ai-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:16px;}
 .ai-dot{width:6px;height:6px;border-radius:50%;background:#006a61;display:inline-block;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px;}
 /* FILTER BAR */
-.filter-bar{display:flex;align-items:center;gap:8px;padding:10px 20px;background:#13151f;border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap;}
+.filter-bar{display:flex;align-items:center;gap:8px;padding:10px 20px;background:#fff;border-bottom:1px solid #e5e7eb;flex-wrap:wrap;}
 .dd-wrap{position:relative;}
-.dd-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:rgba(255,255,255,.06);font-size:12px;color:rgba(255,255,255,.7);cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;transition:all .12s;}
-.dd-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff;}
-.dd-btn.has-filters{border-color:#2dd4bf;background:rgba(45,212,191,.12);color:#2dd4bf;}
-.dd-btn .fc{background:#2dd4bf;color:#0f111a;border-radius:20px;padding:0 5px;font-size:10px;font-weight:700;min-width:16px;text-align:center;}
-.dd-menu{position:absolute;top:calc(100% + 6px);left:0;background:#1a1d2a;border:1px solid rgba(255,255,255,.1);border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.4);min-width:220px;z-index:200;overflow:hidden;display:none;}
+.dd-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid #e5e7eb;border-radius:20px;background:#fff;font-size:12px;color:#374151;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;transition:all .12s;}
+.dd-btn:hover{background:#f9fafb;border-color:#d1d5db;}
+.dd-btn.has-filters{border-color:#006a61;background:#f0fdf4;color:#006a61;}
+.dd-btn .fc{background:#006a61;color:#fff;border-radius:20px;padding:0 5px;font-size:10px;font-weight:700;min-width:16px;text-align:center;}
+.dd-menu{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);min-width:220px;z-index:200;overflow:hidden;display:none;}
 .dd-menu.open{display:block;}
-.dd-search{width:100%;border:none;border-bottom:1px solid rgba(255,255,255,.07);padding:10px 14px;font-size:13px;color:#e2e4ea;background:rgba(255,255,255,.04);outline:none;font-family:'Inter',sans-serif;}
-.dd-item{display:flex;align-items:center;gap:10px;padding:8px 14px;font-size:13px;color:#c8cad2;cursor:pointer;transition:background .1s;}
-.dd-item:hover{background:rgba(255,255,255,.05);}
+.dd-search{width:100%;border:none;border-bottom:1px solid #f3f4f6;padding:10px 14px;font-size:13px;color:#374151;background:#f9fafb;outline:none;font-family:'Inter',sans-serif;}
+.dd-item{display:flex;align-items:center;gap:10px;padding:8px 14px;font-size:13px;color:#374151;cursor:pointer;transition:background .1s;}
+.dd-item:hover{background:#f9fafb;}
 .dd-item input[type=checkbox]{accent-color:#006a61;width:14px;height:14px;cursor:pointer;}
-.dd-item.sel{color:#2dd4bf;font-weight:500;}
-.dd-footer{padding:8px 14px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;}
-.dd-footer button{font-size:12px;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;padding:2px 6px;border-radius:4px;color:rgba(255,255,255,.5);}
-.dd-footer .sel-all{color:#2dd4bf;}.dd-footer .clr{color:rgba(255,255,255,.4);}
-.dd-footer button:hover{background:rgba(255,255,255,.06);}
-.yr-row{display:flex;align-items:center;gap:8px;padding:12px 14px;background:rgba(255,255,255,.02);}
+.dd-item.sel{color:#006a61;font-weight:500;}
+.dd-footer{padding:8px 14px;border-top:1px solid #f3f4f6;display:flex;justify-content:space-between;}
+.dd-footer button{font-size:12px;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;padding:2px 6px;border-radius:4px;}
+.dd-footer .sel-all{color:#006a61;}.dd-footer .clr{color:#6b7280;}
+.dd-footer button:hover{background:#f3f4f6;}
+.yr-row{display:flex;align-items:center;gap:8px;padding:12px 14px;}
 .yr-row input{width:70px;border:1px solid #e5e7eb;border-radius:6px;padding:5px 8px;font-size:13px;color:#374151;text-align:center;font-family:'Inter',sans-serif;outline:none;}
-.yr-row input:focus{border-color:#2dd4bf;}
-.yr-lbl{font-size:12px;color:rgba(255,255,255,.4);}
-.dd-shortcut{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:12px;color:rgba(255,255,255,.4);cursor:pointer;border-top:1px solid rgba(255,255,255,.05);}
-.dd-shortcut:hover{background:rgba(255,255,255,.05);color:#e2e4ea;}
-.chips-row{display:flex;align-items:center;gap:6px;padding:6px 20px;flex-wrap:wrap;background:#13151f;border-bottom:1px solid rgba(255,255,255,.06);min-height:34px;}
-.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px 3px 10px;background:rgba(45,212,191,.1);color:#2dd4bf;border:1px solid rgba(45,212,191,.2);border-radius:20px;font-size:12px;font-weight:500;}
-.chip button{background:none;border:none;cursor:pointer;color:#2dd4bf;font-size:15px;line-height:1;padding:0 0 0 2px;display:flex;align-items:center;opacity:.7;}
+.yr-row input:focus{border-color:#006a61;}
+.yr-lbl{font-size:12px;color:#9ca3af;}
+.dd-shortcut{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:12px;color:#6b7280;cursor:pointer;border-top:1px solid #f3f4f6;}
+.dd-shortcut:hover{background:#f9fafb;color:#374151;}
+.chips-row{display:flex;align-items:center;gap:6px;padding:6px 20px;flex-wrap:wrap;background:#fff;border-bottom:1px solid #f3f4f6;min-height:34px;}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px 3px 10px;background:#f0fdf4;color:#006a61;border:1px solid #bbf7d0;border-radius:20px;font-size:12px;font-weight:500;}
+.chip button{background:none;border:none;cursor:pointer;color:#006a61;font-size:15px;line-height:1;padding:0 0 0 2px;display:flex;align-items:center;opacity:.7;}
 .chip button:hover{opacity:1;}
-.result-info{font-size:12px;color:rgba(255,255,255,.3);padding:6px 20px;background:#0f111a;border-bottom:1px solid rgba(255,255,255,.05);}
-.result-info strong{color:rgba(255,255,255,.7);}
-.clear-all{background:none;border:none;font-size:12px;color:rgba(255,255,255,.3);cursor:pointer;padding:3px 8px;border-radius:20px;font-family:'Inter',sans-serif;margin-left:auto;}
-.clear-all:hover{background:rgba(255,255,255,.06);color:#fff;}
+.result-info{font-size:12px;color:#9ca3af;padding:6px 20px;background:#f9fafb;border-bottom:1px solid #e5e7eb;}
+.result-info strong{color:#374151;}
+.clear-all{background:none;border:none;font-size:12px;color:#9ca3af;cursor:pointer;padding:3px 8px;border-radius:20px;font-family:'Inter',sans-serif;margin-left:auto;}
+.clear-all:hover{background:#f3f4f6;color:#374151;}
 /* AUDIT SELECTOR */
-.audit-sel{display:flex;align-items:center;gap:8px;padding:10px 20px;background:#13151f;border-bottom:1px solid rgba(255,255,255,.06);overflow-x:auto;}
+.audit-sel{display:flex;align-items:center;gap:8px;padding:10px 20px;background:#f9fafb;border-bottom:1px solid #e5e7eb;overflow-x:auto;}
 .audit-chip{padding:5px 14px;border-radius:20px;border:1px solid #e5e7eb;background:#fff;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;white-space:nowrap;transition:all .12s;}
-.audit-chip:hover{border-color:#2dd4bf;color:#2dd4bf;}
-.audit-chip.active{border-color:#2dd4bf;background:rgba(45,212,191,.15);color:#2dd4bf;}
+.audit-chip:hover{border-color:#006a61;color:#006a61;}
+.audit-chip.active{border-color:#006a61;background:#006a61;color:#fff;}
 </style>
 </head>
-<body class="text-on-surface antialiased flex h-screen overflow-hidden" style="background:#0f111a;">
+<body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden">
 
 <!-- SIDEBAR -->
 <nav class="hidden md:flex bg-tertiary flex-col h-screen w-64 py-6 px-4 z-50 flex-shrink-0 border-r border-outline-variant/20">
@@ -107,12 +107,12 @@ body{font-family:'Inter',system-ui,sans-serif;}
 </nav>
 
 <!-- MAIN -->
-<div class="flex-1 flex flex-col h-screen overflow-hidden" style="background:#0f111a;">
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
   <!-- TOPBAR -->
-  <header class="h-14 flex items-center justify-between px-6 flex-shrink-0" style="background:#13151f;border-bottom:1px solid rgba(255,255,255,.06);">
+  <header class="bg-surface border-b border-outline-variant h-14 flex items-center justify-between px-6 flex-shrink-0 card-shadow">
     <div class="flex items-center gap-2">
-      <span class="text-sm" style="color:#6b7280;">Baltic Medics /</span>
-      <span id="page-title" class="text-sm font-bold" style="color:#e2e4ea;">Overview</span>
+      <span class="text-sm text-on-surface-variant">Baltic Medics /</span>
+      <span id="page-title" class="text-sm font-bold text-on-surface">Overview</span>
     </div>
     <div id="topbar-actions" class="flex items-center gap-2"></div>
   </header>
@@ -196,33 +196,33 @@ body{font-family:'Inter',system-ui,sans-serif;}
   <div class="result-info" id="result-info"></div>
 
   <!-- SCROLLABLE CONTENT -->
-  <div class="flex-1 overflow-y-auto p-6" id="main-content" style="background:#0f111a;">
+  <div class="flex-1 overflow-y-auto p-6" id="main-content">
 
     <div class="tab-page active" id="page-overview">
       <div class="grid grid-cols-4 gap-3" id="kpi-row"></div>
       <div id="alert-block"></div>
       <div class="grid gap-4" style="grid-template-columns:1fr 300px;">
-        <div class="rounded-xl" style="background:#1a1d2a;border:1px solid rgba(255,255,255,.07);">
-          <div class="px-5 py-4 flex items-center justify-between" style="border-bottom:1px solid rgba(255,255,255,.06);">
+        <div class="bg-white border border-outline-variant rounded-xl card-shadow">
+          <div class="px-5 py-4 border-b border-outline-variant/50 flex items-center justify-between">
             <div>
-              <div class="text-sm font-bold" style="color:#e2e4ea;">Section compliance</div>
-              <div class="text-xs mt-0.5" style="color:rgba(255,255,255,.3);" id="sec-sub"></div>
+              <div class="text-sm font-bold text-on-surface">Section compliance</div>
+              <div class="text-xs text-on-surface-variant mt-0.5" id="sec-sub"></div>
             </div>
           </div>
           <div class="p-5" id="sec-bars"></div>
         </div>
-        <div class="rounded-xl p-4" style="background:rgba(79,142,247,.04);border:1px solid rgba(79,142,247,.12);">
+        <div class="ai-box">
           <div class="flex items-center gap-2 mb-3">
-            <span class="ai-dot" style="margin-right:4px;"></span>
-            <span class="text-xs font-bold uppercase tracking-widest" style="color:#4f8ef7;">AI Summary</span>
+            <span class="ai-dot"></span>
+            <span class="text-xs font-bold text-secondary uppercase tracking-widest">AI Summary</span>
           </div>
-          <div id="ai-text" class="text-xs leading-relaxed" style="color:#9ca3af;"></div>
+          <div id="ai-text" class="text-xs text-on-surface-variant leading-relaxed"></div>
         </div>
       </div>
-      <div class="rounded-xl" style="background:#1a1d2a;border:1px solid rgba(255,255,255,.07);">
-        <div class="px-5 py-4" style="border-bottom:1px solid rgba(255,255,255,.06);">
-          <div class="text-sm font-bold" style="color:#e2e4ea;">Progress tracker</div>
-          <div class="text-xs mt-0.5" style="color:rgba(255,255,255,.3);" id="prog-sub">Comparing audits for selected location</div>
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow">
+        <div class="px-5 py-4 border-b border-outline-variant/50">
+          <div class="text-sm font-bold text-on-surface">Progress tracker</div>
+          <div class="text-xs text-on-surface-variant mt-0.5" id="prog-sub">Comparing audits for selected location</div>
         </div>
         <div id="prog-table" class="overflow-x-auto"></div>
       </div>
@@ -231,8 +231,8 @@ body{font-family:'Inter',system-ui,sans-serif;}
     <div class="tab-page" id="page-criteria">
       <!-- Audit selector -->
       <div id="audit-sel-wrap"></div>
-      <div class="rounded-xl overflow-hidden" style="background:#1a1d2a;border:1px solid rgba(255,255,255,.07);">
-        <div class="px-5 py-3 flex gap-2 flex-wrap items-center" style="border-bottom:1px solid rgba(255,255,255,.06);">
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow overflow-hidden">
+        <div class="px-5 py-3 border-b border-outline-variant/50 flex gap-2 flex-wrap items-center">
           <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Section:</span>
           <div id="sec-pills" class="flex gap-2 flex-wrap"></div>
         </div>
@@ -246,10 +246,10 @@ body{font-family:'Inter',system-ui,sans-serif;}
     </div>
 
     <div class="tab-page" id="page-heatmap">
-      <div class="rounded-xl" style="background:#1a1d2a;border:1px solid rgba(255,255,255,.07);">
-        <div class="px-5 py-4" style="border-bottom:1px solid rgba(255,255,255,.06);">
-          <div class="text-sm font-bold" style="color:#e2e4ea;">Standards compliance heatmap</div>
-          <div class="text-xs mt-0.5" style="color:rgba(255,255,255,.3);">Rows = facilities · Columns = standards · Color = score</div>
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow">
+        <div class="px-5 py-4 border-b border-outline-variant/50">
+          <div class="text-sm font-bold text-on-surface">Standards compliance heatmap</div>
+          <div class="text-xs text-on-surface-variant mt-0.5">Rows = facilities · Columns = standards · Color = score</div>
         </div>
         <div class="p-5 overflow-x-auto" id="hm-wrap"></div>
         <div class="px-5 pb-4 flex gap-2 flex-wrap items-center">
@@ -263,11 +263,11 @@ body{font-family:'Inter',system-ui,sans-serif;}
 
     <div class="tab-page" id="page-rec">
       <div class="grid grid-cols-3 gap-3" id="rec-kpis"></div>
-      <div class="rounded-xl overflow-hidden" style="background:#1a1d2a;border:1px solid rgba(255,255,255,.07);">
-        <div class="px-5 py-4 flex items-center justify-between" style="border-bottom:1px solid rgba(255,255,255,.06);">
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow overflow-hidden">
+        <div class="px-5 py-4 border-b border-outline-variant/50 flex items-center justify-between">
           <div>
-            <div class="text-sm font-bold" style="color:#e2e4ea;">Recommendations register</div>
-            <div class="text-xs mt-0.5" style="color:rgba(255,255,255,.3);" id="rec-meta"></div>
+            <div class="text-sm font-bold text-on-surface">Recommendations register</div>
+            <div class="text-xs text-on-surface-variant mt-0.5" id="rec-meta"></div>
           </div>
           <button onclick="exportWord()" class="flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-white rounded-lg text-xs font-semibold hover:bg-secondary/90 transition-colors">
             <span class="material-symbols-outlined" style="font-size:14px;">download</span>Download Word
@@ -283,9 +283,9 @@ body{font-family:'Inter',system-ui,sans-serif;}
     </div>
 
     <div class="tab-page" id="page-reports">
-      <div class="rounded-xl overflow-hidden" style="background:#1a1d2a;border:1px solid rgba(255,255,255,.07);">
-        <div class="px-5 py-4" style="border-bottom:1px solid rgba(255,255,255,.06);">
-          <div class="text-sm font-bold" style="color:#e2e4ea;">Completed audits</div>
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow overflow-hidden">
+        <div class="px-5 py-4 border-b border-outline-variant/50">
+          <div class="text-sm font-bold text-on-surface">Completed audits</div>
         </div>
         <div class="overflow-x-auto">
           <table class="tbl">
@@ -442,7 +442,7 @@ function go(name){
   document.getElementById("page-title").textContent=titles[name]||name;
   var tb=document.getElementById("topbar-actions");
   if(name==="rec"){tb.innerHTML='<button onclick="exportWord()" class="flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-white rounded-lg text-xs font-semibold"><span class="material-symbols-outlined" style="font-size:13px;">download</span>Download Word</button>';}
-  else{var html='<button onclick="loadData()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium" style="border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);background:rgba(255,255,255,.04);"><span class="material-symbols-outlined" style="font-size:13px;">refresh</span>Refresh</button>';tb.innerHTML=html;}
+  else{var html='<button onclick="loadData()" class="flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface-container-low"><span class="material-symbols-outlined" style="font-size:13px;">refresh</span>Refresh</button>';tb.innerHTML=html;}
   renderTab(name);
 }
 
@@ -477,12 +477,12 @@ function rdOv(){
     {l:"Criteria assessed",v:a.criteria.length,s:"In latest audit",c:"#1e40af"},
     {l:"Critical issues",v:totalCrit,s:"Across filtered audits",c:"#dc2626"},
     {l:"Open recommendations",v:openRecs,s:"Pending",c:"#d97706"}
-  ].map(function(k){return '<div class="rounded-xl p-4" style="background:#1a1d2a;border:1px solid rgba(255,255,255,.07);"><div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div><div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div><div class="text-xs" style="color:#9ca3af;">'+k.s+'</div></div>';}).join("");
-  document.getElementById("alert-block").innerHTML=crit.length>0?'<div class="rounded-xl p-4" style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-left:3px solid #ef4444;"><div class="font-bold text-sm mb-2" style="color:#f87171;">&#9888; '+crit.length+' critical in latest audit ('+a.id+')</div>'+crit.map(function(c){return'<div class="text-xs mb-1" style="color:rgba(239,68,68,.7);"><code class="font-mono font-bold">'+c.c+'</code> — '+c.n+': '+c.k.replace(/^NON-CONFORMITY:\s*/i,"")+'</div>';}).join("")+'</div>':"";
+  ].map(function(k){return '<div class="bg-white border border-outline-variant rounded-xl p-4 card-shadow"><div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div><div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div><div class="text-xs text-on-surface-variant">'+k.s+'</div></div>';}).join("");
+  document.getElementById("alert-block").innerHTML=crit.length>0?'<div class="bg-red-50 border border-red-200 border-l-4 border-l-red-500 rounded-xl p-4"><div class="font-bold text-red-800 text-sm mb-2">&#9888; '+crit.length+' critical in latest audit ('+a.id+')</div>'+crit.map(function(c){return'<div class="text-xs text-red-700 mb-1"><code class="font-mono font-bold">'+c.c+'</code> — '+c.n+': '+c.k.replace(/^NON-CONFORMITY:\s*/i,"")+'</div>';}).join("")+'</div>':"";
   document.getElementById("sec-bars").innerHTML=Object.entries(secs).map(function(e){
     var nm=e[0],items=e[1],avg=items.reduce(function(a,c){return a+c.v;},0)/items.length;
     var cr=items.filter(function(i){return i.v===0;}).length,bc=bCol(avg),sn=nm.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,"");
-    return '<div class="mb-4"><div class="flex justify-between mb-1.5"><span class="text-sm text-on-surface">'+sn+'</span><span class="text-sm font-bold" style="color:'+bc+';">'+avg.toFixed(1)+'/3.0'+(cr>0?' <span class="text-red-500 text-xs">'+cr+' crit</span>':"")+'</span></div><div class="h-1.5 rounded-full overflow-hidden" style="background:rgba(255,255,255,.06);"><div class="bar-fill h-full rounded-full" style="width:0%;background:'+bc+';" data-w="'+((avg/3)*100).toFixed(0)+'"></div></div></div>';
+    return '<div class="mb-4"><div class="flex justify-between mb-1.5"><span class="text-sm text-on-surface">'+sn+'</span><span class="text-sm font-bold" style="color:'+bc+';">'+avg.toFixed(1)+'/3.0'+(cr>0?' <span class="text-red-500 text-xs">'+cr+' crit</span>':"")+'</span></div><div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="bar-fill h-full rounded-full" style="width:0%;background:'+bc+';" data-w="'+((avg/3)*100).toFixed(0)+'"></div></div></div>';
   }).join("");
   setTimeout(function(){document.querySelectorAll(".bar-fill").forEach(function(e){e.style.width=e.dataset.w+"%";});},60);
   var critR=ALL_RECS.filter(function(r){return r.auditId===a.id&&r.p==="critical"&&!r.done;});
@@ -506,7 +506,7 @@ function rdCrit(){
   wrap.innerHTML='<div class="audit-sel">'+AUDITS.map(function(x){return '<button class="audit-chip'+(x.id===(a?a.id:'')?'active':'')+'" onclick="selAuditId=\''+x.id+'\';rdCrit();">'+x.id+'<span class="ml-1 opacity-60 text-xs">'+x.type.substring(0,3)+'</span></button>';}).join('')+'</div>';
   if(!a){document.getElementById("sec-pills").innerHTML="";document.getElementById("crit-tbody").innerHTML='<tr><td colspan="5" class="text-center py-6 text-sm text-on-surface-variant">No audits match current filters.</td></tr>';return;}
   var secs=[...new Set(a.criteria.map(function(c){return c.s;}))];
-  document.getElementById("sec-pills").innerHTML=["all"].concat(secs).map(function(s){return'<button class="'+(secF===s?"inline-flex px-3 py-1 rounded-full text-xs font-semibold" style="background:rgba(45,212,191,.15);color:#2dd4bf;border:1px solid rgba(45,212,191,.2);":"inline-flex px-3 py-1 rounded-full text-xs font-semibold" style="border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);background:transparent;cursor:pointer;")+'" onclick="secF=\''+s+'\';expRow=null;rdCrit();">'+(s==="all"?"All":s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""))+'</button>';}).join("");
+  document.getElementById("sec-pills").innerHTML=["all"].concat(secs).map(function(s){return'<button class="'+(secF===s?"inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-secondary text-white":"inline-flex px-3 py-1 rounded-full text-xs font-semibold border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary")+'" onclick="secF=\''+s+'\';expRow=null;rdCrit();">'+(s==="all"?"All":s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""))+'</button>';}).join("");
   var filtered=secF==="all"?a.criteria:a.criteria.filter(function(c){return c.s===secF;});
   document.getElementById("crit-tbody").innerHTML=filtered.map(function(c,i){var exp=expRow===i;return '<tr class="'+(c.v===0?"row-crit":c.v===1?"row-part":"")+' cursor-pointer" onclick="expRow=expRow==='+i+'?null:'+i+';rdCrit();"><td><code class="font-mono text-xs text-secondary font-bold">'+c.c+'</code></td><td class="'+(c.v<=1?"font-semibold text-on-surface":"text-on-surface-variant")+'">'+c.n+'</td><td class="text-center"><span class="'+sClass(c.v)+'">'+c.v+'</span></td><td><span class="'+pClass(c.v)+'">'+sLbl(c.v)+'</span></td><td class="text-xs max-w-xs text-on-surface-variant">'+(c.v<=1?c.k.replace(/^NON-CONFORMITY:\s*/i,""):"—")+'</td></tr>'+(exp?'<tr class="exp-row"><td colspan="5" class="p-4"><div class="text-xs font-bold text-secondary uppercase tracking-wide mb-1">'+c.s+' › '+c.c+'</div><div class="font-semibold text-on-surface mb-2">'+c.n+'</div><div class="text-sm text-on-surface-variant leading-relaxed mb-3">'+c.k+'</div>'+(a.url?'<a href="'+a.url+'" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-secondary bg-secondary-container/30 px-3 py-1.5 rounded-lg font-semibold no-underline"><span class="material-symbols-outlined" style="font-size:13px;">open_in_new</span>View source</a>':"")+'</td></tr>':"");}).join("");
 }
@@ -516,7 +516,7 @@ function rdHm(){
   if(!AUDITS.length){document.getElementById("hm-wrap").innerHTML='<div class="py-8 text-center text-sm text-on-surface-variant">No audits match current filters.</div>';return;}
   var allCodes=[...new Set(AUDITS.flatMap(function(a){return a.criteria.map(function(c){return c.c;});}))];
   function hmCls(v){if(v===undefined)return"hm-cell hmx";return"hm-cell hm"+Math.min(v,3);}
-  document.getElementById("hm-wrap").innerHTML='<table style="border-collapse:separate;border-spacing:3px;"><thead><tr><td style="min-width:200px;"></td>'+allCodes.map(function(c){return'<th style="writing-mode:vertical-lr;transform:rotate(180deg);padding:2px 0;font-size:8.5px;font-weight:600;color:#374151;height:72px;text-align:left;white-space:nowrap;font-family:monospace;">'+c+'</th>';}).join("")+'</tr></thead><tbody>'+AUDITS.map(function(a){var sm={};a.criteria.forEach(function(c){sm[c.c]=c.v;});return'<tr><td class="text-xs pr-3 whitespace-nowrap py-0.5" style="color:#9ca3af;"><span class="font-mono text-secondary font-bold text-xs">'+a.id+'</span><br><span class="text-on-surface-variant">'+a.location+'</span></td>'+allCodes.map(function(c){return'<td style="padding:1px;"><div class="'+hmCls(sm[c])+'" title="'+c+': '+(sm[c]!==undefined?sm[c]+"/3":"N/A")+'">'+(sm[c]!==undefined?sm[c]:"—")+'</div></td>';}).join("")+'</tr>';}).join("")+'</tbody></table>';
+  document.getElementById("hm-wrap").innerHTML='<table style="border-collapse:separate;border-spacing:3px;"><thead><tr><td style="min-width:200px;"></td>'+allCodes.map(function(c){return'<th style="writing-mode:vertical-lr;transform:rotate(180deg);padding:2px 0;font-size:8.5px;font-weight:600;color:#374151;height:72px;text-align:left;white-space:nowrap;font-family:monospace;">'+c+'</th>';}).join("")+'</tr></thead><tbody>'+AUDITS.map(function(a){var sm={};a.criteria.forEach(function(c){sm[c.c]=c.v;});return'<tr><td class="text-xs text-on-surface-variant pr-3 whitespace-nowrap py-0.5"><span class="font-mono text-secondary font-bold text-xs">'+a.id+'</span><br><span class="text-on-surface-variant">'+a.location+'</span></td>'+allCodes.map(function(c){return'<td style="padding:1px;"><div class="'+hmCls(sm[c])+'" title="'+c+': '+(sm[c]!==undefined?sm[c]+"/3":"N/A")+'">'+(sm[c]!==undefined?sm[c]:"—")+'</div></td>';}).join("")+'</tr>';}).join("")+'</tbody></table>';
 }
 
 // ── RECOMMENDATIONS ──────────────────────────────────────────────
@@ -528,14 +528,14 @@ function rdRec(){
     {l:"Total",v:ar.length,s:"Filtered audits",c:"#1e40af"},
     {l:"Completed",v:done,s:ar.length?Math.round(done/ar.length*100)+"%":"0%",c:"#16a34a"},
     {l:"Overdue",v:od,s:"Past due date",c:"#dc2626"}
-  ].map(function(k){return'<div class="rounded-xl p-4" style="background:#1a1d2a;border:1px solid rgba(255,255,255,.07);"><div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div><div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div><div class="text-xs" style="color:#9ca3af;">'+k.s+'</div></div>';}).join("");
+  ].map(function(k){return'<div class="bg-white border border-outline-variant rounded-xl p-4 card-shadow"><div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div><div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div><div class="text-xs text-on-surface-variant">'+k.s+'</div></div>';}).join("");
   var metaEl=document.getElementById("rec-meta");if(metaEl)metaEl.textContent=AUDITS.length+" audits · "+ar.length+" recommendations";
   var today=new Date().toISOString().split("T")[0];
   document.getElementById("rec-tbody").innerHTML=ar.map(function(r,i){
     var a=AUDITS.find(function(x){return x.id===r.auditId;})||{};
     var crit=a.criteria?a.criteria.find(function(c){return c.c===r.c;}):null,sec=crit?crit.s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""):"";
     var ov=!r.done&&new Date(r.d)<new Date();
-    return'<tr class="'+(ov?"ov":"")+'"><td class="text-center text-xs text-on-surface-variant">'+(i+1)+'</td><td><code class="font-mono text-xs text-secondary font-bold">'+r.auditId+'</code></td><td>'+r.t+'<br><span class="pill '+prC(r.p)+'" style="margin-top:3px;display:inline-flex;">'+prL(r.p)+'</span></td><td class="text-center"><code class="font-mono text-xs text-secondary">'+r.c+'</code></td><td class="text-xs" style="color:#9ca3af;">'+sec+'</td><td class="text-xs" style="color:#9ca3af;">'+r.r+'</td><td class="text-center text-xs '+(ov?"text-red-600 font-semibold":"text-on-surface-variant")+'">'+r.d+'</td><td class="text-center text-base text-green-600">'+(r.done?"✓":"")+'</td></tr>';
+    return'<tr class="'+(ov?"ov":"")+'"><td class="text-center text-xs text-on-surface-variant">'+(i+1)+'</td><td><code class="font-mono text-xs text-secondary font-bold">'+r.auditId+'</code></td><td>'+r.t+'<br><span class="pill '+prC(r.p)+'" style="margin-top:3px;display:inline-flex;">'+prL(r.p)+'</span></td><td class="text-center"><code class="font-mono text-xs text-secondary">'+r.c+'</code></td><td class="text-xs text-on-surface-variant">'+sec+'</td><td class="text-xs text-on-surface-variant">'+r.r+'</td><td class="text-center text-xs '+(ov?"text-red-600 font-semibold":"text-on-surface-variant")+'">'+r.d+'</td><td class="text-center text-base text-green-600">'+(r.done?"✓":"")+'</td></tr>';
   }).join("")+(ar.length===0?'<tr><td colspan="8" class="text-center py-6 text-sm text-on-surface-variant">No recommendations for current filter.</td></tr>':"");
 }
 
@@ -543,7 +543,7 @@ function rdRec(){
 function rdRep(){
   document.getElementById("rep-tbody").innerHTML=AUDITS.map(function(a){
     var st=gStats(a),pct=st.pct,crit=st.critical,c=pct>=80?"#16a34a":pct>=60?"#ca8a04":"#dc2626";
-    return'<tr><td><code class="font-mono text-xs text-secondary font-bold">'+a.id+'</code></td><td class="text-on-surface">'+a.location+'</td><td class="text-xs" style="color:#9ca3af;">'+( a.city||"")+'</td><td><span class="pill p2">'+a.type+'</span></td><td class="text-xs" style="color:#9ca3af;">'+(a.specialist||"—")+'</td><td class="text-xs text-on-surface-variant text-center">'+(a.year||getYear(a.id))+'</td><td class="text-center text-xl font-bold" style="color:'+c+';">'+pct+'%</td><td class="text-center text-sm font-bold '+(crit.length>0?"text-red-600":"text-green-600")+'">'+crit.length+'</td><td>'+(a.url?'<a href="'+a.url+'" target="_blank" class="inline-flex items-center gap-1 text-xs text-secondary bg-secondary-container/30 px-2.5 py-1 rounded font-semibold no-underline"><span class="material-symbols-outlined" style="font-size:12px;">open_in_new</span>Open</a>':"-")+'</td></tr>';
+    return'<tr><td><code class="font-mono text-xs text-secondary font-bold">'+a.id+'</code></td><td class="text-on-surface">'+a.location+'</td><td class="text-xs text-on-surface-variant">'+( a.city||"")+'</td><td><span class="pill p2">'+a.type+'</span></td><td class="text-xs text-on-surface-variant">'+(a.specialist||"—")+'</td><td class="text-xs text-on-surface-variant text-center">'+(a.year||getYear(a.id))+'</td><td class="text-center text-xl font-bold" style="color:'+c+';">'+pct+'%</td><td class="text-center text-sm font-bold '+(crit.length>0?"text-red-600":"text-green-600")+'">'+crit.length+'</td><td>'+(a.url?'<a href="'+a.url+'" target="_blank" class="inline-flex items-center gap-1 text-xs text-secondary bg-secondary-container/30 px-2.5 py-1 rounded font-semibold no-underline"><span class="material-symbols-outlined" style="font-size:12px;">open_in_new</span>Open</a>':"-")+'</td></tr>';
   }).join("")+(AUDITS.length===0?'<tr><td colspan="9" class="text-center py-6 text-sm text-on-surface-variant">No audits match current filters.</td></tr>':"");
 }
 
