@@ -1,221 +1,298 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Baltic Medics — Clinical Audit Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#000000","on-primary":"#ffffff","primary-container":"#141b2b","on-primary-container":"#7d8497",secondary:"#006a61","on-secondary":"#ffffff","secondary-container":"#86f2e4","on-secondary-container":"#006f66","secondary-fixed":"#89f5e7","secondary-fixed-dim":"#6bd8cb",surface:"#f8f9fb","surface-container-lowest":"#ffffff","surface-container-low":"#f3f4f6","surface-container":"#edeef0","on-surface":"#191c1e","on-surface-variant":"#45464c",outline:"#76777d","outline-variant":"#c6c6cd",background:"#f8f9fb","on-background":"#191c1e"}}}}
+</script>
 <style>
-*{box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:#f8f9fb;color:#191c22;margin:0;overflow:hidden;}
-.tab-page{display:none;}.tab-page.active{display:flex;flex-direction:column;gap:1.25rem;}
-.fade-in{animation:fadeIn .18s ease;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(3px);}to{opacity:1;transform:translateY(0);}}
-.bar-fill{transition:width .7s cubic-bezier(.4,0,.2,1);}
-.hm-cell{width:26px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;cursor:default;transition:transform .12s;}
-.hm-cell:hover{transform:scale(1.2);z-index:10;position:relative;}
-.nav-link{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:6px;color:rgba(255,255,255,.6);cursor:pointer;font-size:13px;font-weight:400;transition:all .15s;border-left:3px solid transparent;margin:1px 0;}
+body{font-family:'Inter',system-ui,sans-serif;}
+.card-shadow{box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.tab-page{display:none;}.tab-page.active{display:flex;flex-direction:column;gap:16px;}
+.nav-link{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:4px;color:rgba(255,255,255,.6);cursor:pointer;font-size:14px;font-weight:500;transition:all .15s;}
 .nav-link:hover{background:rgba(255,255,255,.08);color:#fff;}
-.nav-link.active{background:rgba(255,255,255,.12);color:#fff;border-left-color:#4f8ef7;font-weight:600;}
-.nav-link .material-symbols-outlined{font-size:17px;opacity:.8;}
-.nav-link.active .material-symbols-outlined{opacity:1;}
-.kpi-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px 20px;position:relative;overflow:hidden;}
-.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:10px 10px 0 0;}
-.kpi-blue::before{background:#4f8ef7;}
-.kpi-green::before{background:#10b981;}
-.kpi-red::before{background:#ef4444;}
-.kpi-amber::before{background:#f59e0b;}
-.pill{display:inline-flex;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.02em;}
-.filter-btn{padding:4px 12px;border-radius:20px;border:1px solid #e5e7eb;background:#fff;color:#374151;font-size:11px;font-weight:500;cursor:pointer;transition:all .12s;font-family:'Inter',sans-serif;}
-.filter-btn.active{background:#4f8ef7;color:#fff;border-color:#4f8ef7;}
-.filter-btn:hover:not(.active){background:#f3f4f6;}
-.data-table{width:100%;border-collapse:collapse;}
-.data-table th{padding:8px 14px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid #e5e7eb;white-space:nowrap;background:#f9fafb;}
-.data-table td{padding:10px 14px;font-size:13px;color:#374151;border-bottom:1px solid #f3f4f6;}
-.data-table tr:hover td{background:#f9fafb;}
-.data-table tr.row-critical td{border-left:2px solid #ef4444;}
-.data-table tr.row-partial td{border-left:2px solid #f59e0b;}
-.expand-row td{background:#f0fdf9 !important;padding:12px 14px 14px 22px;}
-.ai-block{background:linear-gradient(135deg,rgba(79,142,247,.05),rgba(45,212,191,.03));border:1px solid rgba(79,142,247,.15);border-radius:10px;padding:18px;}
-.ai-dot{width:6px;height:6px;border-radius:50%;background:#4f8ef7;display:inline-block;animation:pulse 2s infinite;}
+.nav-link.active{background:#141b2b;color:#6bd8cb;font-weight:600;}
+.ms{font-family:'Material Symbols Outlined';font-size:20px;font-style:normal;font-weight:400;line-height:1;vertical-align:middle;}
+.sb{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;font-weight:700;font-size:12px;}
+.s0{background:#fee2e2;color:#991b1b;}.s1{background:#fff7ed;color:#9a3412;}.s2{background:#dbeafe;color:#1e40af;}.s3{background:#dcfce7;color:#166534;}
+.pill{display:inline-flex;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600;}
+.p0{background:#fee2e2;color:#991b1b;}.p1{background:#fff7ed;color:#9a3412;}.p2{background:#dbeafe;color:#1e40af;}.p3{background:#dcfce7;color:#166534;}
+.bar-fill{transition:width .7s cubic-bezier(.4,0,.2,1);}
+.hm-cell{width:24px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;cursor:default;transition:transform .12s;}
+.hm-cell:hover{transform:scale(1.2);z-index:10;position:relative;}
+.hm0{background:#fee2e2;color:#991b1b;}.hm1{background:#fff7ed;color:#9a3412;}.hm2{background:#dbeafe;color:#1e40af;}.hm3{background:#dcfce7;color:#166534;}.hmx{background:#f3f4f6;color:#9ca3af;}
+.tbl{width:100%;border-collapse:collapse;}
+.tbl th{padding:9px 14px;text-align:left;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e5e7eb;background:#f9fafb;white-space:nowrap;}
+.tbl td{padding:10px 14px;font-size:13px;color:#374151;border-bottom:1px solid #f3f4f6;}
+.tbl tr:hover td{background:#f9fafb;}
+.tbl tr.row-crit td{border-left:2px solid #ef4444;}
+.tbl tr.row-part td{border-left:2px solid #f59e0b;}
+.exp-row td{background:#f0fdf9!important;}
+.rtbl{width:100%;border-collapse:collapse;font-size:12px;}
+.rtbl th{padding:7px 8px;text-align:left;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;border:1px solid #e5e7eb;background:#f9fafb;}
+.rtbl td{padding:7px 8px;border:1px solid #f3f4f6;color:#374151;vertical-align:top;}
+.rtbl tr:hover td{background:#f9fafb;}
+.rtbl tr.ov td{background:#fff7f7;}
+.ai-box{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:16px;}
+.ai-dot{width:6px;height:6px;border-radius:50%;background:#006a61;display:inline-block;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 ::-webkit-scrollbar{width:5px;height:5px;}
 ::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px;}
-code{font-family:'JetBrains Mono',monospace;font-size:11px;color:#4f8ef7;font-weight:600;}
+/* FILTER BAR */
+.filter-bar{display:flex;align-items:center;gap:8px;padding:10px 20px;background:#fff;border-bottom:1px solid #e5e7eb;flex-wrap:wrap;}
+.dd-wrap{position:relative;}
+.dd-btn{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid #e5e7eb;border-radius:20px;background:#fff;font-size:12px;color:#374151;cursor:pointer;white-space:nowrap;font-family:'Inter',sans-serif;transition:all .12s;}
+.dd-btn:hover{background:#f9fafb;border-color:#d1d5db;}
+.dd-btn.has-filters{border-color:#006a61;background:#f0fdf4;color:#006a61;}
+.dd-btn .fc{background:#006a61;color:#fff;border-radius:20px;padding:0 5px;font-size:10px;font-weight:700;min-width:16px;text-align:center;}
+.dd-menu{position:absolute;top:calc(100% + 6px);left:0;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.1);min-width:220px;z-index:200;overflow:hidden;display:none;}
+.dd-menu.open{display:block;}
+.dd-search{width:100%;border:none;border-bottom:1px solid #f3f4f6;padding:10px 14px;font-size:13px;color:#374151;background:#f9fafb;outline:none;font-family:'Inter',sans-serif;}
+.dd-item{display:flex;align-items:center;gap:10px;padding:8px 14px;font-size:13px;color:#374151;cursor:pointer;transition:background .1s;}
+.dd-item:hover{background:#f9fafb;}
+.dd-item input[type=checkbox]{accent-color:#006a61;width:14px;height:14px;cursor:pointer;}
+.dd-item.sel{color:#006a61;font-weight:500;}
+.dd-footer{padding:8px 14px;border-top:1px solid #f3f4f6;display:flex;justify-content:space-between;}
+.dd-footer button{font-size:12px;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;padding:2px 6px;border-radius:4px;}
+.dd-footer .sel-all{color:#006a61;}.dd-footer .clr{color:#6b7280;}
+.dd-footer button:hover{background:#f3f4f6;}
+.yr-row{display:flex;align-items:center;gap:8px;padding:12px 14px;}
+.yr-row input{width:70px;border:1px solid #e5e7eb;border-radius:6px;padding:5px 8px;font-size:13px;color:#374151;text-align:center;font-family:'Inter',sans-serif;outline:none;}
+.yr-row input:focus{border-color:#006a61;}
+.yr-lbl{font-size:12px;color:#9ca3af;}
+.dd-shortcut{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:12px;color:#6b7280;cursor:pointer;border-top:1px solid #f3f4f6;}
+.dd-shortcut:hover{background:#f9fafb;color:#374151;}
+.chips-row{display:flex;align-items:center;gap:6px;padding:6px 20px;flex-wrap:wrap;background:#fff;border-bottom:1px solid #f3f4f6;min-height:34px;}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:3px 8px 3px 10px;background:#f0fdf4;color:#006a61;border:1px solid #bbf7d0;border-radius:20px;font-size:12px;font-weight:500;}
+.chip button{background:none;border:none;cursor:pointer;color:#006a61;font-size:15px;line-height:1;padding:0 0 0 2px;display:flex;align-items:center;opacity:.7;}
+.chip button:hover{opacity:1;}
+.result-info{font-size:12px;color:#9ca3af;padding:6px 20px;background:#f9fafb;border-bottom:1px solid #e5e7eb;}
+.result-info strong{color:#374151;}
+.clear-all{background:none;border:none;font-size:12px;color:#9ca3af;cursor:pointer;padding:3px 8px;border-radius:20px;font-family:'Inter',sans-serif;margin-left:auto;}
+.clear-all:hover{background:#f3f4f6;color:#374151;}
+/* AUDIT SELECTOR */
+.audit-sel{display:flex;align-items:center;gap:8px;padding:10px 20px;background:#f9fafb;border-bottom:1px solid #e5e7eb;overflow-x:auto;}
+.audit-chip{padding:5px 14px;border-radius:20px;border:1px solid #e5e7eb;background:#fff;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;white-space:nowrap;transition:all .12s;}
+.audit-chip:hover{border-color:#006a61;color:#006a61;}
+.audit-chip.active{border-color:#006a61;background:#006a61;color:#fff;}
 </style>
 </head>
-<body class="flex h-screen overflow-hidden">
+<body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden">
 
 <!-- SIDEBAR -->
-<nav style="width:240px;min-width:240px;background:#1e2336;display:flex;flex-direction:column;height:100vh;overflow:hidden;">
-  <div style="padding:20px 16px 16px;border-bottom:1px solid rgba(255,255,255,.08);">
-    <div style="width:32px;height:32px;background:#4f8ef7;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;">
-      <span class="material-symbols-outlined" style="color:#fff;font-size:18px;">clinical_notes</span>
+<nav class="hidden md:flex bg-tertiary flex-col h-screen w-64 py-6 px-4 z-50 flex-shrink-0 border-r border-outline-variant/20">
+  <div class="mb-8">
+    <div class="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center mb-3">
+      <span class="material-symbols-outlined text-white" style="font-size:18px;">clinical_notes</span>
     </div>
-    <div style="font-size:15px;font-weight:700;color:#fff;letter-spacing:-.01em;">Baltic Medics</div>
-    <div style="font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em;margin-top:2px;">Clinical Audit Portal</div>
+    <h1 class="text-base font-bold text-white">Baltic Medics</h1>
+    <p class="text-xs text-white/50 mt-0.5 uppercase tracking-widest">Clinical Audit Portal</p>
   </div>
-
-  <div style="padding:10px 8px 6px;">
-    <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:10px 12px;" id="sidebar-badge">
-      <div style="font-size:12px;font-weight:700;color:#4f8ef7;font-family:'JetBrains Mono',monospace;">Loading...</div>
-    </div>
+  <div class="bg-white/8 border border-white/10 rounded-lg p-3 mb-4" id="sb-badge">
+    <div class="text-xs font-bold text-secondary-fixed-dim">Loading...</div>
   </div>
-
-  <div style="padding:10px 8px 4px;font-size:10px;font-weight:600;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.08em;padding-left:14px;">Navigation</div>
-  <div style="padding:2px 8px;flex:1;">
-    <div class="nav-link active" onclick="showPage('overview')" id="nav-overview">
-      <span class="material-symbols-outlined">dashboard</span>Overview
-    </div>
-    <div class="nav-link" onclick="showPage('criteria')" id="nav-criteria">
-      <span class="material-symbols-outlined">fact_check</span>Audit criteria
-    </div>
-    <div class="nav-link" onclick="showPage('heatmap')" id="nav-heatmap">
-      <span class="material-symbols-outlined">grid_view</span>Standards heatmap
-    </div>
-    <div class="nav-link" onclick="showPage('recommendations')" id="nav-recommendations">
-      <span class="material-symbols-outlined">assignment_turned_in</span>Recommendations
-    </div>
-    <div class="nav-link" onclick="showPage('reports')" id="nav-reports">
-      <span class="material-symbols-outlined">description</span>Audit reports
-    </div>
+  <div class="flex-1 space-y-0.5">
+    <div class="nav-link active" onclick="go('overview')" id="nav-overview"><span class="ms">dashboard</span>Overview</div>
+    <div class="nav-link" onclick="go('criteria')" id="nav-criteria"><span class="ms">fact_check</span>Audit criteria</div>
+    <div class="nav-link" onclick="go('heatmap')" id="nav-heatmap"><span class="ms">grid_view</span>Standards heatmap</div>
+    <div class="nav-link" onclick="go('rec')" id="nav-rec"><span class="ms">assignment_turned_in</span>Recommendations</div>
+    <div class="nav-link" onclick="go('reports')" id="nav-reports"><span class="ms">description</span>Audit reports</div>
   </div>
-
-  <div style="padding:12px 8px;border-top:1px solid rgba(255,255,255,.06);">
-    <div style="font-size:10px;color:rgba(255,255,255,.25);text-align:center;" id="last-updated"></div>
-  </div>
+  <div class="mt-auto pt-4 border-t border-white/10 text-xs text-white/25 text-center" id="sb-footer"></div>
 </nav>
 
 <!-- MAIN -->
-<div style="flex:1;display:flex;flex-direction:column;height:100vh;overflow:hidden;min-width:0;">
-  <header style="height:52px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 24px;flex-shrink:0;">
-    <div style="display:flex;align-items:center;gap:8px;">
-      <span style="font-size:12px;color:#9ca3af;">Baltic Medics /</span>
-      <span id="page-title" style="font-size:14px;font-weight:700;color:#111827;">Overview</span>
+<div class="flex-1 flex flex-col h-screen overflow-hidden">
+  <!-- TOPBAR -->
+  <header class="bg-surface border-b border-outline-variant h-14 flex items-center justify-between px-6 flex-shrink-0 card-shadow">
+    <div class="flex items-center gap-2">
+      <span class="text-sm text-on-surface-variant">Baltic Medics /</span>
+      <span id="page-title" class="text-sm font-bold text-on-surface">Overview</span>
     </div>
-    <div id="topbar-right" style="display:flex;align-items:center;gap:8px;"></div>
+    <div id="topbar-actions" class="flex items-center gap-2"></div>
   </header>
 
-  <div style="flex:1;overflow-y:auto;padding:20px 24px;" id="main-content">
-
-    <!-- OVERVIEW -->
-    <div class="tab-page active" id="page-overview">
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;" id="kpi-row"></div>
-      <div id="critical-alert"></div>
-      <div style="display:grid;grid-template-columns:1fr 320px;gap:16px;">
-        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;">
-          <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;">
-            <div style="font-size:13px;font-weight:700;color:#111827;">Section compliance</div>
-            <div style="font-size:11px;color:#9ca3af;margin-top:2px;" id="overview-standard-sub">ISO 15189:2023</div>
-          </div>
-          <div style="padding:16px;" id="section-bars"></div>
-        </div>
-        <div class="ai-block">
-          <div style="display:flex;align-items:center;gap:7px;margin-bottom:10px;">
-            <span class="ai-dot"></span>
-            <span style="font-size:10px;font-weight:700;color:#4f8ef7;text-transform:uppercase;letter-spacing:.06em;">AI Summary</span>
-          </div>
-          <div id="ai-text" style="font-size:12px;color:#374151;line-height:1.75;"></div>
+  <!-- FILTER BAR -->
+  <div class="filter-bar" id="filter-bar">
+    <span class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Filter:</span>
+    <div class="dd-wrap">
+      <button class="dd-btn" id="btn-city" onclick="toggleDD('city')">
+        <span class="material-symbols-outlined" style="font-size:14px;">location_on</span>
+        City
+        <span class="material-symbols-outlined" style="font-size:12px;">expand_more</span>
+      </button>
+      <div class="dd-menu" id="dd-city">
+        <input class="dd-search" placeholder="Search cities..." oninput="filterDDItems('city',this.value)"/>
+        <div id="dd-city-items"></div>
+        <div class="dd-footer">
+          <button class="sel-all" onclick="selectAll('city')">Select all</button>
+          <button class="clr" onclick="clearDD('city')">Clear</button>
         </div>
       </div>
-      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;">
-        <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;">
-          <div style="font-size:13px;font-weight:700;color:#111827;">Progress tracker</div>
-          <div style="font-size:11px;color:#9ca3af;margin-top:2px;">Score changes vs previous audit</div>
+    </div>
+    <div class="dd-wrap">
+      <button class="dd-btn" id="btn-type" onclick="toggleDD('type')">
+        <span class="material-symbols-outlined" style="font-size:14px;">local_hospital</span>
+        Facility type
+        <span class="material-symbols-outlined" style="font-size:12px;">expand_more</span>
+      </button>
+      <div class="dd-menu" id="dd-type" style="min-width:160px;">
+        <div id="dd-type-items"></div>
+      </div>
+    </div>
+    <div class="dd-wrap">
+      <button class="dd-btn" id="btn-spec" onclick="toggleDD('spec')">
+        <span class="material-symbols-outlined" style="font-size:14px;">stethoscope</span>
+        Specialist
+        <span class="material-symbols-outlined" style="font-size:12px;">expand_more</span>
+      </button>
+      <div class="dd-menu" id="dd-spec">
+        <input class="dd-search" placeholder="Search specialists..." oninput="filterDDItems('spec',this.value)"/>
+        <div id="dd-spec-items"></div>
+        <div class="dd-footer">
+          <button class="sel-all" onclick="selectAll('spec')">Select all</button>
+          <button class="clr" onclick="clearDD('spec')">Clear</button>
         </div>
-        <div id="progress-table" style="overflow-x:auto;"></div>
+      </div>
+    </div>
+    <div class="dd-wrap">
+      <button class="dd-btn" id="btn-yr" onclick="toggleDD('yr')">
+        <span class="material-symbols-outlined" style="font-size:14px;">calendar_month</span>
+        <span id="yr-label">Period</span>
+        <span class="material-symbols-outlined" style="font-size:12px;">expand_more</span>
+      </button>
+      <div class="dd-menu" id="dd-yr" style="min-width:240px;">
+        <div class="yr-row">
+          <span class="yr-lbl">From</span>
+          <input type="number" id="yr-from" value="2020" min="2020" max="2030" onchange="applyYearFilter()"/>
+          <span class="yr-lbl">to</span>
+          <input type="number" id="yr-to" value="2030" min="2020" max="2030" onchange="applyYearFilter()"/>
+        </div>
+        <div class="dd-shortcut" onclick="setYears(2025,2025)">
+          <span class="material-symbols-outlined" style="font-size:14px;">today</span>This year (2025)
+        </div>
+        <div class="dd-shortcut" onclick="setYears(2024,2025)">
+          <span class="material-symbols-outlined" style="font-size:14px;">history</span>Last 2 years
+        </div>
+        <div class="dd-shortcut" onclick="setYears(2020,2030)">
+          <span class="material-symbols-outlined" style="font-size:14px;">all_inclusive</span>All time
+        </div>
+      </div>
+    </div>
+    <button class="clear-all" onclick="clearAllFilters()">
+      <span class="material-symbols-outlined" style="font-size:13px;vertical-align:middle;">close</span> Clear all
+    </button>
+  </div>
+
+  <!-- ACTIVE CHIPS -->
+  <div class="chips-row" id="chips-row" style="display:none;"></div>
+
+  <!-- RESULT INFO -->
+  <div class="result-info" id="result-info"></div>
+
+  <!-- SCROLLABLE CONTENT -->
+  <div class="flex-1 overflow-y-auto p-6" id="main-content">
+
+    <div class="tab-page active" id="page-overview">
+      <div class="grid grid-cols-4 gap-3" id="kpi-row"></div>
+      <div id="alert-block"></div>
+      <div class="grid gap-4" style="grid-template-columns:1fr 300px;">
+        <div class="bg-white border border-outline-variant rounded-xl card-shadow">
+          <div class="px-5 py-4 border-b border-outline-variant/50 flex items-center justify-between">
+            <div>
+              <div class="text-sm font-bold text-on-surface">Section compliance</div>
+              <div class="text-xs text-on-surface-variant mt-0.5" id="sec-sub"></div>
+            </div>
+          </div>
+          <div class="p-5" id="sec-bars"></div>
+        </div>
+        <div class="ai-box">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="ai-dot"></span>
+            <span class="text-xs font-bold text-secondary uppercase tracking-widest">AI Summary</span>
+          </div>
+          <div id="ai-text" class="text-xs text-on-surface-variant leading-relaxed"></div>
+        </div>
+      </div>
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow">
+        <div class="px-5 py-4 border-b border-outline-variant/50">
+          <div class="text-sm font-bold text-on-surface">Progress tracker</div>
+          <div class="text-xs text-on-surface-variant mt-0.5" id="prog-sub">Comparing audits for selected location</div>
+        </div>
+        <div id="prog-table" class="overflow-x-auto"></div>
       </div>
     </div>
 
-    <!-- CRITERIA -->
     <div class="tab-page" id="page-criteria">
-      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;">
-        <div style="padding:12px 16px;border-bottom:1px solid #f3f4f6;display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
-          <span style="font-size:10px;color:#9ca3af;font-weight:700;text-transform:uppercase;letter-spacing:.05em;">Section:</span>
-          <div id="section-pills" style="display:flex;gap:5px;flex-wrap:wrap;"></div>
+      <!-- Audit selector -->
+      <div id="audit-sel-wrap"></div>
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow overflow-hidden">
+        <div class="px-5 py-3 border-b border-outline-variant/50 flex gap-2 flex-wrap items-center">
+          <span class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Section:</span>
+          <div id="sec-pills" class="flex gap-2 flex-wrap"></div>
         </div>
-        <div style="overflow-x:auto;">
-          <table class="data-table">
-            <thead><tr>
-              <th>Code</th><th>Criterion</th>
-              <th style="text-align:center;">Score</th>
-              <th>Status</th>
-              <th>Auditor note</th>
-            </tr></thead>
-            <tbody id="criteria-tbody"></tbody>
+        <div class="overflow-x-auto">
+          <table class="tbl">
+            <thead><tr><th>Code</th><th>Criterion</th><th class="text-center">Score</th><th>Status</th><th>Auditor note</th></tr></thead>
+            <tbody id="crit-tbody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- HEATMAP -->
     <div class="tab-page" id="page-heatmap">
-      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;">
-        <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;">
-          <div style="font-size:13px;font-weight:700;color:#111827;">Standards compliance heatmap</div>
-          <div style="font-size:11px;color:#9ca3af;margin-top:2px;">Rows = facilities · Columns = standards · Color = score</div>
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow">
+        <div class="px-5 py-4 border-b border-outline-variant/50">
+          <div class="text-sm font-bold text-on-surface">Standards compliance heatmap</div>
+          <div class="text-xs text-on-surface-variant mt-0.5">Rows = facilities · Columns = standards · Color = score</div>
         </div>
-        <div style="padding:16px;overflow-x:auto;" id="heatmap-wrap"></div>
-        <div style="padding:0 16px 14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-          <span style="font-size:10px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:.05em;">Score:</span>
-          <span class="pill" style="background:#fee2e2;color:#991b1b;">0 — Non-conforming</span>
-          <span class="pill" style="background:#fef3c7;color:#92400e;">1 — Partial</span>
-          <span class="pill" style="background:#dbeafe;color:#1e40af;">2 — Substantial</span>
-          <span class="pill" style="background:#d1fae5;color:#065f46;">3 — Full</span>
+        <div class="p-5 overflow-x-auto" id="hm-wrap"></div>
+        <div class="px-5 pb-4 flex gap-2 flex-wrap items-center">
+          <span class="pill p0">0 — Non-conforming</span>
+          <span class="pill p1">1 — Partial</span>
+          <span class="pill p2">2 — Substantial</span>
+          <span class="pill p3">3 — Full</span>
         </div>
       </div>
     </div>
 
-    <!-- RECOMMENDATIONS -->
-    <div class="tab-page" id="page-recommendations">
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;" id="rec-kpis"></div>
-      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;">
-        <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+    <div class="tab-page" id="page-rec">
+      <div class="grid grid-cols-3 gap-3" id="rec-kpis"></div>
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow overflow-hidden">
+        <div class="px-5 py-4 border-b border-outline-variant/50 flex items-center justify-between">
           <div>
-            <div style="font-size:13px;font-weight:700;color:#111827;">Recommendations register</div>
-            <div style="font-size:11px;color:#9ca3af;margin-top:2px;" id="rec-meta"></div>
+            <div class="text-sm font-bold text-on-surface">Recommendations register</div>
+            <div class="text-xs text-on-surface-variant mt-0.5" id="rec-meta"></div>
           </div>
-          <button onclick="exportWord()" style="display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:#4f8ef7;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">
+          <button onclick="exportWord()" class="flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-white rounded-lg text-xs font-semibold hover:bg-secondary/90 transition-colors">
             <span class="material-symbols-outlined" style="font-size:14px;">download</span>Download Word
           </button>
         </div>
-        <div style="overflow-x:auto;">
-          <table style="width:100%;border-collapse:collapse;font-size:12px;">
-            <thead>
-              <tr style="background:#f9fafb;">
-                <th style="border:1px solid #e5e7eb;padding:7px 8px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;width:36px;">#</th>
-                <th style="border:1px solid #e5e7eb;padding:7px 8px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;min-width:90px;">Audit / Date</th>
-                <th style="border:1px solid #e5e7eb;padding:7px 8px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;">Recommendation</th>
-                <th style="border:1px solid #e5e7eb;padding:7px 8px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;width:70px;">Standard</th>
-                <th style="border:1px solid #e5e7eb;padding:7px 8px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;min-width:100px;">Section</th>
-                <th style="border:1px solid #e5e7eb;padding:7px 8px;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;min-width:110px;">Responsible</th>
-                <th style="border:1px solid #e5e7eb;padding:7px 8px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;width:90px;">Due date</th>
-                <th style="border:1px solid #e5e7eb;padding:7px 8px;text-align:center;font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;width:80px;">Completed</th>
-              </tr>
-            </thead>
+        <div class="overflow-x-auto">
+          <table class="rtbl">
+            <thead><tr><th class="w-8">#</th><th>Audit</th><th>Recommendation</th><th>Standard</th><th>Section</th><th>Responsible</th><th>Due date</th><th class="w-16 text-center">Done</th></tr></thead>
             <tbody id="rec-tbody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- REPORTS -->
     <div class="tab-page" id="page-reports">
-      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;">
-        <div style="padding:14px 18px;border-bottom:1px solid #f3f4f6;">
-          <div style="font-size:13px;font-weight:700;color:#111827;">Completed audits</div>
+      <div class="bg-white border border-outline-variant rounded-xl card-shadow overflow-hidden">
+        <div class="px-5 py-4 border-b border-outline-variant/50">
+          <div class="text-sm font-bold text-on-surface">Completed audits</div>
         </div>
-        <table class="data-table">
-          <thead><tr>
-            <th>Audit ID</th><th>Facility</th><th>Type</th>
-            <th style="text-align:center;">Compliance</th>
-            <th style="text-align:center;">Critical</th>
-            <th>Document</th>
-          </tr></thead>
-          <tbody id="reports-tbody"></tbody>
-        </table>
+        <div class="overflow-x-auto">
+          <table class="tbl">
+            <thead><tr><th>Audit ID</th><th>Facility</th><th>City</th><th>Type</th><th>Specialist</th><th>Year</th><th class="text-center">Compliance</th><th class="text-center">Critical</th><th>Document</th></tr></thead>
+            <tbody id="rep-tbody"></tbody>
+          </table>
+        </div>
       </div>
     </div>
 
@@ -223,220 +300,291 @@ code{font-family:'JetBrains Mono',monospace;font-size:11px;color:#4f8ef7;font-we
 </div>
 
 <script>
-const DATA_URL = "https://raw.githubusercontent.com/skepta464646/baltic-medics-audit/main/data.json";
-const PREV = {"6.6.2":0,"6.6.4":1,"7.4.2":1,"8.4.2":1,"5.6":0,"7.3.7":1,"5.5":2};
+const DATA_URL="https://raw.githubusercontent.com/skepta464646/baltic-medics-audit/main/data.json";
+let ALL_AUDITS=[],ALL_RECS=[],AUDITS=[],RECS=[];
+let curPage="overview",secF="all",expRow=null,selAuditId=null;
+let F={cities:[],types:[],specs:[],yrFrom:2020,yrTo:2030};
 
-let AUDITS = [], RECS = [];
-let activePage = "overview", activeSectionFilter = "all", expandedRow = null;
+function gStats(a){var c=a.criteria,s=c.reduce(function(x,y){return x+y.v;},0),m=c.length*3;return{pct:Math.round(s/m*100),critical:c.filter(function(x){return x.v===0;}),secs:c.reduce(function(mp,x){(mp[x.s]||(mp[x.s]=[])).push(x);return mp;},{})};}
+function sClass(v){return "sb s"+v;}
+function pClass(v){return "pill p"+v;}
+function sLbl(v){return["Non-conforming","Partial","Substantial","Full"][v];}
+function bCol(avg){return avg<1?"#ef4444":avg<2?"#f59e0b":avg<2.5?"#3b82f6":"#16a34a";}
+function prC(p){return p==="critical"?"p0":p==="medium"?"p1":"p3";}
+function prL(p){return p==="critical"?"Critical":p==="medium"?"Medium":"Low";}
+function getYear(id){var m=id.match(/\/(\d{4})$/);return m?parseInt(m[1]):2025;}
 
-// ─── HELPERS ──────────────────────────────────────────────────────────────────
-function getStats(audit) {
-  const c = audit.criteria;
-  const total = c.reduce((a,x)=>a+x.v,0);
-  const max = c.length*3;
-  return { pct: Math.round(total/max*100), total, max,
-    critical: c.filter(x=>x.v===0),
-    sections: c.reduce((m,x)=>{(m[x.s]||(m[x.s]=[])).push(x);return m;},{}) };
-}
-function scoreBg(v){return v===0?"background:#fee2e2;color:#991b1b;border:1px solid #f87171;":v===1?"background:#fef3c7;color:#92400e;border:1px solid #fbbf24;":v===2?"background:#dbeafe;color:#1e40af;border:1px solid #93c5fd;":"background:#d1fae5;color:#065f46;border:1px solid #6ee7b7;";}
-function statusLbl(v){return["Non-conforming","Partial","Substantial","Full"][v];}
-function statusStyle(v){return v===0?"background:#fee2e2;color:#991b1b;":v===1?"background:#fef3c7;color:#92400e;":v===2?"background:#dbeafe;color:#1e40af;":"background:#d1fae5;color:#065f46;";}
-function prioStyle(p){return p==="critical"?"background:#fee2e2;color:#991b1b;":p==="medium"?"background:#fef3c7;color:#92400e;":"background:#d1fae5;color:#065f46;";}
-function prioLbl(p){return p==="critical"?"Critical":p==="medium"?"Medium":"Low";}
-
-// ─── NAVIGATION ───────────────────────────────────────────────────────────────
-function showPage(name) {
-  activePage = name;
-  document.querySelectorAll(".tab-page").forEach(el=>el.classList.remove("active","fade-in"));
-  document.querySelectorAll(".nav-link").forEach(el=>el.classList.remove("active"));
-  const pg = document.getElementById("page-"+name);
-  if(!pg) return;
-  pg.classList.add("active","fade-in");
-  document.getElementById("nav-"+name).classList.add("active");
-  const titles = {overview:"Overview",criteria:"Audit criteria",heatmap:"Standards heatmap",recommendations:"Recommendations",reports:"Audit reports"};
-  document.getElementById("page-title").textContent = titles[name]||name;
-  const tb = document.getElementById("topbar-right");
-  if(name==="recommendations") {
-    tb.innerHTML = `<button onclick="exportWord()" style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:#4f8ef7;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;"><span class="material-symbols-outlined" style="font-size:13px;">download</span>Download Word</button>`;
-  } else if(AUDITS[0]?.url) {
-    tb.innerHTML = `<a href="${AUDITS[0].url}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border:1px solid #e5e7eb;border-radius:6px;font-size:12px;color:#374151;text-decoration:none;background:#fff;"><span class="material-symbols-outlined" style="font-size:13px;">open_in_new</span>Source document</a>`;
-  } else { tb.innerHTML=""; }
-  if(name==="overview") renderOverview();
-  else if(name==="criteria") renderCriteria();
-  else if(name==="heatmap") renderHeatmap();
-  else if(name==="recommendations") renderRec();
-  else if(name==="reports") renderReports();
+// ── FILTERS ──────────────────────────────────────────────────────
+function buildFilterOptions(){
+  var cities=[...new Set(ALL_AUDITS.map(function(a){return a.city||"Unknown";}))].sort();
+  var types=[...new Set(ALL_AUDITS.map(function(a){return a.type;}))].sort();
+  var specs=[...new Set(ALL_AUDITS.map(function(a){return a.specialist||"N/A";}))].sort();
+  renderDDItems('city',cities,F.cities);
+  renderDDItems('type',types,F.types);
+  renderDDItems('spec',specs,F.specs);
 }
 
-// ─── OVERVIEW ─────────────────────────────────────────────────────────────────
-function renderOverview() {
-  if(!AUDITS[0]) return;
-  const audit = AUDITS[0];
-  const {pct,critical,sections} = getStats(audit);
-  document.getElementById("overview-standard-sub").textContent = audit.standard + " · " + Object.keys(sections).length + " sections";
-  document.getElementById("kpi-row").innerHTML = [
-    {l:"Overall compliance",v:pct+"%",s:audit.standard,cls:"kpi-blue",c:"#4f8ef7"},
-    {l:"Criteria assessed",v:audit.criteria.length,s:"Sections assessed",cls:"kpi-green",c:"#10b981"},
-    {l:"Critical non-conformities",v:critical.length,s:"Score = 0, immediate action",cls:"kpi-red",c:"#ef4444"},
-    {l:"Open recommendations",v:RECS.filter(r=>r.auditId===audit.id&&!r.done).length,s:"Pending implementation",cls:"kpi-amber",c:"#f59e0b"},
-  ].map(k=>`<div class="kpi-card ${k.cls}"><div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">${k.l}</div><div style="font-size:28px;font-weight:300;color:${k.c};letter-spacing:-.02em;line-height:1;">${k.v}</div><div style="font-size:11px;color:#9ca3af;margin-top:6px;">${k.s}</div></div>`).join("");
+function renderDDItems(key,items,selected){
+  var el=document.getElementById('dd-'+key+'-items');
+  if(!el)return;
+  el.innerHTML=items.map(function(v){
+    var ck=selected.length===0||selected.indexOf(v)>=0;
+    return '<label class="dd-item'+(ck?' sel':'')+'"><input type="checkbox"'+(ck?' checked':'')+' onchange="toggleFilter(\''+key+'\',\''+v+'\',this.checked)"/> '+v+'</label>';
+  }).join('');
+}
 
-  if(critical.length>0) {
-    document.getElementById("critical-alert").innerHTML=`<div style="background:#fef2f2;border:1px solid #fca5a5;border-left:3px solid #ef4444;border-radius:10px;padding:14px 18px;"><div style="font-weight:700;color:#991b1b;font-size:12px;margin-bottom:8px;">⚠ ${critical.length} critical non-conformit${critical.length>1?"ies":"y"} — immediate action required</div>${critical.map(c=>`<div style="font-size:12px;color:#7f1d1d;margin-bottom:3px;"><code>${c.c}</code> — ${c.n}: ${c.k.replace(/^NON-CONFORMITY:\s*/i,"")}</div>`).join("")}</div>`;
-  } else { document.getElementById("critical-alert").innerHTML=""; }
+function filterDDItems(key,q){
+  var items=document.querySelectorAll('#dd-'+key+'-items .dd-item');
+  items.forEach(function(el){el.style.display=el.textContent.toLowerCase().includes(q.toLowerCase())?'':'none';});
+}
 
-  document.getElementById("section-bars").innerHTML = Object.entries(sections).map(([name,items])=>{
-    const avg = items.reduce((a,c)=>a+c.v,0)/items.length;
-    const crit = items.filter(i=>i.v===0).length;
-    const col = avg<1?"#ef4444":avg<2?"#f59e0b":avg<2.5?"#3b82f6":"#10b981";
-    const shortName = name.replace(/^\d+\.\s*/,"");
-    return`<div style="margin-bottom:14px;"><div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;"><span style="font-size:12px;color:#374151;">${shortName}</span><span style="font-size:12px;font-weight:700;color:${col};font-family:'JetBrains Mono',monospace;">${avg.toFixed(1)}/3.0${crit>0?` · <span style="color:#ef4444;font-size:11px;">${crit} critical</span>`:""}</span></div><div style="height:4px;background:#f3f4f6;border-radius:2px;overflow:hidden;"><div class="bar-fill" style="height:100%;width:0%;background:${col};border-radius:2px;" data-target="${(avg/3*100).toFixed(0)}"></div></div></div>`;
+function toggleFilter(key,val,checked){
+  var arr=key==='city'?F.cities:key==='type'?F.types:F.specs;
+  if(checked){if(arr.indexOf(val)<0)arr.push(val);}
+  else{var i=arr.indexOf(val);if(i>=0)arr.splice(i,1);}
+  applyFilters();
+}
+
+function selectAll(key){
+  var all=key==='city'?[...new Set(ALL_AUDITS.map(function(a){return a.city||"Unknown";}))]
+         :key==='type'?[...new Set(ALL_AUDITS.map(function(a){return a.type;}))]
+         :[...new Set(ALL_AUDITS.map(function(a){return a.specialist||"N/A";}))];
+  if(key==='city')F.cities=all.slice();
+  else if(key==='type')F.types=all.slice();
+  else F.specs=all.slice();
+  buildFilterOptions();applyFilters();
+}
+
+function clearDD(key){
+  if(key==='city')F.cities=[];
+  else if(key==='type')F.types=[];
+  else F.specs=[];
+  buildFilterOptions();applyFilters();
+}
+
+function clearAllFilters(){F={cities:[],types:[],specs:[],yrFrom:2020,yrTo:2030};buildFilterOptions();document.getElementById('yr-from').value=2020;document.getElementById('yr-to').value=2030;document.getElementById('yr-label').textContent='Period';applyFilters();}
+
+function applyYearFilter(){
+  F.yrFrom=parseInt(document.getElementById('yr-from').value)||2020;
+  F.yrTo=parseInt(document.getElementById('yr-to').value)||2030;
+  var lbl=F.yrFrom===2020&&F.yrTo===2030?'Period':F.yrFrom===F.yrTo?String(F.yrFrom):F.yrFrom+'–'+F.yrTo;
+  document.getElementById('yr-label').textContent=lbl;
+  applyFilters();
+}
+
+function setYears(from,to){document.getElementById('yr-from').value=from;document.getElementById('yr-to').value=to;applyYearFilter();}
+
+function applyFilters(){
+  AUDITS=ALL_AUDITS.filter(function(a){
+    var city=a.city||"Unknown", type=a.type, spec=a.specialist||"N/A", yr=a.year||getYear(a.id);
+    var cityOk=F.cities.length===0||F.cities.indexOf(city)>=0;
+    var typeOk=F.types.length===0||F.types.indexOf(type)>=0;
+    var specOk=F.specs.length===0||F.specs.indexOf(spec)>=0;
+    var yrOk=yr>=F.yrFrom&&yr<=F.yrTo;
+    return cityOk&&typeOk&&specOk&&yrOk;
+  });
+  // Update button styles
+  ['city','type','spec'].forEach(function(k){
+    var arr=k==='city'?F.cities:k==='type'?F.types:F.specs;
+    var btn=document.getElementById('btn-'+k);
+    if(arr.length>0){btn.classList.add('has-filters');var fc=btn.querySelector('.fc');if(!fc){fc=document.createElement('span');fc.className='fc';btn.appendChild(fc);}fc.textContent=arr.length;}
+    else{btn.classList.remove('has-filters');var fc=btn.querySelector('.fc');if(fc)fc.remove();}
+  });
+  var btnYr=document.getElementById('btn-yr');
+  var yrActive=F.yrFrom!==2020||F.yrTo!==2030;
+  if(yrActive)btnYr.classList.add('has-filters');else btnYr.classList.remove('has-filters');
+  renderChips();
+  renderResultInfo();
+  renderTab(curPage);
+}
+
+function renderChips(){
+  var chips=[];
+  F.cities.forEach(function(v){chips.push({label:v,key:'city',val:v});});
+  F.types.forEach(function(v){chips.push({label:v,key:'type',val:v});});
+  F.specs.forEach(function(v){chips.push({label:v,key:'spec',val:v});});
+  if(F.yrFrom!==2020||F.yrTo!==2030)chips.push({label:(F.yrFrom===F.yrTo?String(F.yrFrom):F.yrFrom+'–'+F.yrTo),key:'yr',val:'yr'});
+  var row=document.getElementById('chips-row');
+  if(chips.length===0){row.style.display='none';return;}
+  row.style.display='flex';
+  row.innerHTML=chips.map(function(c){return '<span class="chip">'+c.label+'<button onclick="removeChip(\''+c.key+'\',\''+c.val+'\')" aria-label="Remove">×</button></span>';}).join('');
+}
+
+function removeChip(key,val){
+  if(key==='city'){var i=F.cities.indexOf(val);if(i>=0)F.cities.splice(i,1);}
+  else if(key==='type'){var i=F.types.indexOf(val);if(i>=0)F.types.splice(i,1);}
+  else if(key==='spec'){var i=F.specs.indexOf(val);if(i>=0)F.specs.splice(i,1);}
+  else if(key==='yr'){F.yrFrom=2020;F.yrTo=2030;document.getElementById('yr-from').value=2020;document.getElementById('yr-to').value=2030;document.getElementById('yr-label').textContent='Period';}
+  buildFilterOptions();applyFilters();
+}
+
+function renderResultInfo(){
+  var el=document.getElementById('result-info');
+  el.innerHTML='<strong>'+AUDITS.length+' audit'+(AUDITS.length!==1?'s':'')+' matching</strong> current filters &nbsp;·&nbsp; '+ALL_AUDITS.length+' total';
+}
+
+function toggleDD(id){
+  var menu=document.getElementById('dd-'+id);
+  var isOpen=menu.classList.contains('open');
+  document.querySelectorAll('.dd-menu').forEach(function(m){m.classList.remove('open');});
+  if(!isOpen)menu.classList.add('open');
+}
+document.addEventListener('click',function(e){if(!e.target.closest('.dd-wrap'))document.querySelectorAll('.dd-menu').forEach(function(m){m.classList.remove('open');});});
+
+// ── NAVIGATION ───────────────────────────────────────────────────
+function go(name){
+  curPage=name;expRow=null;
+  document.querySelectorAll(".tab-page").forEach(function(e){e.classList.remove("active");});
+  document.querySelectorAll(".nav-link").forEach(function(e){e.classList.remove("active");});
+  var pg=document.getElementById("page-"+name);if(pg)pg.classList.add("active");
+  var ni=document.getElementById("nav-"+name);if(ni)ni.classList.add("active");
+  var titles={overview:"Overview",criteria:"Audit criteria",heatmap:"Standards heatmap",rec:"Recommendations",reports:"Audit reports"};
+  document.getElementById("page-title").textContent=titles[name]||name;
+  var tb=document.getElementById("topbar-actions");
+  if(name==="rec"){tb.innerHTML='<button onclick="exportWord()" class="flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-white rounded-lg text-xs font-semibold"><span class="material-symbols-outlined" style="font-size:13px;">download</span>Download Word</button>';}
+  else{var html='<button onclick="loadData()" class="flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface-container-low"><span class="material-symbols-outlined" style="font-size:13px;">refresh</span>Refresh</button>';tb.innerHTML=html;}
+  renderTab(name);
+}
+
+function renderTab(name){
+  if(name==="overview")rdOv();
+  else if(name==="criteria")rdCrit();
+  else if(name==="heatmap")rdHm();
+  else if(name==="rec")rdRec();
+  else if(name==="reports")rdRep();
+}
+
+// ── OVERVIEW ─────────────────────────────────────────────────────
+function rdOv(){
+  var visible=AUDITS;
+  if(!visible.length){
+    document.getElementById("kpi-row").innerHTML='<div class="col-span-4 text-center py-8 text-sm text-on-surface-variant">No audits match current filters.</div>';
+    document.getElementById("alert-block").innerHTML="";
+    document.getElementById("sec-bars").innerHTML="";
+    document.getElementById("ai-text").innerHTML="";
+    document.getElementById("prog-table").innerHTML="";
+    return;
+  }
+  var a=visible[0];
+  var st=gStats(a),pct=st.pct,crit=st.critical,secs=st.secs;
+  var totalCrit=visible.reduce(function(s,x){return s+gStats(x).critical.length;},0);
+  var openRecs=ALL_RECS.filter(function(r){return visible.some(function(a){return a.id===r.auditId;})&&!r.done;}).length;
+  document.getElementById("sec-sub").textContent=a.standard+" · "+a.id+" · "+visible.length+(visible.length>1?" audits shown":" audit shown");
+  var avgPct=Math.round(visible.reduce(function(s,x){return s+gStats(x).pct;},0)/visible.length);
+  var col=avgPct>=80?"#16a34a":avgPct>=50?"#ca8a04":"#dc2626";
+  document.getElementById("kpi-row").innerHTML=[
+    {l:"Avg. compliance",v:avgPct+"%",s:visible.length+" audits",c:col},
+    {l:"Criteria assessed",v:a.criteria.length,s:"In latest audit",c:"#1e40af"},
+    {l:"Critical issues",v:totalCrit,s:"Across filtered audits",c:"#dc2626"},
+    {l:"Open recommendations",v:openRecs,s:"Pending",c:"#d97706"}
+  ].map(function(k){return '<div class="bg-white border border-outline-variant rounded-xl p-4 card-shadow"><div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div><div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div><div class="text-xs text-on-surface-variant">'+k.s+'</div></div>';}).join("");
+  document.getElementById("alert-block").innerHTML=crit.length>0?'<div class="bg-red-50 border border-red-200 border-l-4 border-l-red-500 rounded-xl p-4"><div class="font-bold text-red-800 text-sm mb-2">&#9888; '+crit.length+' critical in latest audit ('+a.id+')</div>'+crit.map(function(c){return'<div class="text-xs text-red-700 mb-1"><code class="font-mono font-bold">'+c.c+'</code> — '+c.n+': '+c.k.replace(/^NON-CONFORMITY:\s*/i,"")+'</div>';}).join("")+'</div>':"";
+  document.getElementById("sec-bars").innerHTML=Object.entries(secs).map(function(e){
+    var nm=e[0],items=e[1],avg=items.reduce(function(a,c){return a+c.v;},0)/items.length;
+    var cr=items.filter(function(i){return i.v===0;}).length,bc=bCol(avg),sn=nm.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,"");
+    return '<div class="mb-4"><div class="flex justify-between mb-1.5"><span class="text-sm text-on-surface">'+sn+'</span><span class="text-sm font-bold" style="color:'+bc+';">'+avg.toFixed(1)+'/3.0'+(cr>0?' <span class="text-red-500 text-xs">'+cr+' crit</span>':"")+'</span></div><div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="bar-fill h-full rounded-full" style="width:0%;background:'+bc+';" data-w="'+((avg/3)*100).toFixed(0)+'"></div></div></div>';
   }).join("");
-  setTimeout(()=>{ document.querySelectorAll(".bar-fill").forEach(el=>{el.style.width=el.dataset.target+"%";}); }, 50);
-
-  document.getElementById("ai-text").innerHTML=`<strong>Overall compliance: ${pct}%</strong> — ${pct>=85?"The facility demonstrates a strong quality management system.":pct>=70?"The facility meets most requirements with areas for improvement.":"Significant gaps identified requiring immediate corrective action."}<br><br><strong>Critical area:</strong> ${critical.length>0?critical.map(c=>`${c.c} (${c.n})`).join(", ")+" require immediate attention.":"No critical non-conformities found."}<br><br><strong>Priority actions:</strong> ${RECS.filter(r=>r.p==="critical"&&!r.done).map((r,i)=>`(${i+1}) ${r.t.substring(0,60)}...`).join(" ") || "All critical actions resolved."}`;
-
-  const changed = audit.criteria.filter(c=>PREV[c.c]!==undefined&&PREV[c.c]!==c.v);
-  document.getElementById("progress-table").innerHTML=`<table class="data-table"><thead><tr><th>Code</th><th>Criterion</th><th style="text-align:center;">Previous</th><th style="text-align:center;">Current</th><th style="text-align:center;">Change</th></tr></thead><tbody>${changed.map(c=>{
-    const prev=PREV[c.c]; const diff=c.v-prev;
-    const arrow=diff>0?`<span style="color:#10b981;font-weight:700;">↑ +${diff} improved</span>`:diff<0?`<span style="color:#ef4444;font-weight:700;">↓ ${diff} declined</span>`:`<span style="color:#9ca3af;">= unchanged</span>`;
-    return`<tr><td><code>${c.c}</code></td><td style="color:#111827;">${c.n}</td><td style="text-align:center;"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:5px;font-weight:700;font-size:12px;${scoreBg(prev)}">${prev}</span></td><td style="text-align:center;"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:5px;font-weight:700;font-size:12px;${scoreBg(c.v)}">${c.v}</span></td><td style="text-align:center;font-size:12px;">${arrow}</td></tr>`;
-  }).join("")}${changed.length===0?`<tr><td colspan="5" style="text-align:center;padding:20px;color:#9ca3af;font-size:12px;">No previous audit data available for comparison.</td></tr>`:""}</tbody></table>`;
+  setTimeout(function(){document.querySelectorAll(".bar-fill").forEach(function(e){e.style.width=e.dataset.w+"%";});},60);
+  var critR=ALL_RECS.filter(function(r){return r.auditId===a.id&&r.p==="critical"&&!r.done;});
+  document.getElementById("ai-text").innerHTML='<strong class="text-on-surface">Latest: '+a.id+' — '+pct+'%</strong> compliance.<br><br><strong class="text-on-surface">Critical:</strong> '+(crit.length>0?crit.slice(0,2).map(function(c){return c.c+" ("+c.n+")";}).join(", ")+(crit.length>2?" +"+(crit.length-2)+" more":"")+" require action.":"None found. ✓")+'<br><br><strong class="text-on-surface">Priority:</strong> '+(critR.length>0?critR.slice(0,2).map(function(r,i){return"("+(i+1)+") "+r.t.substring(0,50)+"...";}).join(" "):"All critical actions resolved. ✓");
+  // Progress: compare audits for same location
+  var sameLoc=ALL_AUDITS.filter(function(x){return x.location===a.location;}).sort(function(a,b){return (a.year||0)-(b.year||0);});
+  document.getElementById("prog-sub").textContent="Progress for "+a.location+" ("+sameLoc.length+" audits)";
+  if(sameLoc.length<2){document.getElementById("prog-table").innerHTML='<div class="p-5 text-sm text-on-surface-variant">Only one audit available for this location — no comparison yet.</div>';return;}
+  var oldest=sameLoc[0],latest=sameLoc[sameLoc.length-1];
+  var prevScores={};oldest.criteria.forEach(function(c){prevScores[c.c]=c.v;});
+  var changed=latest.criteria.filter(function(c){return prevScores[c.c]!==undefined&&prevScores[c.c]!==c.v;});
+  document.getElementById("prog-table").innerHTML='<div class="px-5 py-2 text-xs text-on-surface-variant border-b border-outline-variant/50">Comparing <strong>'+oldest.id+'</strong> → <strong>'+latest.id+'</strong></div><table class="tbl"><thead><tr><th>Code</th><th>Criterion</th><th class="text-center">'+oldest.id+'</th><th class="text-center">'+latest.id+'</th><th class="text-center">Change</th></tr></thead><tbody>'+changed.map(function(c){var prev=prevScores[c.c],diff=c.v-prev,arrow=diff>0?'<span class="text-green-600 font-bold">&#8593; +'+diff+'</span>':diff<0?'<span class="text-red-600 font-bold">&#8595; '+diff+'</span>':'=';return'<tr><td><code class="font-mono text-xs text-secondary font-bold">'+c.c+'</code></td><td class="text-on-surface">'+c.n+'</td><td class="text-center"><span class="'+sClass(prev)+'">'+prev+'</span></td><td class="text-center"><span class="'+sClass(c.v)+'">'+c.v+'</span></td><td class="text-center text-sm">'+arrow+'</td></tr>';}).join("")+(changed.length===0?'<tr><td colspan="5" class="text-center py-4 text-sm text-on-surface-variant">No changes between audits.</td></tr>':"")+'</tbody></table>';
 }
 
-// ─── CRITERIA ─────────────────────────────────────────────────────────────────
-function renderCriteria() {
-  if(!AUDITS[0]) return;
-  const audit = AUDITS[0];
-  const sections = [...new Set(audit.criteria.map(c=>c.s))];
-  document.getElementById("section-pills").innerHTML = ["all",...sections].map(s=>`<button class="filter-btn ${activeSectionFilter===s?"active":""}" onclick="activeSectionFilter='${s}';expandedRow=null;renderCriteria();">${s==="all"?"All":s.replace(/^\d+\.\s*/,"")}</button>`).join("");
-  const filtered = activeSectionFilter==="all" ? audit.criteria : audit.criteria.filter(c=>c.s===activeSectionFilter);
-  document.getElementById("criteria-tbody").innerHTML = filtered.map((c,i)=>`
-    <tr class="${c.v===0?"row-critical":c.v===1?"row-partial":""}" style="cursor:pointer;" onclick="toggleRow(${i})">
-      <td><code>${c.c}</code></td>
-      <td style="color:#111827;font-weight:${c.v<=1?600:400};">${c.n}</td>
-      <td style="text-align:center;"><span style="display:inline-flex;width:24px;height:24px;align-items:center;justify-content:center;border-radius:5px;font-weight:700;font-size:12px;${scoreBg(c.v)}">${c.v}</span></td>
-      <td><span class="pill" style="${statusStyle(c.v)}">${statusLbl(c.v)}</span></td>
-      <td style="font-size:12px;max-width:260px;">${c.v<=1?c.k.replace(/^NON-CONFORMITY:\s*/i,""):"—"}</td>
-    </tr>
-    ${expandedRow===i?`<tr class="expand-row"><td colspan="5"><div style="font-size:10px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px;">${c.s} › <code>${c.c}</code></div><div style="font-size:13px;font-weight:600;color:#111827;margin-bottom:6px;">${c.n}</div><div style="font-size:12px;color:#374151;line-height:1.65;margin-bottom:10px;">${c.k}</div><a href="${audit.url||"#"}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#4f8ef7;background:#eff6ff;padding:4px 10px;border-radius:5px;text-decoration:none;font-weight:500;"><span class="material-symbols-outlined" style="font-size:13px;">open_in_new</span>View source document</a></td></tr>`:""}
-  `).join("");
-}
-function toggleRow(i){expandedRow=expandedRow===i?null:i;renderCriteria();}
-
-// ─── HEATMAP ──────────────────────────────────────────────────────────────────
-function renderHeatmap() {
-  if(!AUDITS.length) return;
-  const allCodes = [...new Set(AUDITS.flatMap(a=>a.criteria.map(c=>c.c)))];
-  function hmStyle(v){if(v===undefined)return"background:#f3f4f6;color:#9ca3af;";if(v===0)return"background:#fee2e2;color:#991b1b;";if(v===1)return"background:#fef3c7;color:#92400e;";if(v<3)return"background:#dbeafe;color:#1e40af;";return"background:#d1fae5;color:#065f46;";}
-  document.getElementById("heatmap-wrap").innerHTML=`<table style="border-collapse:separate;border-spacing:3px;"><thead><tr><td style="min-width:200px;"></td>${allCodes.map(c=>`<th style="writing-mode:vertical-lr;transform:rotate(180deg);padding:3px 1px;font-size:9px;font-weight:600;color:#374151;height:70px;text-align:left;white-space:nowrap;font-family:'JetBrains Mono',monospace;">${c}</th>`).join("")}</tr></thead><tbody>${AUDITS.map(a=>{const sm={};a.criteria.forEach(c=>{sm[c.c]=c.v;});return`<tr><td style="font-size:12px;color:#374151;padding-right:12px;white-space:nowrap;font-weight:500;">${a.location}</td>${allCodes.map(c=>`<td><div class="hm-cell" style="${hmStyle(sm[c])}" title="${c}: ${sm[c]!==undefined?sm[c]+'/3':'N/A'}">${sm[c]!==undefined?sm[c]:"—"}</div></td>`).join("")}</tr>`;}).join("")}</tbody></table>`;
+// ── CRITERIA ─────────────────────────────────────────────────────
+function rdCrit(){
+  var a=selAuditId?AUDITS.find(function(x){return x.id===selAuditId;}):AUDITS[0];
+  if(!a&&AUDITS.length>0)a=AUDITS[0];
+  // Audit selector
+  var wrap=document.getElementById("audit-sel-wrap");
+  wrap.innerHTML='<div class="audit-sel">'+AUDITS.map(function(x){return '<button class="audit-chip'+(x.id===(a?a.id:'')?'active':'')+'" onclick="selAuditId=\''+x.id+'\';rdCrit();">'+x.id+'<span class="ml-1 opacity-60 text-xs">'+x.type.substring(0,3)+'</span></button>';}).join('')+'</div>';
+  if(!a){document.getElementById("sec-pills").innerHTML="";document.getElementById("crit-tbody").innerHTML='<tr><td colspan="5" class="text-center py-6 text-sm text-on-surface-variant">No audits match current filters.</td></tr>';return;}
+  var secs=[...new Set(a.criteria.map(function(c){return c.s;}))];
+  document.getElementById("sec-pills").innerHTML=["all"].concat(secs).map(function(s){return'<button class="'+(secF===s?"inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-secondary text-white":"inline-flex px-3 py-1 rounded-full text-xs font-semibold border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary")+'" onclick="secF=\''+s+'\';expRow=null;rdCrit();">'+(s==="all"?"All":s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""))+'</button>';}).join("");
+  var filtered=secF==="all"?a.criteria:a.criteria.filter(function(c){return c.s===secF;});
+  document.getElementById("crit-tbody").innerHTML=filtered.map(function(c,i){var exp=expRow===i;return '<tr class="'+(c.v===0?"row-crit":c.v===1?"row-part":"")+' cursor-pointer" onclick="expRow=expRow==='+i+'?null:'+i+';rdCrit();"><td><code class="font-mono text-xs text-secondary font-bold">'+c.c+'</code></td><td class="'+(c.v<=1?"font-semibold text-on-surface":"text-on-surface-variant")+'">'+c.n+'</td><td class="text-center"><span class="'+sClass(c.v)+'">'+c.v+'</span></td><td><span class="'+pClass(c.v)+'">'+sLbl(c.v)+'</span></td><td class="text-xs max-w-xs text-on-surface-variant">'+(c.v<=1?c.k.replace(/^NON-CONFORMITY:\s*/i,""):"—")+'</td></tr>'+(exp?'<tr class="exp-row"><td colspan="5" class="p-4"><div class="text-xs font-bold text-secondary uppercase tracking-wide mb-1">'+c.s+' › '+c.c+'</div><div class="font-semibold text-on-surface mb-2">'+c.n+'</div><div class="text-sm text-on-surface-variant leading-relaxed mb-3">'+c.k+'</div>'+(a.url?'<a href="'+a.url+'" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-secondary bg-secondary-container/30 px-3 py-1.5 rounded-lg font-semibold no-underline"><span class="material-symbols-outlined" style="font-size:13px;">open_in_new</span>View source</a>':"")+'</td></tr>':"");}).join("");
 }
 
-// ─── RECOMMENDATIONS ──────────────────────────────────────────────────────────
-function renderRec() {
-  if(!AUDITS[0]) return;
-  const audit = AUDITS[0];
-  const auditRecs = RECS.filter(r=>r.auditId===audit.id);
-  const done = auditRecs.filter(r=>r.done).length;
-  const overdue = auditRecs.filter(r=>!r.done&&new Date(r.d)<new Date()).length;
+// ── HEATMAP ──────────────────────────────────────────────────────
+function rdHm(){
+  if(!AUDITS.length){document.getElementById("hm-wrap").innerHTML='<div class="py-8 text-center text-sm text-on-surface-variant">No audits match current filters.</div>';return;}
+  var allCodes=[...new Set(AUDITS.flatMap(function(a){return a.criteria.map(function(c){return c.c;});}))];
+  function hmCls(v){if(v===undefined)return"hm-cell hmx";return"hm-cell hm"+Math.min(v,3);}
+  document.getElementById("hm-wrap").innerHTML='<table style="border-collapse:separate;border-spacing:3px;"><thead><tr><td style="min-width:200px;"></td>'+allCodes.map(function(c){return'<th style="writing-mode:vertical-lr;transform:rotate(180deg);padding:2px 0;font-size:8.5px;font-weight:600;color:#374151;height:72px;text-align:left;white-space:nowrap;font-family:monospace;">'+c+'</th>';}).join("")+'</tr></thead><tbody>'+AUDITS.map(function(a){var sm={};a.criteria.forEach(function(c){sm[c.c]=c.v;});return'<tr><td class="text-xs text-on-surface-variant pr-3 whitespace-nowrap py-0.5"><span class="font-mono text-secondary font-bold text-xs">'+a.id+'</span><br><span class="text-on-surface-variant">'+a.location+'</span></td>'+allCodes.map(function(c){return'<td style="padding:1px;"><div class="'+hmCls(sm[c])+'" title="'+c+': '+(sm[c]!==undefined?sm[c]+"/3":"N/A")+'">'+(sm[c]!==undefined?sm[c]:"—")+'</div></td>';}).join("")+'</tr>';}).join("")+'</tbody></table>';
+}
+
+// ── RECOMMENDATIONS ──────────────────────────────────────────────
+function rdRec(){
+  var filteredIds=AUDITS.map(function(a){return a.id;});
+  var ar=ALL_RECS.filter(function(r){return filteredIds.indexOf(r.auditId)>=0;});
+  var done=ar.filter(function(r){return r.done;}).length,od=ar.filter(function(r){return !r.done&&new Date(r.d)<new Date();}).length;
   document.getElementById("rec-kpis").innerHTML=[
-    {l:"Total recommendations",v:auditRecs.length,s:"Audit "+audit.id,cls:"kpi-blue",c:"#4f8ef7"},
-    {l:"Completed",v:done,s:`${auditRecs.length?Math.round(done/auditRecs.length*100):0}% resolved`,cls:"kpi-green",c:"#10b981"},
-    {l:"Overdue",v:overdue,s:"Past due date",cls:"kpi-red",c:"#ef4444"},
-  ].map(k=>`<div class="kpi-card ${k.cls}"><div style="font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">${k.l}</div><div style="font-size:28px;font-weight:300;color:${k.c};">${k.v}</div><div style="font-size:11px;color:#9ca3af;margin-top:6px;">${k.s}</div></div>`).join("");
-  const metaEl = document.getElementById("rec-meta");
-  if(metaEl) metaEl.textContent = `${audit.id} · ${audit.location} · ${audit.standard}`;
-  const today = new Date().toISOString().split("T")[0];
-  document.getElementById("rec-tbody").innerHTML = auditRecs.map((r,i)=>{
-    const crit = audit.criteria.find(c=>c.c===r.c);
-    const section = crit ? crit.s.replace(/^\d+\.\s*/,"") : "";
-    const overRow = !r.done && new Date(r.d)<new Date();
-    return`<tr style="${overRow?"background:#fff7f7;":""}">
-      <td style="border:1px solid #e5e7eb;padding:7px;text-align:center;font-size:11px;color:#9ca3af;">${i+1}</td>
-      <td style="border:1px solid #e5e7eb;padding:7px;"><code style="font-size:11px;">${audit.id}</code><br><span style="font-size:10px;color:#9ca3af;">${today}</span></td>
-      <td style="border:1px solid #e5e7eb;padding:7px;font-size:12px;color:#111827;">${r.t}<br><span class="pill" style="${prioStyle(r.p)};margin-top:4px;display:inline-flex;">${prioLbl(r.p)}</span></td>
-      <td style="border:1px solid #e5e7eb;padding:7px;text-align:center;"><code>${r.c}</code></td>
-      <td style="border:1px solid #e5e7eb;padding:7px;font-size:11px;color:#374151;">${section}</td>
-      <td style="border:1px solid #e5e7eb;padding:7px;font-size:12px;">${r.r}</td>
-      <td style="border:1px solid #e5e7eb;padding:7px;text-align:center;font-size:11px;color:${overRow?"#ef4444":"#374151"};">${r.d}</td>
-      <td style="border:1px solid #e5e7eb;padding:7px;text-align:center;font-size:13px;color:#10b981;">${r.done?"✓":""}</td>
-    </tr>`;
-  }).join("");
+    {l:"Total",v:ar.length,s:"Filtered audits",c:"#1e40af"},
+    {l:"Completed",v:done,s:ar.length?Math.round(done/ar.length*100)+"%":"0%",c:"#16a34a"},
+    {l:"Overdue",v:od,s:"Past due date",c:"#dc2626"}
+  ].map(function(k){return'<div class="bg-white border border-outline-variant rounded-xl p-4 card-shadow"><div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div><div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div><div class="text-xs text-on-surface-variant">'+k.s+'</div></div>';}).join("");
+  var metaEl=document.getElementById("rec-meta");if(metaEl)metaEl.textContent=AUDITS.length+" audits · "+ar.length+" recommendations";
+  var today=new Date().toISOString().split("T")[0];
+  document.getElementById("rec-tbody").innerHTML=ar.map(function(r,i){
+    var a=AUDITS.find(function(x){return x.id===r.auditId;})||{};
+    var crit=a.criteria?a.criteria.find(function(c){return c.c===r.c;}):null,sec=crit?crit.s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""):"";
+    var ov=!r.done&&new Date(r.d)<new Date();
+    return'<tr class="'+(ov?"ov":"")+'"><td class="text-center text-xs text-on-surface-variant">'+(i+1)+'</td><td><code class="font-mono text-xs text-secondary font-bold">'+r.auditId+'</code></td><td>'+r.t+'<br><span class="pill '+prC(r.p)+'" style="margin-top:3px;display:inline-flex;">'+prL(r.p)+'</span></td><td class="text-center"><code class="font-mono text-xs text-secondary">'+r.c+'</code></td><td class="text-xs text-on-surface-variant">'+sec+'</td><td class="text-xs text-on-surface-variant">'+r.r+'</td><td class="text-center text-xs '+(ov?"text-red-600 font-semibold":"text-on-surface-variant")+'">'+r.d+'</td><td class="text-center text-base text-green-600">'+(r.done?"✓":"")+'</td></tr>';
+  }).join("")+(ar.length===0?'<tr><td colspan="8" class="text-center py-6 text-sm text-on-surface-variant">No recommendations for current filter.</td></tr>':"");
 }
 
-// ─── REPORTS ──────────────────────────────────────────────────────────────────
-function renderReports() {
-  document.getElementById("reports-tbody").innerHTML = AUDITS.map(a=>{
-    const {pct,critical} = getStats(a);
-    const col = pct>=80?"#10b981":pct>=60?"#f59e0b":"#ef4444";
-    return`<tr>
-      <td><code>${a.id}</code></td>
-      <td style="color:#111827;">${a.location}</td>
-      <td><span class="pill" style="background:#dbeafe;color:#1e40af;">${a.type}</span></td>
-      <td style="text-align:center;font-size:18px;font-weight:300;color:${col};font-family:'JetBrains Mono',monospace;">${pct}%</td>
-      <td style="text-align:center;font-size:14px;font-weight:700;color:${critical.length>0?"#ef4444":"#10b981"};">${critical.length}</td>
-      <td><a href="${a.url||"#"}" target="_blank" style="display:inline-flex;align-items:center;gap:4px;font-size:11px;color:#4f8ef7;background:#eff6ff;padding:4px 10px;border-radius:5px;text-decoration:none;font-weight:600;"><span class="material-symbols-outlined" style="font-size:12px;">open_in_new</span>Open</a></td>
-    </tr>`;
-  }).join("");
+// ── REPORTS ──────────────────────────────────────────────────────
+function rdRep(){
+  document.getElementById("rep-tbody").innerHTML=AUDITS.map(function(a){
+    var st=gStats(a),pct=st.pct,crit=st.critical,c=pct>=80?"#16a34a":pct>=60?"#ca8a04":"#dc2626";
+    return'<tr><td><code class="font-mono text-xs text-secondary font-bold">'+a.id+'</code></td><td class="text-on-surface">'+a.location+'</td><td class="text-xs text-on-surface-variant">'+( a.city||"")+'</td><td><span class="pill p2">'+a.type+'</span></td><td class="text-xs text-on-surface-variant">'+(a.specialist||"—")+'</td><td class="text-xs text-on-surface-variant text-center">'+(a.year||getYear(a.id))+'</td><td class="text-center text-xl font-bold" style="color:'+c+';">'+pct+'%</td><td class="text-center text-sm font-bold '+(crit.length>0?"text-red-600":"text-green-600")+'">'+crit.length+'</td><td>'+(a.url?'<a href="'+a.url+'" target="_blank" class="inline-flex items-center gap-1 text-xs text-secondary bg-secondary-container/30 px-2.5 py-1 rounded font-semibold no-underline"><span class="material-symbols-outlined" style="font-size:12px;">open_in_new</span>Open</a>':"-")+'</td></tr>';
+  }).join("")+(AUDITS.length===0?'<tr><td colspan="9" class="text-center py-6 text-sm text-on-surface-variant">No audits match current filters.</td></tr>':"");
 }
 
-// ─── EXPORT WORD ──────────────────────────────────────────────────────────────
-function exportWord() {
-  if(!AUDITS[0]) return;
-  const audit = AUDITS[0];
-  const today = new Date().toISOString().split("T")[0];
-  const auditRecs = RECS.filter(r=>r.auditId===audit.id);
-  const rows = auditRecs.map((r,i)=>{
-    const crit = audit.criteria.find(c=>c.c===r.c);
-    const section = crit?crit.s.replace(/^\d+\.\s*/,""):"";
-    return`<tr><td style="border:1px solid #000;padding:5px;text-align:center;">${i+1}</td><td style="border:1px solid #000;padding:5px;">${audit.id}<br>${today}</td><td style="border:1px solid #000;padding:5px;">${r.t}</td><td style="border:1px solid #000;padding:5px;text-align:center;">${r.c}</td><td style="border:1px solid #000;padding:5px;">${section}</td><td style="border:1px solid #000;padding:5px;">${r.r}</td><td style="border:1px solid #000;padding:5px;text-align:center;">${r.d}</td><td style="border:1px solid #000;padding:5px;text-align:center;">${r.done?"Done":""}</td></tr>`;
-  }).join("");
-  const {pct,critical} = getStats(audit);
-  const html=`<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><style>body{font-family:Arial,sans-serif;font-size:11pt;margin:2cm;}h1,h2{text-align:center;}table{border-collapse:collapse;width:100%;}th{border:1px solid #000;padding:5px;background:#d9d9d9;font-size:9pt;}td{border:1px solid #000;padding:5px;font-size:9pt;}.meta{font-size:11pt;margin:4pt 0;}</style></head><body>
-  <h1>Baltic Medics</h1><h2>RECOMMENDATIONS REGISTER</h2>
-  <p class="meta"><strong>Audit No.:</strong> ${audit.id} &nbsp; <strong>Date:</strong> ${today}</p>
-  <p class="meta"><strong>Facility:</strong> ${audit.location} &nbsp; <strong>Type:</strong> ${audit.type} (${audit.standard})</p>
-  <p class="meta"><strong>Auditor:</strong> ${audit.auditor} &nbsp; <strong>Overall compliance:</strong> ${pct}% &nbsp; <strong>Critical non-conformities:</strong> ${critical.length}</p>
-  <table><thead><tr><th>#</th><th>Audit No. / Date</th><th>Recommendation</th><th>Standard</th><th>Section</th><th>Responsible</th><th>Due date</th><th>Completed</th></tr></thead><tbody>${rows}</tbody></table>
-  <div style="margin-top:30pt;font-size:11pt;"><p><strong>Auditor signature:</strong></p><br><br><p>______________________________ &nbsp;&nbsp; ______________________________</p><p style="font-size:9pt;">(Name) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Signature)</p><p style="margin-top:10pt;"><strong>Date:</strong> _______________</p></div>
-  </body></html>`;
-  const blob=new Blob(["\ufeff"+html],{type:"application/msword"});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url;a.download=`Recommendations_${audit.id.replace("/","-")}_${today}.doc`;
-  a.click();URL.revokeObjectURL(url);
+// ── EXPORT WORD ──────────────────────────────────────────────────
+function exportWord(){
+  var a=AUDITS[0];if(!a)return;
+  var today=new Date().toISOString().split("T")[0];
+  var filteredIds=AUDITS.map(function(x){return x.id;});
+  var ar=ALL_RECS.filter(function(r){return filteredIds.indexOf(r.auditId)>=0;});
+  var st=gStats(a);
+  var rows=ar.map(function(r,i){var ca=AUDITS.find(function(x){return x.id===r.auditId;})||{};var crit=ca.criteria?ca.criteria.find(function(c){return c.c===r.c;}):null,sec=crit?crit.s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""):"";return'<tr><td style="border:1px solid #000;padding:5px;text-align:center;">'+(i+1)+'</td><td style="border:1px solid #000;padding:5px;">'+r.auditId+'</td><td style="border:1px solid #000;padding:5px;">'+r.t+'</td><td style="border:1px solid #000;padding:5px;text-align:center;">'+r.c+'</td><td style="border:1px solid #000;padding:5px;">'+sec+'</td><td style="border:1px solid #000;padding:5px;">'+r.r+'</td><td style="border:1px solid #000;padding:5px;text-align:center;">'+r.d+'</td><td style="border:1px solid #000;padding:5px;text-align:center;">'+(r.done?"Done":"")+'</td></tr>';}).join("");
+  var wh="<html xmlns:o='urn:schemas-microsoft-com:office:office'><head><meta charset='utf-8'><style>body{font-family:Arial;font-size:10pt;margin:2cm;}h1,h2{text-align:center;}table{border-collapse:collapse;width:100%;}th{border:1px solid #000;padding:5px;background:#ddd;font-size:9pt;}</style></head><body><h1>Baltic Medics</h1><h2>RECOMMENDATIONS REGISTER</h2><p><strong>Date:</strong> "+today+" &nbsp; <strong>Audits shown:</strong> "+AUDITS.length+"</p><br><table><thead><tr><th>#</th><th>Audit No.</th><th>Recommendation</th><th>Standard</th><th>Section</th><th>Responsible</th><th>Due date</th><th>Done</th></tr></thead><tbody>"+rows+"</tbody></table></body></html>";
+  var b=new Blob(["\ufeff"+wh],{type:"application/msword"});
+  var u=URL.createObjectURL(b),el=document.createElement("a");
+  el.href=u;el.download="Recommendations_"+today+".doc";el.click();URL.revokeObjectURL(u);
 }
 
-// ─── LOAD DATA ────────────────────────────────────────────────────────────────
-async function loadData() {
-  try {
-    const res = await fetch(DATA_URL + "?t=" + Date.now());
-    if(!res.ok) throw new Error("HTTP " + res.status);
-    const data = await res.json();
-    AUDITS = data.audits || [];
-    RECS = data.recommendations || [];
-    // Update sidebar
-    if(AUDITS[0]) {
-      const a = AUDITS[0];
-      document.getElementById("sidebar-badge").innerHTML = `
-        <div style="font-size:12px;font-weight:700;color:#4f8ef7;font-family:'JetBrains Mono',monospace;">${a.id}</div>
-        <div style="font-size:11px;color:rgba(255,255,255,.45);margin-top:3px;">${a.location}</div>
-        <div style="margin-top:6px;display:inline-flex;align-items:center;gap:4px;font-size:10px;color:#2dd4bf;background:rgba(45,212,191,.1);padding:2px 8px;border-radius:20px;font-weight:600;">
-          <span style="width:5px;height:5px;border-radius:50%;background:#2dd4bf;"></span>
-          ${a.type} · ${a.standard}
-        </div>`;
+// ── LOAD ─────────────────────────────────────────────────────────
+async function loadData(){
+  document.getElementById("sb-badge").innerHTML='<div class="text-xs font-bold text-on-surface-variant">Loading...</div>';
+  try{
+    var res=await fetch(DATA_URL+"?t="+Date.now());
+    if(!res.ok)throw new Error("HTTP "+res.status);
+    var data=await res.json();
+    ALL_AUDITS=data.audits||[];ALL_RECS=data.recommendations||[];
+    AUDITS=ALL_AUDITS.slice();RECS=ALL_RECS.slice();
+    if(ALL_AUDITS[0]){
+      var a=ALL_AUDITS[0];
+      document.getElementById("sb-badge").innerHTML='<div class="text-xs font-bold text-secondary-fixed-dim">'+ALL_AUDITS.length+' audits loaded</div><div class="text-xs text-white/35 mt-1">'+[...new Set(ALL_AUDITS.map(function(x){return x.city||x.location;}))].length+' locations</div>';
     }
-    if(data.lastUpdated) {
-      document.getElementById("last-updated").textContent = "Last updated: " + data.lastUpdated;
-    }
-    showPage("overview");
-  } catch(err) {
-    console.error(err);
-    document.getElementById("page-overview").innerHTML = `<div style="background:#fef2f2;border:1px solid #fca5a5;border-left:3px solid #ef4444;border-radius:10px;padding:20px 24px;"><div style="font-weight:700;color:#991b1b;margin-bottom:6px;">⚠ Failed to load data</div><div style="font-size:12px;color:#7f1d1d;">${err.message}</div><button onclick="loadData()" style="margin-top:12px;padding:6px 14px;background:#4f8ef7;color:#fff;border:none;border-radius:6px;font-size:12px;cursor:pointer;">Retry</button></div>`;
+    if(data.lastUpdated)document.getElementById("sb-footer").textContent="Updated: "+data.lastUpdated;
+    buildFilterOptions();
+    renderResultInfo();
+    go("overview");
+  }catch(e){
+    console.error(e);
+    document.getElementById("sb-badge").innerHTML='<div class="text-xs text-red-400">Load error</div>';
+    document.getElementById("page-overview").innerHTML='<div class="bg-red-50 border border-red-200 border-l-4 border-l-red-500 rounded-xl p-5"><div class="font-bold text-red-800 mb-2">Failed to load data</div><div class="text-sm text-red-700 mb-3">'+e.message+'</div><button onclick="loadData()" class="px-4 py-2 bg-secondary text-white rounded-lg text-sm font-semibold">Retry</button></div>';
     document.getElementById("page-overview").classList.add("active");
   }
 }
-
 loadData();
 </script>
 </body>
