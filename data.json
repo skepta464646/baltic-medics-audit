@@ -1,308 +1,1987 @@
 {
-  "lastUpdated": "2025-06-08",
+  "lastUpdated": "2025-06-09",
   "audits": [
     {
-      "id": "1VA/2025",
-      "location": "Taikos pr. 48B, Klaipėda",
+      "id": "1VA/2023",
+      "location": "Taikos pr. 48B, Klaipeda",
       "type": "Laboratory",
       "standard": "ISO 15189:2023",
       "auditor": "Jonas Petraitis",
       "url": "https://docs.google.com/document/d/1dWEiged0R9QnkKHN1oSQFd4GTVRSQ-Nr/edit",
       "criteria": [
         {
-          "s": "4. General requirements",
+          "s": "4. Bendrieji reikalavimai",
           "c": "4.1",
-          "n": "Impartiality",
+          "n": "Nesališkumas",
           "v": 3,
-          "k": "Organizational structure clearly defined. No conflicts of interest identified."
+          "k": "Organizacine struktura aiškiai apibrežta."
         },
         {
-          "s": "4. General requirements",
+          "s": "4. Bendrieji reikalavimai",
           "c": "4.2",
-          "n": "Confidentiality",
+          "n": "Konfidencialumas",
           "v": 3,
-          "k": "Staff have signed confidentiality agreements."
+          "k": "Konfidencialumo isaipareigojimus pasirašę."
         },
         {
-          "s": "4. General requirements",
+          "s": "4. Bendrieji reikalavimai",
           "c": "4.3",
-          "n": "Patient requirements",
+          "n": "Reikalavimai del pacientu",
           "v": 3,
-          "k": "Information available on website."
+          "k": "Informacija skelbiama svetaineje."
         },
         {
-          "s": "5. Structural requirements",
+          "s": "5. Strukturiniai reikalavimai",
           "c": "5.1",
-          "n": "Legal entity",
+          "n": "Juridinis asmuo",
           "v": 3,
-          "k": "Laboratory is a legal entity."
+          "k": "Laboratorija registruota."
         },
         {
-          "s": "5. Structural requirements",
+          "s": "5. Strukturiniai reikalavimai",
           "c": "5.2",
-          "n": "Laboratory director",
+          "n": "Laboratorijos vadovas",
           "v": 3,
-          "k": "Director qualifications documented."
+          "k": "Vadovo kvalifikacija dokumentuota."
         },
         {
-          "s": "5. Structural requirements",
-          "c": "5.4",
-          "n": "Structure and authority",
-          "v": 3,
-          "k": "Organizational structure documented."
-        },
-        {
-          "s": "5. Structural requirements",
+          "s": "5. Strukturiniai reikalavimai",
           "c": "5.5",
-          "n": "Objectives and policies",
-          "v": 2,
-          "k": "Not all objectives have measurable indicators defined."
+          "n": "Tikslai ir politika",
+          "v": 1,
+          "k": "Tikslai neapibrežti su rodikliais."
         },
         {
-          "s": "5. Structural requirements",
+          "s": "5. Strukturiniai reikalavimai",
           "c": "5.6",
-          "n": "Risk management",
+          "n": "Rizikos valdymas",
           "v": 1,
-          "k": "Risk assessment does not cover all process stages."
+          "k": "Riziku vertinimas neišsamus."
         },
         {
-          "s": "6. Resource requirements",
+          "s": "6. Reikalavimai ištekliams",
           "c": "6.1",
-          "n": "General resources",
+          "n": "Bendrieji ištekliai",
           "v": 3,
-          "k": "Adequate resources available."
+          "k": "Pakankama iranga."
         },
         {
-          "s": "6. Resource requirements",
+          "s": "6. Reikalavimai ištekliams",
           "c": "6.2",
-          "n": "Personnel",
-          "v": 3,
-          "k": "Competent staff. Annual competency assessment 6F-PA-10."
-        },
-        {
-          "s": "6. Resource requirements",
-          "c": "6.3",
-          "n": "Facilities and environmental conditions",
-          "v": 3,
-          "k": "Facilities meet operational needs."
-        },
-        {
-          "s": "6. Resource requirements",
-          "c": "6.4",
-          "n": "Equipment",
-          "v": 3,
-          "k": "All equipment identified and maintained per plan."
-        },
-        {
-          "s": "6. Resource requirements",
-          "c": "6.5",
-          "n": "Calibration",
-          "v": 3,
-          "k": "Calibrations per plan 3F-PA-13."
-        },
-        {
-          "s": "6. Resource requirements",
-          "c": "6.6.2",
-          "n": "Reagent receipt and storage",
-          "v": 0,
-          "k": "NON-CONFORMITY: Refrigerator +10°C (required +2–8°C). Direct risk to result reliability."
-        },
-        {
-          "s": "6. Resource requirements",
-          "c": "6.6.4",
-          "n": "Reagent inventory management",
-          "v": 0,
-          "k": "NON-CONFORMITY: Accepted and unverified reagents stored together."
-        },
-        {
-          "s": "6. Resource requirements",
-          "c": "6.7",
-          "n": "Service agreements",
-          "v": 3,
-          "k": "Procedure PA-2 approved."
-        },
-        {
-          "s": "6. Resource requirements",
-          "c": "6.8",
-          "n": "Externally provided products",
-          "v": 3,
-          "k": "Suppliers selected and evaluated annually."
-        },
-        {
-          "s": "7. Process requirements",
-          "c": "7.1",
-          "n": "Process risk management",
-          "v": 3,
-          "k": "Risk management plan 6F-PA-8 prepared."
-        },
-        {
-          "s": "7. Process requirements",
-          "c": "7.2",
-          "n": "Pre-examination processes",
-          "v": 3,
-          "k": "Procedures documented PA-14."
-        },
-        {
-          "s": "7. Process requirements",
-          "c": "7.3",
-          "n": "Examination processes",
-          "v": 3,
-          "k": "Validated methods, reviewed annually."
-        },
-        {
-          "s": "7. Process requirements",
-          "c": "7.3.7",
-          "n": "Result reliability monitoring",
+          "n": "Personalas",
           "v": 2,
-          "k": "Monitoring conducted, but trend analysis insufficient."
+          "k": "Truksta vieno laboranto."
         },
         {
-          "s": "7. Process requirements",
-          "c": "7.4",
-          "n": "Post-examination processes",
-          "v": 3,
-          "k": "Results issued per procedure PA-17."
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.3",
+          "n": "Patalpos",
+          "v": 2,
+          "k": "Patalpos senos, reikia renovacijos."
         },
         {
-          "s": "7. Process requirements",
-          "c": "7.4.2",
-          "n": "Sample handling post-examination",
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.2",
+          "n": "Reagentu saugojimas",
           "v": 0,
-          "k": "NON-CONFORMITY: Samples stored at room temperature (requires 2–8°C)."
+          "k": "NON-CONFORMITY: Šaldytuvas +12C (norma +2-8C)."
         },
         {
-          "s": "7. Process requirements",
-          "c": "7.5",
-          "n": "Nonconforming work",
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.4",
+          "n": "Reagentu valdymas",
+          "v": 0,
+          "k": "NON-CONFORMITY: Priimti ir nepriimti reagentai kartu."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.7",
+          "n": "Paslaugu sutartys",
           "v": 3,
-          "k": "Procedure PA-5 prepared."
+          "k": "Sutartys galiojančios."
         },
         {
-          "s": "7. Process requirements",
-          "c": "7.6",
-          "n": "Data management",
+          "s": "7. Proceso reikalavimai",
+          "c": "7.2",
+          "n": "Procesai prieš tyrima",
+          "v": 2,
+          "k": "Procedura yra, taciau ne visada laikomasi."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3",
+          "n": "Tyrimo procesai",
           "v": 3,
-          "k": "Access rights managed per role."
+          "k": "Validuoti metodai."
         },
         {
-          "s": "8. Management requirements",
-          "c": "8.1",
-          "n": "Management system",
-          "v": 3,
-          "k": "Quality manual prepared per ISO 15189."
-        },
-        {
-          "s": "8. Management requirements",
-          "c": "8.2",
-          "n": "Management system documentation",
-          "v": 3,
-          "k": "All staff familiarized with quality policy."
-        },
-        {
-          "s": "8. Management requirements",
-          "c": "8.3",
-          "n": "Document control",
-          "v": 3,
-          "k": "Documents managed in DMS."
-        },
-        {
-          "s": "8. Management requirements",
-          "c": "8.4.2",
-          "n": "Record amendments",
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3.7",
+          "n": "Rezultatu monitoringas",
           "v": 1,
-          "k": "Record traceability not always ensured."
+          "k": "Monitoringas nepakankamas."
         },
         {
-          "s": "8. Management requirements",
-          "c": "8.5",
-          "n": "Risk and improvement actions",
-          "v": 3,
-          "k": "Procedure PA-8 prepared."
+          "s": "7. Proceso reikalavimai",
+          "c": "7.4.2",
+          "n": "Meginiu tvarkymas",
+          "v": 0,
+          "k": "NON-CONFORMITY: Meginiai kambario temp."
         },
         {
-          "s": "8. Management requirements",
-          "c": "8.6",
-          "n": "Improvement",
-          "v": 3,
-          "k": "Improvement plan 2F-PA-6 prepared."
+          "s": "7. Proceso reikalavimai",
+          "c": "7.5",
+          "n": "Neatitiktinis darbas",
+          "v": 2,
+          "k": "Procedura yra, ne visada taikoma."
         },
         {
-          "s": "8. Management requirements",
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.1",
+          "n": "Vadybos sistema",
+          "v": 2,
+          "k": "Sistema iš dalies igyvendinta."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.3",
+          "n": "Dokumentu valdymas",
+          "v": 2,
+          "k": "DVS naudojama iš dalies."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.4.2",
+          "n": "Irašu keitimas",
+          "v": 0,
+          "k": "NON-CONFORMITY: Irašu atsekamumas nenustatytas."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
           "c": "8.7",
-          "n": "Nonconformities and corrective actions",
-          "v": 3,
-          "k": "Procedure PA-5 operational."
+          "n": "Korekciniai veiksmai",
+          "v": 2,
+          "k": "Veiksmai vykdomi, bet nevisada sekamas efektyvumas."
         },
         {
-          "s": "8. Management requirements",
+          "s": "8. Vadybos reikalavimai",
           "c": "8.8",
-          "n": "Internal audits",
+          "n": "Vidaus auditai",
+          "v": 2,
+          "k": "Auditai vykdomi neregulariai."
+        }
+      ]
+    },
+    {
+      "id": "1VA/2024",
+      "location": "Taikos pr. 48B, Klaipeda",
+      "type": "Laboratory",
+      "standard": "ISO 15189:2023",
+      "auditor": "Jonas Petraitis",
+      "url": "https://docs.google.com/document/d/1dWEiged0R9QnkKHN1oSQFd4GTVRSQ-Nr/edit",
+      "criteria": [
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.1",
+          "n": "Nesališkumas",
           "v": 3,
-          "k": "Audits per plan 1F-PA-8."
+          "k": "Organizacine struktura aiškiai apibrežta."
         },
         {
-          "s": "8. Management requirements",
-          "c": "8.9",
-          "n": "Management review",
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.2",
+          "n": "Konfidencialumas",
           "v": 3,
-          "k": "Conducted once per year."
+          "k": "Darbuotojai pasirašę konfidencialumo isipareigojimus."
+        },
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.3",
+          "n": "Reikalavimai del pacientu",
+          "v": 3,
+          "k": "Informacija skelbiama interneto svetaineje."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.1",
+          "n": "Juridinis asmuo",
+          "v": 3,
+          "k": "Laboratorija yra juridinis asmuo."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.2",
+          "n": "Laboratorijos vadovas",
+          "v": 3,
+          "k": "Vadovo kvalifikacija dokumentuota."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.5",
+          "n": "Tikslai ir politika",
+          "v": 2,
+          "k": "Ne visiems tikslams apibrežti rodikliai."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.6",
+          "n": "Rizikos valdymas",
+          "v": 1,
+          "k": "Riziku vertinimas neapima visu etapu."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.1",
+          "n": "Bendrieji ištekliai",
+          "v": 3,
+          "k": "Laboratorija turi pakankama iranga."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.2",
+          "n": "Personalas",
+          "v": 3,
+          "k": "Kompetentingi darbuotojai."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.3",
+          "n": "Patalpos ir aplinkos salygos",
+          "v": 3,
+          "k": "Patalpos atitinka reikalavimus."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.2",
+          "n": "Reagentu saugojimas",
+          "v": 0,
+          "k": "NON-CONFORMITY: Šaldytuvas +10C (norma +2-8C). Rizika reagentu kokybei."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.4",
+          "n": "Reagentu atsargu valdymas",
+          "v": 0,
+          "k": "NON-CONFORMITY: Priimti ir nepriimti reagentai laikomi kartu."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.7",
+          "n": "Paslaugu teikimo sutartys",
+          "v": 3,
+          "k": "Patvirtinta procedura PA-2."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.2",
+          "n": "Procesai prieš tyrima",
+          "v": 3,
+          "k": "Procedura PA-14 parengta."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3",
+          "n": "Tyrimo procesai",
+          "v": 3,
+          "k": "Validuoti metodai naudojami."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3.7",
+          "n": "Rezultatu patikimumo monitoringas",
+          "v": 2,
+          "k": "Monitoringas vykdomas, taciau tendenciju analize nepakankama."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.4.2",
+          "n": "Meginiu tvarkymas po tyrimo",
+          "v": 0,
+          "k": "NON-CONFORMITY: Meginiai laikomi kambario temperaturoje (turi buti 2-8C)."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.5",
+          "n": "Neatitiktinis darbas",
+          "v": 3,
+          "k": "Procedura PA-5 parengta."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.1",
+          "n": "Vadybos sistema",
+          "v": 3,
+          "k": "Kokybes vadovas parengtas pagal ISO 15189."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.3",
+          "n": "Dokumentu valdymas",
+          "v": 3,
+          "k": "Dokumentai valdomi DVS."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.4.2",
+          "n": "Irašu keitimas",
+          "v": 1,
+          "k": "Irašu pakeitimu atsekamumas ne visada užtikrinamas."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.7",
+          "n": "Neatitiktys ir korekciniai veiksmai",
+          "v": 3,
+          "k": "Procedura PA-5 veikia."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.8",
+          "n": "Vidaus auditai",
+          "v": 3,
+          "k": "Auditai vykdomi pagal plana."
+        }
+      ]
+    },
+    {
+      "id": "1VA/2025",
+      "location": "Taikos pr. 48B, Klaipeda",
+      "type": "Laboratory",
+      "standard": "ISO 15189:2023",
+      "auditor": "Jonas Petraitis",
+      "url": "https://docs.google.com/document/d/1dWEiged0R9QnkKHN1oSQFd4GTVRSQ-Nr/edit",
+      "criteria": [
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.1",
+          "n": "Nesališkumas",
+          "v": 3,
+          "k": "Organizacine struktura aiškiai apibrežta dokumentuose."
+        },
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.2",
+          "n": "Konfidencialumas",
+          "v": 3,
+          "k": "Darbuotojai pasirašę konfidencialumo isipareigojimus."
+        },
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.3",
+          "n": "Reikalavimai del pacientu",
+          "v": 3,
+          "k": "Informacija skelbiama interneto svetaineje."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.1",
+          "n": "Juridinis asmuo",
+          "v": 3,
+          "k": "Laboratorija yra juridinis asmuo."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.2",
+          "n": "Laboratorijos vadovas",
+          "v": 3,
+          "k": "Vadovo kvalifikacija dokumentuota."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.5",
+          "n": "Tikslai ir politika",
+          "v": 2,
+          "k": "Ne visiems tikslams apibrežti išmatuojami rodikliai."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.6",
+          "n": "Rizikos valdymas",
+          "v": 2,
+          "k": "Riziku vertinimas papildytas, taciau dar neišsamus."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.1",
+          "n": "Bendrieji ištekliai",
+          "v": 3,
+          "k": "Laboratorija turi pakankama iranga."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.2",
+          "n": "Personalas",
+          "v": 3,
+          "k": "Pakankamas skaičius kompetentingu darbuotoju."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.3",
+          "n": "Patalpos ir aplinkos salygos",
+          "v": 3,
+          "k": "Patalpos atitinka veiklos poreikius."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.2",
+          "n": "Reagentu saugojimas",
+          "v": 2,
+          "k": "Šaldytuvas pataisytas, temperaturu kontrole geresne, taciau žurnalas pildomas nereguklariai."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.4",
+          "n": "Reagentu atsargu valdymas",
+          "v": 2,
+          "k": "Atskyrimas pradetas, taciau ne visiškai igyvendintas."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.7",
+          "n": "Paslaugu teikimo sutartys",
+          "v": 3,
+          "k": "Patvirtinta procedura PA-2."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.2",
+          "n": "Procesai prieš tyrima",
+          "v": 3,
+          "k": "Procedura PA-14 parengta."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3",
+          "n": "Tyrimo procesai",
+          "v": 3,
+          "k": "Validuoti metodai naudojami."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3.7",
+          "n": "Rezultatu patikimumo monitoringas",
+          "v": 3,
+          "k": "Menesiniu ataskaitiniu sistema igyvendinta."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.4.2",
+          "n": "Meginiu tvarkymas po tyrimo",
+          "v": 2,
+          "k": "Temperaturu problemos išsprestos, taciau stebejimas dar nepilnas."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.5",
+          "n": "Neatitiktinis darbas",
+          "v": 3,
+          "k": "Procedura PA-5 parengta."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.1",
+          "n": "Vadybos sistema",
+          "v": 3,
+          "k": "Kokybes vadovas parengtas pagal ISO 15189."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.3",
+          "n": "Dokumentu valdymas",
+          "v": 3,
+          "k": "Dokumentai valdomi DVS."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.4.2",
+          "n": "Irašu keitimas",
+          "v": 2,
+          "k": "Atsekamumas pagerejęs, ne visada pilnai dokumentuojama."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.7",
+          "n": "Neatitiktys ir korekciniai veiksmai",
+          "v": 3,
+          "k": "Procedura PA-5 veikia."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.8",
+          "n": "Vidaus auditai",
+          "v": 3,
+          "k": "Auditai pagal plana 1F-PA-8."
+        }
+      ]
+    },
+    {
+      "id": "2VA/2025",
+      "location": "Statybininku g. 16, Kaunas",
+      "type": "Laboratory",
+      "standard": "ISO 15189:2023",
+      "auditor": "Ruta Stankeviciene",
+      "url": "",
+      "criteria": [
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.1",
+          "n": "Nesališkumas",
+          "v": 3,
+          "k": "Nešališkumo deklaracijos pasirašytos."
+        },
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.2",
+          "n": "Konfidencialumas",
+          "v": 3,
+          "k": "Duomenu apsauga užtikrinta."
+        },
+        {
+          "s": "4. Bendrieji reikalavimai",
+          "c": "4.3",
+          "n": "Reikalavimai del pacientu",
+          "v": 2,
+          "k": "Informacija teikiama, taciau ne visada laiku atnaujinama."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.1",
+          "n": "Juridinis asmuo",
+          "v": 3,
+          "k": "Registruota pagal LR isatymus."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.2",
+          "n": "Laboratorijos vadovas",
+          "v": 3,
+          "k": "Vadove turinti 15 metu patirtı."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.5",
+          "n": "Tikslai ir politika",
+          "v": 3,
+          "k": "Metiniai tikslai su rodikliais patvirtinti."
+        },
+        {
+          "s": "5. Strukturiniai reikalavimai",
+          "c": "5.6",
+          "n": "Rizikos valdymas",
+          "v": 2,
+          "k": "Rizikos vertinimas atliktas, taciau neapima visu sriciu."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.1",
+          "n": "Bendrieji ištekliai",
+          "v": 3,
+          "k": "Iranga moderni, 2023 m. atnaujinta."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.2",
+          "n": "Personalas",
+          "v": 3,
+          "k": "6 laborantai, visi su reikiama kvalifikacija."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.3",
+          "n": "Patalpos ir aplinkos salygos",
+          "v": 3,
+          "k": "Renovuotos patalpos, tinkamos salygos."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.2",
+          "n": "Reagentu saugojimas",
+          "v": 3,
+          "k": "Temperaturu kontrole automatizuota."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.6.4",
+          "n": "Reagentu atsargu valdymas",
+          "v": 3,
+          "k": "Atskiros zonos priimtiems ir nepriimtiems reagentams."
+        },
+        {
+          "s": "6. Reikalavimai ištekliams",
+          "c": "6.7",
+          "n": "Paslaugu teikimo sutartys",
+          "v": 3,
+          "k": "Visos sutartys galiojančios."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.2",
+          "n": "Procesai prieš tyrima",
+          "v": 3,
+          "k": "Meginiu emimo instrukcija aiški."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3",
+          "n": "Tyrimo procesai",
+          "v": 3,
+          "k": "SOP dokumentacija pilna."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.3.7",
+          "n": "Rezultatu patikimumo monitoringas",
+          "v": 3,
+          "k": "Menesines ataskaitos rengiamos."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.4.2",
+          "n": "Meginiu tvarkymas po tyrimo",
+          "v": 3,
+          "k": "Šaldytuvas 4C, temperaturu žurnalas pildomas."
+        },
+        {
+          "s": "7. Proceso reikalavimai",
+          "c": "7.5",
+          "n": "Neatitiktinis darbas",
+          "v": 2,
+          "k": "Procedura yra, taciau darbuotojai ne visada ja taiko."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.1",
+          "n": "Vadybos sistema",
+          "v": 3,
+          "k": "ISO 15189 reikalavimai pilnai igyvendinti."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.3",
+          "n": "Dokumentu valdymas",
+          "v": 3,
+          "k": "Elektroninis dokumentu valdymas."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.4.2",
+          "n": "Irašu keitimas",
+          "v": 3,
+          "k": "Visi pakeitimai fiksuojami su data."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.7",
+          "n": "Neatitiktys ir korekciniai veiksmai",
+          "v": 3,
+          "k": "Sistema veikia efektyviai."
+        },
+        {
+          "s": "8. Vadybos reikalavimai",
+          "c": "8.8",
+          "n": "Vidaus auditai",
+          "v": 3,
+          "k": "Auditas atliktas pagal plana."
+        }
+      ]
+    },
+    {
+      "id": "3VA/2025",
+      "location": "Taikos pr. 48B, Klaipeda",
+      "type": "Polyclinic",
+      "standard": "VASPVT",
+      "auditor": "Agne Mickeviciene",
+      "url": "",
+      "criteria": [
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.1",
+          "n": "Pacientu teises",
+          "v": 3,
+          "k": "Informacija aiška, iškabinta registraturoje."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.2",
+          "n": "Informuoto sutikimo tvarka",
+          "v": 2,
+          "k": "Sutikimai gaunami, taciau ne visu proceduru metu."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.3",
+          "n": "Skundo nagrinejimo tvarka",
+          "v": 3,
+          "k": "Skundu registras pildomas, terminai laikomasi."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.4",
+          "n": "Neigaliuju prieinamumas",
+          "v": 2,
+          "k": "Rampa yra, taciau nera specialaus tualeto."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.1",
+          "n": "Gydytoju kvalifikacija",
+          "v": 3,
+          "k": "Licencijos galiojančios, TPT vykdomas."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.2",
+          "n": "Diagnostines iranga",
+          "v": 3,
+          "k": "Kalibravimo žurnalas pildomas reguliariai."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.3",
+          "n": "Vaistu saugojimas",
+          "v": 0,
+          "k": "NON-CONFORMITY: Šaldytu vaistu šaldytuvas +10C (norma +2-8C)."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.4",
+          "n": "Sterilizacija",
+          "v": 3,
+          "k": "Sterilizacijos protokolai patvirtinti."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.1",
+          "n": "Elektronine sveikatos istorija",
+          "v": 3,
+          "k": "ESI sistema integruota."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.2",
+          "n": "Duomenu apsauga",
+          "v": 3,
+          "k": "BDAR reikalavimai igyvendinti."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.3",
+          "n": "Archyvavimas",
+          "v": 2,
+          "k": "Archyvavimas atitinka, skaitmeninimas nevykdomas."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.1",
+          "n": "Nepageidaujamu ivykiu registravimas",
+          "v": 3,
+          "k": "Registras pildomas, analize kas ketvirtis."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.2",
+          "n": "Gaisrine sauga",
+          "v": 3,
+          "k": "Instruktažai atlikti, planai iškabinti."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.3",
+          "n": "Medicinos atlieku tvarkymas",
+          "v": 0,
+          "k": "NON-CONFORMITY: Aštrios atlieku ir buities atlieku konteineriai sumaišyti."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.4",
+          "n": "Biologines saugos priemones",
+          "v": 3,
+          "k": "PPE prieinamos visuose kabinetuose."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.1",
+          "n": "Personalo skaičius",
+          "v": 2,
+          "k": "Truksta vieno šeimos gydytojo."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.2",
+          "n": "Patalpu higiena",
+          "v": 3,
+          "k": "Higienines apžiuros aktas teigiamas."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.3",
+          "n": "Vidaus audito planas",
+          "v": 3,
+          "k": "Planas patvirtintas."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.4",
+          "n": "Kokybes politika",
+          "v": 3,
+          "k": "Darbuotojai supažindinti pasirašytinai."
+        }
+      ]
+    },
+    {
+      "id": "4VA/2025",
+      "location": "Taikos pr. 48C, Klaipeda",
+      "type": "Polyclinic",
+      "standard": "VASPVT",
+      "auditor": "Agne Mickeviciene",
+      "url": "",
+      "criteria": [
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.1",
+          "n": "Pacientu teises",
+          "v": 3,
+          "k": "Informacija aiškiai pateikta, atnaujinta 2025-01."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.2",
+          "n": "Informuoto sutikimo tvarka",
+          "v": 3,
+          "k": "Rašytiniai sutikimai gaunami visų proceduru metu."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.3",
+          "n": "Skundo nagrinejimo tvarka",
+          "v": 3,
+          "k": "Per 2024 m. gauti 3 skundai, visi išnagryneti laiku."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.4",
+          "n": "Neigaliuju prieinamumas",
+          "v": 3,
+          "k": "Pilnai pritaikyta — rampa, tualetas, liftas."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.1",
+          "n": "Gydytoju kvalifikacija",
+          "v": 3,
+          "k": "5 gydytojai, visos licencijos galiojančios."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.2",
+          "n": "Diagnostines iranga",
+          "v": 2,
+          "k": "Dalis iranga sena, planinis atnaujinimas 2026 m."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.3",
+          "n": "Vaistu saugojimas",
+          "v": 3,
+          "k": "Šaldytuvo temperaturu žurnalas pildomas kasdien."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.4",
+          "n": "Sterilizacija",
+          "v": 3,
+          "k": "Autoklavas tikrinamas pagal grafika."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.1",
+          "n": "Elektronine sveikatos istorija",
+          "v": 3,
+          "k": "ESPBI IS sistema naudojama pilnai."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.2",
+          "n": "Duomenu apsauga",
+          "v": 3,
+          "k": "Visi darbuotojai apmokyti BDAR."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.3",
+          "n": "Archyvavimas",
+          "v": 3,
+          "k": "Skaitmeninis archyvas pilnai sutvarkytas."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.1",
+          "n": "Nepageidaujamu ivykiu registravimas",
+          "v": 3,
+          "k": "2024 m. registruoti 5 ivykiai, visi išanalizuoti."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.2",
+          "n": "Gaisrine sauga",
+          "v": 3,
+          "k": "Priešgaisrines patikrinimas atliktas 2025-02."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.3",
+          "n": "Medicinos atlieku tvarkymas",
+          "v": 3,
+          "k": "Atlieku tvarkymo sutartis galioja."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.4",
+          "n": "Biologines saugos priemones",
+          "v": 2,
+          "k": "PPE yra, taciau viename kabinete truksta pirštinu."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.1",
+          "n": "Personalo skaičius",
+          "v": 3,
+          "k": "Pilnas etatas, visi postai užimti."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.2",
+          "n": "Patalpu higiena",
+          "v": 3,
+          "k": "Valu ir dezinfekcijos žurnalas tvarkingas."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.3",
+          "n": "Vidaus audito planas",
+          "v": 3,
+          "k": "Auditas vykdomas pagal metini plana."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.4",
+          "n": "Kokybes politika",
+          "v": 3,
+          "k": "Kokybes tikslai žinomi visiems darbuotojams."
+        }
+      ]
+    },
+    {
+      "id": "5VA/2025",
+      "location": "J. Zauerveino g. 9A, Klaipeda",
+      "type": "Polyclinic",
+      "standard": "VASPVT",
+      "auditor": "Viktorija Kazlauskiene",
+      "url": "",
+      "criteria": [
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.1",
+          "n": "Pacientu teises",
+          "v": 2,
+          "k": "Informacija yra, taciau truksta anglu k. versijos."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.2",
+          "n": "Informuoto sutikimo tvarka",
+          "v": 2,
+          "k": "Sutikimai gaunami, bet ne visada laiku."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.3",
+          "n": "Skundo nagrinejimo tvarka",
+          "v": 3,
+          "k": "Skundu nagrinejimo tvarka aiški."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.4",
+          "n": "Neigaliuju prieinamumas",
+          "v": 1,
+          "k": "NON-CONFORMITY: Nera prieinamumo pritaikymo neigaliesiems."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.1",
+          "n": "Gydytoju kvalifikacija",
+          "v": 3,
+          "k": "Specialistu licencijos galiojančios."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.2",
+          "n": "Diagnostines iranga",
+          "v": 3,
+          "k": "Moderni iranga, reguliariai kalibruojama."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.3",
+          "n": "Vaistu saugojimas",
+          "v": 2,
+          "k": "Temperaturu kontrole vykdoma, taciau žurnalas ne visada pildomas."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.4",
+          "n": "Sterilizacija",
+          "v": 3,
+          "k": "Sterilizacijos procesas dokumentuotas."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.1",
+          "n": "Elektronine sveikatos istorija",
+          "v": 3,
+          "k": "ESI pilnai naudojama."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.2",
+          "n": "Duomenu apsauga",
+          "v": 2,
+          "k": "BDAR politika yra, bet ne visi darbuotojai apmokyti."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.3",
+          "n": "Archyvavimas",
+          "v": 2,
+          "k": "Archyvavimas vykdomas, bet ne pagal naujausius reikalavimus."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.1",
+          "n": "Nepageidaujamu ivykiu registravimas",
+          "v": 3,
+          "k": "Sistema veikia, ivykiai analizuojami."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.2",
+          "n": "Gaisrine sauga",
+          "v": 2,
+          "k": "Evakuacijos planas yra, bet darbuotojai nežino jo."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.3",
+          "n": "Medicinos atlieku tvarkymas",
+          "v": 3,
+          "k": "Atlieku tvarkymas tinkamas."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.4",
+          "n": "Biologines saugos priemones",
+          "v": 3,
+          "k": "PPE prieinamos, naudojamos."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.1",
+          "n": "Personalo skaičius",
+          "v": 2,
+          "k": "Truksta vienos slaugos specialistes."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.2",
+          "n": "Patalpu higiena",
+          "v": 3,
+          "k": "Patalpos švarios, tvarkingos."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.3",
+          "n": "Vidaus audito planas",
+          "v": 3,
+          "k": "Planas vykdomas."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.4",
+          "n": "Kokybes politika",
+          "v": 2,
+          "k": "Ne visi darbuotojai žino kokybes politika."
+        }
+      ]
+    },
+    {
+      "id": "6VA/2025",
+      "location": "Dragunų g. 2, Klaipeda",
+      "type": "Polyclinic",
+      "standard": "VASPVT",
+      "auditor": "Rasa Kazlauskiene",
+      "url": "",
+      "criteria": [
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.1",
+          "n": "Pacientu teises",
+          "v": 3,
+          "k": "Informacija aiški, pateikta keletu kalbu."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.2",
+          "n": "Informuoto sutikimo tvarka",
+          "v": 2,
+          "k": "Sutikimai ne visada gaunami raštu prieš procedura."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.3",
+          "n": "Skundo nagrinejimo tvarka",
+          "v": 3,
+          "k": "Skundu registras pildomas sistematiškai."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.4",
+          "n": "Neigaliuju prieinamumas",
+          "v": 2,
+          "k": "Rampa yra, taciau nera specialaus tualeto neigaliesiems."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.1",
+          "n": "Gydytoju kvalifikacija",
+          "v": 3,
+          "k": "Visi gydytojai su galiojančiomis licencijomis."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.2",
+          "n": "Diagnostines iranga",
+          "v": 3,
+          "k": "Iranga kalibruojama pagal plana."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.3",
+          "n": "Vaistu saugojimas",
+          "v": 0,
+          "k": "NON-CONFORMITY: Šaldytu vaistu šaldytuvas +10C. Rizika vaistu kokybei."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.4",
+          "n": "Sterilizacija",
+          "v": 3,
+          "k": "Sterilizacijos procesas tvarkingas."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.1",
+          "n": "Elektronine sveikatos istorija",
+          "v": 3,
+          "k": "ESI naudojama, irašai laiku."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.2",
+          "n": "Duomenu apsauga",
+          "v": 3,
+          "k": "BDAR reikalavimai igyvendinti."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.3",
+          "n": "Archyvavimas",
+          "v": 2,
+          "k": "Archyvavimas vykdomas, bet skaitmeninimas atidetas."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.1",
+          "n": "Nepageidaujamu ivykiu registravimas",
+          "v": 3,
+          "k": "Registravimo sistema veikia."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.2",
+          "n": "Gaisrine sauga",
+          "v": 3,
+          "k": "Gaisriniai instruktažai atlikti."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.3",
+          "n": "Medicinos atlieku tvarkymas",
+          "v": 0,
+          "k": "NON-CONFORMITY: Aštrios medicinos atlieku ir buities atlieku konteineriai sumaišyti."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.4",
+          "n": "Biologines saugos priemones",
+          "v": 3,
+          "k": "PPE prieinamos ir naudojamos."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.1",
+          "n": "Personalo skaičius",
+          "v": 2,
+          "k": "Truksta vieno šeimos gydytojo."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.2",
+          "n": "Patalpu higiena",
+          "v": 3,
+          "k": "Higienines apžiuros rezultatai teigiami."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.3",
+          "n": "Vidaus audito planas",
+          "v": 3,
+          "k": "Auditas planinis, vykdomas pagal grafika."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.4",
+          "n": "Kokybes politika",
+          "v": 3,
+          "k": "Darbuotojai žino ir laikosi kokybes politikos."
+        }
+      ]
+    },
+    {
+      "id": "7VA/2025",
+      "location": "Žemaiciu g. 4, Kretinga",
+      "type": "Polyclinic",
+      "standard": "VASPVT",
+      "auditor": "Daiva Jankauskaite",
+      "url": "",
+      "criteria": [
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.1",
+          "n": "Pacientu teises",
+          "v": 3,
+          "k": "Informacija pateikta, atnaujinta."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.2",
+          "n": "Informuoto sutikimo tvarka",
+          "v": 3,
+          "k": "Rašytiniai sutikimai gaunami visada."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.3",
+          "n": "Skundo nagrinejimo tvarka",
+          "v": 2,
+          "k": "Tvarka yra, taciau vienas skundas neišsprestas laiku."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.4",
+          "n": "Neigaliuju prieinamumas",
+          "v": 3,
+          "k": "Patalpos pilnai pritaikytos."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.1",
+          "n": "Gydytoju kvalifikacija",
+          "v": 3,
+          "k": "3 šeimos gydytojai, licencijos galiojančios."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.2",
+          "n": "Diagnostines iranga",
+          "v": 2,
+          "k": "Kai kuri iranga reikalauja atnaujinimo."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.3",
+          "n": "Vaistu saugojimas",
+          "v": 3,
+          "k": "Šaldytuvo temperaturu stebejimas vykdomas."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.4",
+          "n": "Sterilizacija",
+          "v": 3,
+          "k": "Autoklavas veikia tinkamai."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.1",
+          "n": "Elektronine sveikatos istorija",
+          "v": 3,
+          "k": "ESI naudojama."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.2",
+          "n": "Duomenu apsauga",
+          "v": 3,
+          "k": "BDAR laikomasi."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.3",
+          "n": "Archyvavimas",
+          "v": 3,
+          "k": "Archyvavimas tvarkingas."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.1",
+          "n": "Nepageidaujamu ivykiu registravimas",
+          "v": 3,
+          "k": "Sistema veikia."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.2",
+          "n": "Gaisrine sauga",
+          "v": 3,
+          "k": "Instruktažai atlikti."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.3",
+          "n": "Medicinos atlieku tvarkymas",
+          "v": 2,
+          "k": "Tvarkymas iš esmés atitinka, taciau ženklinimas nepilnas."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.4",
+          "n": "Biologines saugos priemones",
+          "v": 3,
+          "k": "PPE pilnai prieinamos."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.1",
+          "n": "Personalo skaičius",
+          "v": 3,
+          "k": "Visi postai užimti."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.2",
+          "n": "Patalpu higiena",
+          "v": 3,
+          "k": "Patalpos švarios."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.3",
+          "n": "Vidaus audito planas",
+          "v": 3,
+          "k": "Planas vykdomas."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.4",
+          "n": "Kokybes politika",
+          "v": 3,
+          "k": "Politika žinoma."
+        }
+      ]
+    },
+    {
+      "id": "8VA/2025",
+      "location": "Vytauto g. 8, Skuodas",
+      "type": "Polyclinic",
+      "standard": "VASPVT",
+      "auditor": "Daiva Jankauskaite",
+      "url": "",
+      "criteria": [
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.1",
+          "n": "Pacientu teises",
+          "v": 2,
+          "k": "Informacija šiek tiek pasenusi, reikia atnaujinti."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.2",
+          "n": "Informuoto sutikimo tvarka",
+          "v": 2,
+          "k": "Ne visu proceduru sutikimai rašytiniai."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.3",
+          "n": "Skundo nagrinejimo tvarka",
+          "v": 3,
+          "k": "Skundu nagrinejimas tvarkingas."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.4",
+          "n": "Neigaliuju prieinamumas",
+          "v": 1,
+          "k": "Numatytas pritaikymas, darbai planuojami 2025 m."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.1",
+          "n": "Gydytoju kvalifikacija",
+          "v": 3,
+          "k": "Gydytojai apmokyti, licencijos galiojančios."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.2",
+          "n": "Diagnostines iranga",
+          "v": 1,
+          "k": "Dalis iranga morališkai pasenusi, gedimai dažnoki."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.3",
+          "n": "Vaistu saugojimas",
+          "v": 2,
+          "k": "Temperaturu stebejimas ne automatizuotas."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.4",
+          "n": "Sterilizacija",
+          "v": 2,
+          "k": "Sterilizacija vykdoma, bet protokolai ne visada pildomi."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.1",
+          "n": "Elektronine sveikatos istorija",
+          "v": 3,
+          "k": "ESI naudojama."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.2",
+          "n": "Duomenu apsauga",
+          "v": 2,
+          "k": "BDAR diegiamas, dar ne visiškai igyvendintas."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.3",
+          "n": "Archyvavimas",
+          "v": 2,
+          "k": "Popierinis archyvas, skaitmeninimas nepradetas."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.1",
+          "n": "Nepageidaujamu ivykiu registravimas",
+          "v": 2,
+          "k": "Registravimas vykdomas, bet analize nereguliaria."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.2",
+          "n": "Gaisrine sauga",
+          "v": 3,
+          "k": "Instruktažai atlikti 2025-01."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.3",
+          "n": "Medicinos atlieku tvarkymas",
+          "v": 3,
+          "k": "Atlieku tvarkymas atitinka reikalavimus."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.4",
+          "n": "Biologines saugos priemones",
+          "v": 2,
+          "k": "PPE ne visuose kabinetuose pilnai prieinama."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.1",
+          "n": "Personalo skaičius",
+          "v": 1,
+          "k": "Truksta 2 šeimos gydytoju ir slaugos specialistes."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.2",
+          "n": "Patalpu higiena",
+          "v": 3,
+          "k": "Patalpos švarios ir tvarkingos."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.3",
+          "n": "Vidaus audito planas",
+          "v": 2,
+          "k": "Planas yra, taciau ne visada vykdomas laiku."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.4",
+          "n": "Kokybes politika",
+          "v": 2,
+          "k": "Darbuotojai žino, taciau ne visada laikosi."
+        }
+      ]
+    },
+    {
+      "id": "9VA/2025",
+      "location": "Vilniaus g. 1A, Skuodas",
+      "type": "Polyclinic",
+      "standard": "VASPVT",
+      "auditor": "Egle Paulauskaite",
+      "url": "",
+      "criteria": [
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.1",
+          "n": "Pacientu teises",
+          "v": 3,
+          "k": "Informacija pateikta, aiški ir suprantama."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.2",
+          "n": "Informuoto sutikimo tvarka",
+          "v": 3,
+          "k": "Rašytiniai sutikimai gaunami visose situacijose."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.3",
+          "n": "Skundo nagrinejimo tvarka",
+          "v": 3,
+          "k": "Skundu nagrinejimas vykdomas pagal tvarka."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.4",
+          "n": "Neigaliuju prieinamumas",
+          "v": 2,
+          "k": "Pagrindiniai reikalavimai tenkinami, bet tobuletinu."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.1",
+          "n": "Gydytoju kvalifikacija",
+          "v": 3,
+          "k": "Visi gydytojai turi galiojančias licencijas."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.2",
+          "n": "Diagnostines iranga",
+          "v": 3,
+          "k": "Iranga moderni ir tinkamai prižiurima."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.3",
+          "n": "Vaistu saugojimas",
+          "v": 3,
+          "k": "Temperaturu stebejimas automatizuotas."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.4",
+          "n": "Sterilizacija",
+          "v": 3,
+          "k": "Sterilizacijos protokolai pildomi reguliariai."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.1",
+          "n": "Elektronine sveikatos istorija",
+          "v": 3,
+          "k": "ESI integruota su centrine sistema."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.2",
+          "n": "Duomenu apsauga",
+          "v": 3,
+          "k": "BDAR pilnai igyvendintas."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.3",
+          "n": "Archyvavimas",
+          "v": 3,
+          "k": "Skaitmeninis archyvas tvarkingas."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.1",
+          "n": "Nepageidaujamu ivykiu registravimas",
+          "v": 3,
+          "k": "Sistema veikia, ivykiai analizuojami kiekvienam atveju."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.2",
+          "n": "Gaisrine sauga",
+          "v": 3,
+          "k": "Visi darbuotojai žino evakuacijos plana."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.3",
+          "n": "Medicinos atlieku tvarkymas",
+          "v": 3,
+          "k": "Atlieku tvarkymas pilnai atitinka reikalavimus."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.4",
+          "n": "Biologines saugos priemones",
+          "v": 3,
+          "k": "PPE prieinamos visuose kabinetuose."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.1",
+          "n": "Personalo skaičius",
+          "v": 3,
+          "k": "Visi etato vietos užimtos."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.2",
+          "n": "Patalpu higiena",
+          "v": 3,
+          "k": "Valymosi ir dezinfekcijos žurnalai tvarkingi."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.3",
+          "n": "Vidaus audito planas",
+          "v": 3,
+          "k": "Auditas atliekamas pagal plana."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.4",
+          "n": "Kokybes politika",
+          "v": 3,
+          "k": "Visi darbuotojai supažindinti ir laikosi."
+        }
+      ]
+    },
+    {
+      "id": "10VA/2025",
+      "location": "Statybininku g. 16, Kaunas",
+      "type": "Polyclinic",
+      "standard": "VASPVT",
+      "auditor": "Ruta Stankeviciene",
+      "url": "",
+      "criteria": [
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.1",
+          "n": "Pacientu teises",
+          "v": 3,
+          "k": "Informacija pateikta trijomis kalbomis."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.2",
+          "n": "Informuoto sutikimo tvarka",
+          "v": 3,
+          "k": "Elektroniniu sutikimu sistema diegiama."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.3",
+          "n": "Skundo nagrinejimo tvarka",
+          "v": 3,
+          "k": "Skundu sistema skaitmenizuota 2024 m."
+        },
+        {
+          "s": "I skyrius. I pacienta orientuota priežiura",
+          "c": "1.4",
+          "n": "Neigaliuju prieinamumas",
+          "v": 3,
+          "k": "Pilnai pritaikytos patalpos, liftas, specialus tualetas."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.1",
+          "n": "Gydytoju kvalifikacija",
+          "v": 3,
+          "k": "8 gydytojai, TPT planas sudaromas kasmet."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.2",
+          "n": "Diagnostines iranga",
+          "v": 3,
+          "k": "Iranga atnaujinta 2024 m."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.3",
+          "n": "Vaistu saugojimas",
+          "v": 3,
+          "k": "Šaldytuvo temperature stebima automatiskai."
+        },
+        {
+          "s": "II skyrius. Klinikiné priežiura",
+          "c": "2.4",
+          "n": "Sterilizacija",
+          "v": 3,
+          "k": "Sterilizacijos procesas pilnai dokumentuotas."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.1",
+          "n": "Elektronine sveikatos istorija",
+          "v": 3,
+          "k": "Pilnai integruota ESI."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.2",
+          "n": "Duomenu apsauga",
+          "v": 3,
+          "k": "BDAR auditas atliktas 2024 m., pastabų nebuvo."
+        },
+        {
+          "s": "III skyrius. Informacijos valdymas",
+          "c": "3.3",
+          "n": "Archyvavimas",
+          "v": 3,
+          "k": "Pilnai skaitmenizuotas archyvas."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.1",
+          "n": "Nepageidaujamu ivykiu registravimas",
+          "v": 3,
+          "k": "Elektroniné sistema, realaus laiko analize."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.2",
+          "n": "Gaisrine sauga",
+          "v": 3,
+          "k": "Automatine priešgaisrines sistema."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.3",
+          "n": "Medicinos atlieku tvarkymas",
+          "v": 3,
+          "k": "Atlieku tvarkymo sutartis, surinkimas 2x/sav."
+        },
+        {
+          "s": "IV skyrius. Sauga ir kokybe",
+          "c": "4.4",
+          "n": "Biologines saugos priemones",
+          "v": 3,
+          "k": "PPE atsargos 3 menu, automatinis papildymas."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.1",
+          "n": "Personalo skaičius",
+          "v": 3,
+          "k": "Pilnas personalas, rezervinis sarasas."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.2",
+          "n": "Patalpu higiena",
+          "v": 3,
+          "k": "Profesionali valymo imone, kasdienine kontrole."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.3",
+          "n": "Vidaus audito planas",
+          "v": 3,
+          "k": "Metinis planas su tarpiniais patikrinimais."
+        },
+        {
+          "s": "V skyrius. Istaigu ištekliai",
+          "c": "5.4",
+          "n": "Kokybes politika",
+          "v": 3,
+          "k": "Kokybes vadybos sistema sertifikuota."
         }
       ]
     }
   ],
   "recommendations": [
     {
-      "auditId": "1VA/2025",
+      "auditId": "1VA/2023",
       "c": "6.6.2",
       "p": "critical",
-      "t": "Immediately check refrigerator temperature control system. Ensure +2–8°C. Check all reagents for viability.",
-      "r": "Laboratory manager",
-      "d": "2025-07-15",
-      "done": false
+      "t": "Nedelsiant patikrinti šaldytuvo temperaturu reguliavimo sistema. Užtikrinti +2-8C.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2023-08-01",
+      "done": true
     },
     {
-      "auditId": "1VA/2025",
+      "auditId": "1VA/2023",
       "c": "6.6.4",
       "p": "critical",
-      "t": "Physically separate accepted and unverified reagents (separate shelves + visual markers).",
-      "r": "Laboratory manager",
-      "d": "2025-07-20",
-      "done": false
+      "t": "Atskirti priimtus ir nepriimtus reagentus fiziniu žymejimo sistema.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2023-08-15",
+      "done": true
     },
     {
-      "auditId": "1VA/2025",
+      "auditId": "1VA/2023",
       "c": "7.4.2",
       "p": "critical",
-      "t": "Change post-examination sample storage procedure — all samples at 2–8°C. Update PA-11.",
-      "r": "Laboratory manager",
-      "d": "2025-07-25",
+      "t": "Pakeisti meginiu laikymo po tyrimo tvarka — visi meginiai 2-8C.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2023-08-10",
+      "done": true
+    },
+    {
+      "auditId": "1VA/2023",
+      "c": "8.4.2",
+      "p": "critical",
+      "t": "Idiegti sistemingas irašu pakeitimu sekima su data ir atsakingu asmeniu.",
+      "r": "Kokybes vadovas",
+      "d": "2023-09-01",
+      "done": true
+    },
+    {
+      "auditId": "1VA/2024",
+      "c": "6.6.2",
+      "p": "critical",
+      "t": "Pakartotinis šaldytuvo temperaturu patikrinimas — vis dar neatitinka normu.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2024-08-01",
       "done": false
     },
     {
-      "auditId": "1VA/2025",
+      "auditId": "1VA/2024",
+      "c": "6.6.4",
+      "p": "critical",
+      "t": "Pilnai igyvendinti reagentu atskyrima — procesas pradetas, bet nebaigtas.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2024-08-15",
+      "done": false
+    },
+    {
+      "auditId": "1VA/2024",
+      "c": "7.4.2",
+      "p": "critical",
+      "t": "Meginiu laikymo problema vis dar neišspresta — reikalingi papildomi veiksmai.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2024-08-20",
+      "done": false
+    },
+    {
+      "auditId": "1VA/2024",
       "c": "8.4.2",
       "p": "medium",
-      "t": "Implement systematic record change tracking mechanism with date and responsible person.",
-      "r": "Quality manager",
-      "d": "2025-08-01",
+      "t": "Irašu atsekamumas pagerejęs, taciau reikia pilno diegimo.",
+      "r": "Kokybes vadovas",
+      "d": "2024-09-01",
       "done": false
     },
     {
       "auditId": "1VA/2025",
-      "c": "7.3.7",
+      "c": "6.6.2",
       "p": "medium",
-      "t": "Prepare monthly trend analysis procedure with specific indicators and review frequency.",
-      "r": "Laboratory manager",
-      "d": "2025-08-15",
+      "t": "Baigti šaldytuvo temperaturu kontroles automatizavima ir diegti žurnala.",
+      "r": "Laboratorijos vedėjas",
+      "d": "2025-08-01",
       "done": false
     },
     {
       "auditId": "1VA/2025",
       "c": "5.6",
       "p": "low",
-      "t": "Extend risk management plan 6F-PA-8 to cover all three process stages: pre-, during and post-examination.",
-      "r": "Quality manager",
+      "t": "Papildyti riziku valdymo plana visais proceso etapais.",
+      "r": "Kokybes vadovas",
       "d": "2025-09-01",
+      "done": false
+    },
+    {
+      "auditId": "3VA/2025",
+      "c": "2.3",
+      "p": "critical",
+      "t": "Nedelsiant patikrinti ir sutaisyti šaldytu vaistu šaldytuva. Visi vaistai perpatikrinti.",
+      "r": "Padalinio vadove",
+      "d": "2025-07-10",
+      "done": false
+    },
+    {
+      "auditId": "3VA/2025",
+      "c": "4.3",
+      "p": "critical",
+      "t": "Nedelsiant atskirti medicinos atlieku ir buities atlieku konteinerius. Personalo instruktuoti.",
+      "r": "Atlieku tvarkymo atsakingas",
+      "d": "2025-07-10",
+      "done": false
+    },
+    {
+      "auditId": "5VA/2025",
+      "c": "1.4",
+      "p": "medium",
+      "t": "Parengti neigaliuju prieinamumo pritaikymo plana su biudžetu ir terminais.",
+      "r": "Padalinio vadovas",
+      "d": "2025-09-01",
+      "done": false
+    },
+    {
+      "auditId": "6VA/2025",
+      "c": "2.3",
+      "p": "critical",
+      "t": "Nedelsiant patikrinti šaldytu vaistu šaldytuva. Temperaturu problema ta pati kaip Taikos 48B.",
+      "r": "Padalinio vadove",
+      "d": "2025-07-15",
+      "done": false
+    },
+    {
+      "auditId": "6VA/2025",
+      "c": "4.3",
+      "p": "critical",
+      "t": "Atskirti medicinos ir buities atlieku konteinerius. Ženklinimo sistema privaloma.",
+      "r": "Atlieku tvarkymo atsakingas",
+      "d": "2025-07-15",
+      "done": false
+    },
+    {
+      "auditId": "8VA/2025",
+      "c": "2.2",
+      "p": "medium",
+      "t": "Parengti irango atnaujinimo plana su prioritetais ir finansavimu.",
+      "r": "Padalinio vadovas",
+      "d": "2025-10-01",
+      "done": false
+    },
+    {
+      "auditId": "8VA/2025",
+      "c": "5.1",
+      "p": "medium",
+      "t": "Inicijuoti gydytoju paieškas, laikinai apsvarstyti konsultacinius susitarimus.",
+      "r": "Personalo vadovas",
+      "d": "2025-08-01",
       "done": false
     }
   ]
