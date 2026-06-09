@@ -170,7 +170,10 @@
           "v": 2,
           "k": "Auditai vykdomi neregulariai."
         }
-      ]
+      ],
+      "specialist": "Laboratorija (ISO 15189)",
+      "city": "Klaipėda",
+      "year": 2023
     },
     {
       "id": "1VA/2024",
@@ -341,7 +344,10 @@
           "v": 3,
           "k": "Auditai vykdomi pagal plana."
         }
-      ]
+      ],
+      "specialist": "Laboratorija (ISO 15189)",
+      "city": "Klaipėda",
+      "year": 2024
     },
     {
       "id": "1VA/2025",
@@ -512,7 +518,10 @@
           "v": 3,
           "k": "Auditai pagal plana 1F-PA-8."
         }
-      ]
+      ],
+      "specialist": "Laboratorija (ISO 15189)",
+      "city": "Klaipėda",
+      "year": 2025
     },
     {
       "id": "2VA/2025",
@@ -683,7 +692,10 @@
           "v": 3,
           "k": "Auditas atliktas pagal plana."
         }
-      ]
+      ],
+      "specialist": "Laboratorija (ISO 15189)",
+      "city": "Kaunas",
+      "year": 2025
     },
     {
       "id": "3VA/2025",
@@ -826,7 +838,10 @@
           "v": 3,
           "k": "Darbuotojai supažindinti pasirašytinai."
         }
-      ]
+      ],
+      "specialist": "Šeimos gydytojas",
+      "city": "Klaipėda",
+      "year": 2025
     },
     {
       "id": "4VA/2025",
@@ -969,7 +984,10 @@
           "v": 3,
           "k": "Kokybes tikslai žinomi visiems darbuotojams."
         }
-      ]
+      ],
+      "specialist": "Šeimos gydytojas",
+      "city": "Klaipėda",
+      "year": 2025
     },
     {
       "id": "5VA/2025",
@@ -1112,7 +1130,10 @@
           "v": 2,
           "k": "Ne visi darbuotojai žino kokybes politika."
         }
-      ]
+      ],
+      "specialist": "Kardiologas",
+      "city": "Klaipėda",
+      "year": 2025
     },
     {
       "id": "6VA/2025",
@@ -1255,7 +1276,10 @@
           "v": 3,
           "k": "Darbuotojai žino ir laikosi kokybes politikos."
         }
-      ]
+      ],
+      "specialist": "Šeimos gydytojas",
+      "city": "Klaipėda",
+      "year": 2025
     },
     {
       "id": "7VA/2025",
@@ -1398,7 +1422,10 @@
           "v": 3,
           "k": "Politika žinoma."
         }
-      ]
+      ],
+      "specialist": "Šeimos gydytojas",
+      "city": "Kretinga",
+      "year": 2025
     },
     {
       "id": "8VA/2025",
@@ -1541,7 +1568,10 @@
           "v": 2,
           "k": "Darbuotojai žino, taciau ne visada laikosi."
         }
-      ]
+      ],
+      "specialist": "Šeimos gydytojas",
+      "city": "Skuodas",
+      "year": 2025
     },
     {
       "id": "9VA/2025",
@@ -1684,7 +1714,10 @@
           "v": 3,
           "k": "Visi darbuotojai supažindinti ir laikosi."
         }
-      ]
+      ],
+      "specialist": "Šeimos gydytojas",
+      "city": "Skuodas",
+      "year": 2025
     },
     {
       "id": "10VA/2025",
@@ -1827,7 +1860,10 @@
           "v": 3,
           "k": "Kokybes vadybos sistema sertifikuota."
         }
-      ]
+      ],
+      "specialist": "Šeimos gydytojas",
+      "city": "Kaunas",
+      "year": 2025
     }
   ],
   "recommendations": [
