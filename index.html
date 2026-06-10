@@ -456,6 +456,7 @@ function renderTab(name){
 
 // ── OVERVIEW ─────────────────────────────────────────────────────
 function rdOv(){
+  if(!ALL_AUDITS.length){document.getElementById("kpi-row").innerHTML='<div class="col-span-4 text-center py-10 text-sm text-on-surface-variant">Loading data...</div>';return;}
   var visible=AUDITS;
   if(!visible.length){
     document.getElementById("kpi-row").innerHTML='<div class="col-span-4 text-center py-8 text-sm text-on-surface-variant">No audits match current filters.</div>';
@@ -634,6 +635,8 @@ async function loadData(){
     }
     if(data.lastUpdated)document.getElementById("sb-footer").textContent="Updated: "+data.lastUpdated;
     buildFilterOptions();
+    AUDITS=ALL_AUDITS.slice();
+    RECS=ALL_RECS.slice();
     renderResultInfo();
     go("overview");
   }catch(e){
