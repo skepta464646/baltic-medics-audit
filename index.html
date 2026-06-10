@@ -14,9 +14,9 @@ tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#000000","on-p
 body{font-family:'Inter',system-ui,sans-serif;}
 .card-shadow{box-shadow:0 1px 3px rgba(0,0,0,.06);}
 .tab-page{display:none;}.tab-page.active{display:flex;flex-direction:column;gap:16px;}
-.nav-link{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:6px;color:rgba(255,255,255,.75);cursor:pointer;font-size:14px;font-weight:500;transition:all .15s;}
-.nav-link:hover{background:rgba(255,255,255,.1);color:#fff;}
-.nav-link.active{background:rgba(45,212,191,.15);color:#2dd4bf;font-weight:600;border-left:3px solid #2dd4bf;padding-left:9px;}
+.nav-link{display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:4px;color:rgba(255,255,255,.6);cursor:pointer;font-size:14px;font-weight:500;transition:all .15s;}
+.nav-link:hover{background:rgba(255,255,255,.08);color:#fff;}
+.nav-link.active{background:#141b2b;color:#6bd8cb;font-weight:600;}
 .ms{font-family:'Material Symbols Outlined';font-size:20px;font-style:normal;font-weight:400;line-height:1;vertical-align:middle;}
 .sb{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;font-weight:700;font-size:12px;}
 .s0{background:#fee2e2;color:#991b1b;}.s1{background:#fff7ed;color:#9a3412;}.s2{background:#dbeafe;color:#1e40af;}.s3{background:#dcfce7;color:#166534;}
@@ -85,15 +85,15 @@ body{font-family:'Inter',system-ui,sans-serif;}
 <body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden">
 
 <!-- SIDEBAR -->
-<nav class="hidden md:flex flex-col h-screen w-64 py-6 px-4 z-50 flex-shrink-0" style="background:#1e2336;border-right:1px solid rgba(255,255,255,.08);">
+<nav class="hidden md:flex bg-tertiary flex-col h-screen w-64 py-6 px-4 z-50 flex-shrink-0 border-r border-outline-variant/20">
   <div class="mb-8">
-    <div class="rounded-lg flex items-center justify-center mb-3" style="width:32px;height:32px;background:#006a61;">
+    <div class="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center mb-3">
       <span class="material-symbols-outlined text-white" style="font-size:18px;">clinical_notes</span>
     </div>
-    <h1 style="font-size:15px;font-weight:700;color:#ffffff;">Baltic Medics</h1>
-    <p style="font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;">Clinical Audit Portal</p>
+    <h1 class="text-base font-bold text-white">Baltic Medics</h1>
+    <p class="text-xs text-white/50 mt-0.5 uppercase tracking-widest">Clinical Audit Portal</p>
   </div>
-  <div class="rounded-lg p-3 mb-4" id="sb-badge" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);">
+  <div class="bg-white/8 border border-white/10 rounded-lg p-3 mb-4" id="sb-badge">
     <div class="text-xs font-bold text-secondary-fixed-dim">Loading...</div>
   </div>
   <div class="flex-1 space-y-0.5">
@@ -103,7 +103,7 @@ body{font-family:'Inter',system-ui,sans-serif;}
     <div class="nav-link" onclick="go('rec')" id="nav-rec"><span class="ms">assignment_turned_in</span>Recommendations</div>
     <div class="nav-link" onclick="go('reports')" id="nav-reports"><span class="ms">description</span>Audit reports</div>
   </div>
-  <div class="mt-auto text-center" id="sb-footer" style="padding-top:16px;border-top:1px solid rgba(255,255,255,.08);font-size:10px;color:rgba(255,255,255,.25);"></div>
+  <div class="mt-auto pt-4 border-t border-white/10 text-xs text-white/25 text-center" id="sb-footer"></div>
 </nav>
 
 <!-- MAIN -->
@@ -456,7 +456,6 @@ function renderTab(name){
 
 // ── OVERVIEW ─────────────────────────────────────────────────────
 function rdOv(){
-  if(!ALL_AUDITS.length){document.getElementById("kpi-row").innerHTML='<div class="col-span-4 text-center py-10 text-sm text-on-surface-variant">Loading data...</div>';return;}
   var visible=AUDITS;
   if(!visible.length){
     document.getElementById("kpi-row").innerHTML='<div class="col-span-4 text-center py-8 text-sm text-on-surface-variant">No audits match current filters.</div>';
@@ -553,32 +552,31 @@ function exportWord(){
   var today=new Date().toISOString().split("T")[0];
   var filteredIds=AUDITS.map(function(x){return x.id;});
   var ar=ALL_RECS.filter(function(r){return filteredIds.indexOf(r.auditId)>=0;});
-  if(!ar.length)return;
+  if(!ar.length){alert("No recommendations to export.");return;}
 
   var rows=ar.map(function(r,i){
     var a=AUDITS.find(function(x){return x.id===r.auditId;})||{};
     var crit=a.criteria?a.criteria.find(function(c){return c.c===r.c;}):null;
     var sec=crit?crit.s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""):"";
-    var std=a.standard&&a.standard.indexOf("ISO")>=0?"LST EN ISO 15189:2023":"VASPVT";
-    var bg=r.done?"":"";
+    var std=(a.standard&&a.standard.indexOf("ISO")>=0)?"LST EN ISO 15189:2023":"VASPVT";
     var doneDate=r.done?r.d:"";
-    return '<tr>'
-      +'<td style="border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;">'+(i+1)+'</td>'
-      +'<td style="border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;">'+r.auditId+'</td>'
-      +'<td style="border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;">'+r.t+'</td>'
-      +'<td style="border:1px solid #000;padding:4px 5px;text-align:center;font-size:8pt;vertical-align:top;">'+std+'</td>'
-      +'<td style="border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;">'+sec+'</td>'
-      +'<td style="border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;">'+(a.auditor||"")+'</td>'
-      +'<td style="border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;">'+r.r+'</td>'
-      +'<td style="border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;">'+r.d+'</td>'
-      +'<td style="border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;">'+doneDate+'</td>'
-      +'</tr>';
-  }).join('');
+    return "<tr>"
+      +"<td style=\"border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;\">"+(i+1)+"</td>"
+      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+r.auditId+"</td>"
+      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+r.t+"</td>"
+      +"<td style=\"border:1px solid #000;padding:4px 5px;text-align:center;font-size:8pt;vertical-align:top;\">"+std+"</td>"
+      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+sec+"</td>"
+      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+(a.auditor||"")+"</td>"
+      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+r.r+"</td>"
+      +"<td style=\"border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;\">"+r.d+"</td>"
+      +"<td style=\"border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;\">"+doneDate+"</td>"
+      +"</tr>";
+  }).join("");
 
   var locations=[...new Set(AUDITS.map(function(a){return a.location;}))].join(", ");
 
-  var wh="<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>"
-    +"<head><meta charset='utf-8'><style>"
+  var wh="<html xmlns:o=\'urn:schemas-microsoft-com:office:office\' xmlns:w=\'urn:schemas-microsoft-com:office:word\' xmlns=\'http://www.w3.org/TR/REC-html40\'>"
+    +"<head><meta charset=\'utf-8\'><style>"
     +"@page{margin:2cm 1.5cm;}"
     +"body{font-family:Arial,sans-serif;font-size:10pt;}"
     +"h1{text-align:center;font-size:12pt;font-weight:bold;margin:0 0 4pt;}"
@@ -588,29 +586,29 @@ function exportWord(){
     +"th{border:1px solid #000;padding:4px 5px;background:#d9d9d9;font-size:8.5pt;font-weight:bold;text-align:center;vertical-align:middle;}"
     +"td{border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;}"
     +"</style></head><body>"
-    +"<h1>UŽDAROSIOS AKCINĖS BENDROVĖS „BALTIC MEDICS"</h1>"
-    +"<h2>REKOMENDACIJŲ VEIKLOS GERINIMUI REGISTRAS</h2>"
+    +"<h1>U\u017dDAROSIOS AKCIN\u0116S BENDROV\u0116S \u201eBaltić Medics\u201c</h1>"
+    +"<h2>REKOMENDACIJ\u0172 VEIKLOS GERINIMUI REGISTRAS</h2>"
     +"<p><strong>Sudarymo data:</strong> "+today+"</p>"
     +"<p><strong>Lokacijos:</strong> "+locations+"</p>"
-    +"<p><strong>Iš viso rekomendacijų:</strong> "+ar.length+" &nbsp;&nbsp; <strong>Įvykdyta:</strong> "+ar.filter(function(r){return r.done;}).length+"</p>"
+    +"<p><strong>I\u0161 viso rekomendacij\u0173:</strong> "+ar.length+" &nbsp;&nbsp; <strong>\u012fvykdyta:</strong> "+ar.filter(function(r){return r.done;}).length+"</p>"
     +"<table><thead><tr>"
-    +"<th style='width:28px;'>Eil. Nr.</th>"
-    +"<th style='width:75px;'>Vidaus audito ataskaitos Nr. ir data<sup>*</sup></th>"
+    +"<th style=\'width:28px;\'>Eil. Nr.</th>"
+    +"<th style=\'width:75px;\'>Vidaus audito ataskaitos Nr. ir data*</th>"
     +"<th>Rekomendacija</th>"
-    +"<th style='width:85px;'>Standartas</th>"
-    +"<th style='width:100px;'>Procesas / veikla</th>"
-    +"<th style='width:80px;'>Auditorius</th>"
-    +"<th style='width:100px;'>Atsakingas</th>"
-    +"<th style='width:75px;'>Planuojama įgyvendinimo data</th>"
-    +"<th style='width:75px;'>Įgyvendinimo data</th>"
+    +"<th style=\'width:90px;\'>Standartas</th>"
+    +"<th style=\'width:100px;\'>Procesas / veikla</th>"
+    +"<th style=\'width:80px;\'>Auditorius</th>"
+    +"<th style=\'width:100px;\'>Atsakingas</th>"
+    +"<th style=\'width:75px;\'>Planuojama \u012fgyvendinimo data</th>"
+    +"<th style=\'width:75px;\'>\u012fgyvendinimo data</th>"
     +"</tr></thead>"
     +"<tbody>"+rows+"</tbody></table>"
-    +"<p style='margin-top:10pt;font-size:8pt;color:#555;'><sup>*</sup> Stulpelis nepildomas, jeigu rekomendacija rašoma ne vidaus audito, o bet kurio kito proceso / veiklos vertinimo metu.</p>"
-    +"<p style='font-size:8pt;color:#555;'>VASPVT — Valstybinės akreditavimo sveikatos priežiūros veiklai tarnybos Nacionaliniai akreditavimo standartai šeimos medicinos paslaugai.</p>"
-    +"<p style='font-size:8pt;color:#555;'>LST EN ISO 15189:2023 — Medicinos laboratorijos. Kokybės ir kompetencijos reikalavimai.</p>"
-    +"<br><table style='border:none;width:100%;margin-top:20pt;'><tr>"
-    +"<td style='border:none;width:50%;font-size:10pt;'>Parengė: ___________________________<br><span style='font-size:8pt;color:#555;'>(vardas, pavardė, parašas)</span></td>"
-    +"<td style='border:none;width:50%;font-size:10pt;'>Data: ___________________________</td>"
+    +"<p style=\'margin-top:10pt;font-size:8pt;color:#555;\'>* Stulpelis nepildomas, jeigu rekomendacija ra\u0161oma ne vidaus audito, o bet kurio kito proceso / veiklos vertinimo metu.</p>"
+    +"<p style=\'font-size:8pt;color:#555;\'>VASPVT \u2014 Valstybin\u0117s akreditavimo sveikatos prie\u017ei\u016bros veiklai tarnybos Nacionaliniai akreditavimo standartai \u0161eimos medicinos paslaugai.</p>"
+    +"<p style=\'font-size:8pt;color:#555;\'>LST EN ISO 15189:2023 \u2014 Medicinos laboratorijos. Kokyb\u0117s ir kompetencijos reikalavimai.</p>"
+    +"<br><table style=\'border:none;width:100%;margin-top:20pt;\'><tr>"
+    +"<td style=\'border:none;width:50%;font-size:10pt;\'>Pareng\u0117: ___________________________<br><span style=\'font-size:8pt;color:#555;\'>(vardas, pavard\u0117, para\u0161as)</span></td>"
+    +"<td style=\'border:none;width:50%;font-size:10pt;\'>Data: ___________________________</td>"
     +"</tr></table>"
     +"</body></html>";
 
@@ -635,8 +633,6 @@ async function loadData(){
     }
     if(data.lastUpdated)document.getElementById("sb-footer").textContent="Updated: "+data.lastUpdated;
     buildFilterOptions();
-    AUDITS=ALL_AUDITS.slice();
-    RECS=ALL_RECS.slice();
     renderResultInfo();
     go("overview");
   }catch(e){
