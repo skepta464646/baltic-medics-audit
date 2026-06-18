@@ -23,8 +23,9 @@ body{font-family:'Inter',system-ui,sans-serif;}
 .pill{display:inline-flex;padding:2px 10px;border-radius:20px;font-size:11px;font-weight:600;}
 .p0{background:#fee2e2;color:#991b1b;}.p1{background:#fff7ed;color:#9a3412;}.p2{background:#dbeafe;color:#1e40af;}.p3{background:#dcfce7;color:#166534;}
 .bar-fill{transition:width .7s cubic-bezier(.4,0,.2,1);}
-.hm-cell{width:24px;height:24px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;cursor:default;transition:transform .12s;}
-.hm-cell:hover{transform:scale(1.2);z-index:10;position:relative;}
+/* Heatmap cells — larger for section-level view */
+.hm-cell{width:52px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;cursor:default;transition:transform .12s;}
+.hm-cell:hover{transform:scale(1.08);z-index:10;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.15);}
 .hm0{background:#fee2e2;color:#991b1b;}.hm1{background:#fff7ed;color:#9a3412;}.hm2{background:#dbeafe;color:#1e40af;}.hm3{background:#dcfce7;color:#166534;}.hmx{background:#f3f4f6;color:#9ca3af;}
 .tbl{width:100%;border-collapse:collapse;}
 .tbl th{padding:9px 14px;text-align:left;font-size:11px;font-weight:700;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid #e5e7eb;background:#f9fafb;white-space:nowrap;}
@@ -55,8 +56,8 @@ body{font-family:'Inter',system-ui,sans-serif;}
 .dd-search{width:100%;border:none;border-bottom:1px solid #f3f4f6;padding:10px 14px;font-size:13px;color:#374151;background:#f9fafb;outline:none;font-family:'Inter',sans-serif;}
 .dd-item{display:flex;align-items:center;gap:10px;padding:8px 14px;font-size:13px;color:#374151;cursor:pointer;transition:background .1s;}
 .dd-item:hover{background:#f9fafb;}
-.dd-item input[type=checkbox]{accent-color:#006a61;width:14px;height:14px;cursor:pointer;}
-.dd-item.sel{color:#006a61;font-weight:500;}
+.dd-item input[type=checkbox]{accent-color:#006a61;width:14px;height:14px;cursor:pointer;flex-shrink:0;}
+.dd-item.sel{color:#006a61;}
 .dd-footer{padding:8px 14px;border-top:1px solid #f3f4f6;display:flex;justify-content:space-between;}
 .dd-footer button{font-size:12px;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;padding:2px 6px;border-radius:4px;}
 .dd-footer .sel-all{color:#006a61;}.dd-footer .clr{color:#6b7280;}
@@ -80,6 +81,8 @@ body{font-family:'Inter',system-ui,sans-serif;}
 .audit-chip{padding:5px 14px;border-radius:20px;border:1px solid #e5e7eb;background:#fff;font-size:12px;font-weight:500;color:#6b7280;cursor:pointer;white-space:nowrap;transition:all .12s;}
 .audit-chip:hover{border-color:#006a61;color:#006a61;}
 .audit-chip.active{border-color:#006a61;background:#006a61;color:#fff;}
+/* HM section header */
+.hm-sec-header{writing-mode:vertical-lr;transform:rotate(180deg);font-size:10px;font-weight:600;color:#374151;height:80px;text-align:left;white-space:nowrap;padding:3px 4px;max-width:52px;overflow:hidden;text-overflow:ellipsis;}
 </style>
 </head>
 <body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden">
@@ -94,7 +97,7 @@ body{font-family:'Inter',system-ui,sans-serif;}
     <p class="text-xs text-white/50 mt-0.5 uppercase tracking-widest">Clinical Audit Portal</p>
   </div>
   <div class="bg-white/8 border border-white/10 rounded-lg p-3 mb-4" id="sb-badge">
-    <div class="text-xs font-bold text-secondary-fixed-dim">Loading...</div>
+    <div class="text-xs font-bold text-white/50">Loading data...</div>
   </div>
   <div class="flex-1 space-y-0.5">
     <div class="nav-link active" onclick="go('overview')" id="nav-overview"><span class="ms">dashboard</span>Overview</div>
@@ -173,15 +176,9 @@ body{font-family:'Inter',system-ui,sans-serif;}
           <span class="yr-lbl">to</span>
           <input type="number" id="yr-to" value="2030" min="2020" max="2030" onchange="applyYearFilter()"/>
         </div>
-        <div class="dd-shortcut" onclick="setYears(2025,2025)">
-          <span class="material-symbols-outlined" style="font-size:14px;">today</span>This year (2025)
-        </div>
-        <div class="dd-shortcut" onclick="setYears(2024,2025)">
-          <span class="material-symbols-outlined" style="font-size:14px;">history</span>Last 2 years
-        </div>
-        <div class="dd-shortcut" onclick="setYears(2020,2030)">
-          <span class="material-symbols-outlined" style="font-size:14px;">all_inclusive</span>All time
-        </div>
+        <div class="dd-shortcut" onclick="setYears(2025,2025)"><span class="material-symbols-outlined" style="font-size:14px;">today</span>This year (2025)</div>
+        <div class="dd-shortcut" onclick="setYears(2024,2025)"><span class="material-symbols-outlined" style="font-size:14px;">history</span>Last 2 years</div>
+        <div class="dd-shortcut" onclick="setYears(2020,2030)"><span class="material-symbols-outlined" style="font-size:14px;">all_inclusive</span>All time</div>
       </div>
     </div>
     <button class="clear-all" onclick="clearAllFilters()">
@@ -198,6 +195,7 @@ body{font-family:'Inter',system-ui,sans-serif;}
   <!-- SCROLLABLE CONTENT -->
   <div class="flex-1 overflow-y-auto p-6" id="main-content">
 
+    <!-- OVERVIEW -->
     <div class="tab-page active" id="page-overview">
       <div class="grid grid-cols-4 gap-3" id="kpi-row"></div>
       <div id="alert-block"></div>
@@ -206,7 +204,7 @@ body{font-family:'Inter',system-ui,sans-serif;}
           <div class="px-5 py-4 border-b border-outline-variant/50 flex items-center justify-between">
             <div>
               <div class="text-sm font-bold text-on-surface">Section compliance</div>
-              <div class="text-xs text-on-surface-variant mt-0.5" id="sec-sub"></div>
+              <div class="text-xs text-on-surface-variant mt-0.5" id="sec-sub">Aggregated across filtered audits</div>
             </div>
           </div>
           <div class="p-5" id="sec-bars"></div>
@@ -214,22 +212,22 @@ body{font-family:'Inter',system-ui,sans-serif;}
         <div class="ai-box">
           <div class="flex items-center gap-2 mb-3">
             <span class="ai-dot"></span>
-            <span class="text-xs font-bold text-secondary uppercase tracking-widest">AI Summary</span>
+            <span class="text-xs font-bold text-secondary uppercase tracking-widest">Summary</span>
           </div>
           <div id="ai-text" class="text-xs text-on-surface-variant leading-relaxed"></div>
         </div>
       </div>
       <div class="bg-white border border-outline-variant rounded-xl card-shadow">
         <div class="px-5 py-4 border-b border-outline-variant/50">
-          <div class="text-sm font-bold text-on-surface">Progress tracker</div>
-          <div class="text-xs text-on-surface-variant mt-0.5" id="prog-sub">Comparing audits for selected location</div>
+          <div class="text-sm font-bold text-on-surface">Location comparison</div>
+          <div class="text-xs text-on-surface-variant mt-0.5" id="prog-sub">Compliance % per location</div>
         </div>
         <div id="prog-table" class="overflow-x-auto"></div>
       </div>
     </div>
 
+    <!-- CRITERIA -->
     <div class="tab-page" id="page-criteria">
-      <!-- Audit selector -->
       <div id="audit-sel-wrap"></div>
       <div class="bg-white border border-outline-variant rounded-xl card-shadow overflow-hidden">
         <div class="px-5 py-3 border-b border-outline-variant/50 flex gap-2 flex-wrap items-center">
@@ -245,11 +243,12 @@ body{font-family:'Inter',system-ui,sans-serif;}
       </div>
     </div>
 
+    <!-- HEATMAP -->
     <div class="tab-page" id="page-heatmap">
       <div class="bg-white border border-outline-variant rounded-xl card-shadow">
         <div class="px-5 py-4 border-b border-outline-variant/50">
           <div class="text-sm font-bold text-on-surface">Standards compliance heatmap</div>
-          <div class="text-xs text-on-surface-variant mt-0.5">Rows = facilities · Columns = standards · Color = score</div>
+          <div class="text-xs text-on-surface-variant mt-0.5">Rows = facilities · Columns = sections · Color = average score (hover for details)</div>
         </div>
         <div class="p-5 overflow-x-auto" id="hm-wrap"></div>
         <div class="px-5 pb-4 flex gap-2 flex-wrap items-center">
@@ -261,6 +260,7 @@ body{font-family:'Inter',system-ui,sans-serif;}
       </div>
     </div>
 
+    <!-- RECOMMENDATIONS -->
     <div class="tab-page" id="page-rec">
       <div class="grid grid-cols-3 gap-3" id="rec-kpis"></div>
       <div class="bg-white border border-outline-variant rounded-xl card-shadow overflow-hidden">
@@ -282,10 +282,12 @@ body{font-family:'Inter',system-ui,sans-serif;}
       </div>
     </div>
 
+    <!-- REPORTS -->
     <div class="tab-page" id="page-reports">
       <div class="bg-white border border-outline-variant rounded-xl card-shadow overflow-hidden">
         <div class="px-5 py-4 border-b border-outline-variant/50">
           <div class="text-sm font-bold text-on-surface">Completed audits</div>
+          <div class="text-xs text-on-surface-variant mt-0.5" id="rep-meta"></div>
         </div>
         <div class="overflow-x-auto">
           <table class="tbl">
@@ -305,7 +307,11 @@ let ALL_AUDITS=[],ALL_RECS=[],AUDITS=[],RECS=[];
 let curPage="overview",secF="all",expRow=null,selAuditId=null;
 let F={cities:[],types:[],specs:[],yrFrom:2020,yrTo:2030};
 
-function gStats(a){var c=a.criteria,s=c.reduce(function(x,y){return x+y.v;},0),m=c.length*3;return{pct:Math.round(s/m*100),critical:c.filter(function(x){return x.v===0;}),secs:c.reduce(function(mp,x){(mp[x.s]||(mp[x.s]=[])).push(x);return mp;},{})};}
+// ── HELPERS ──────────────────────────────────────────────────────
+function gStats(a){
+  var c=a.criteria,s=c.reduce(function(x,y){return x+y.v;},0),m=c.length*3;
+  return{pct:m?Math.round(s/m*100):0,critical:c.filter(function(x){return x.v===0;}),secs:c.reduce(function(mp,x){(mp[x.s]||(mp[x.s]=[])).push(x);return mp;},{})};
+}
 function sClass(v){return "sb s"+v;}
 function pClass(v){return "pill p"+v;}
 function sLbl(v){return["Non-conforming","Partial","Substantial","Full"][v];}
@@ -313,6 +319,13 @@ function bCol(avg){return avg<1?"#ef4444":avg<2?"#f59e0b":avg<2.5?"#3b82f6":"#16
 function prC(p){return p==="critical"?"p0":p==="medium"?"p1":"p3";}
 function prL(p){return p==="critical"?"Critical":p==="medium"?"Medium":"Low";}
 function getYear(id){var m=id.match(/\/(\d{4})$/);return m?parseInt(m[1]):2025;}
+function shortSec(s){
+  // Return Roman numeral or number prefix, or first meaningful word
+  var m=s.match(/^([IVX]+|\d+)[\s\.]+(.{0,20})/);
+  if(m)return m[1];
+  return s.substring(0,6);
+}
+function stripCity(loc){return loc.replace(/,?\s*(Klaipėda|Kaunas|Kretinga|Skuodas|Vilnius)$/i,"").trim();}
 
 // ── FILTERS ──────────────────────────────────────────────────────
 function buildFilterOptions(){
@@ -323,7 +336,6 @@ function buildFilterOptions(){
   renderDDItems('type',types,F.types);
   renderDDItems('spec',specs,F.specs);
 }
-
 function renderDDItems(key,items,selected){
   var el=document.getElementById('dd-'+key+'-items');
   if(!el)return;
@@ -332,38 +344,39 @@ function renderDDItems(key,items,selected){
     return '<label class="dd-item'+(ck?' sel':'')+'"><input type="checkbox"'+(ck?' checked':'')+' onchange="toggleFilter(\''+key+'\',\''+v+'\',this.checked)"/> '+v+'</label>';
   }).join('');
 }
-
 function filterDDItems(key,q){
   var items=document.querySelectorAll('#dd-'+key+'-items .dd-item');
   items.forEach(function(el){el.style.display=el.textContent.toLowerCase().includes(q.toLowerCase())?'':'none';});
 }
-
 function toggleFilter(key,val,checked){
   var arr=key==='city'?F.cities:key==='type'?F.types:F.specs;
   if(checked){if(arr.indexOf(val)<0)arr.push(val);}
   else{var i=arr.indexOf(val);if(i>=0)arr.splice(i,1);}
   applyFilters();
 }
-
 function selectAll(key){
-  var all=key==='city'?[...new Set(ALL_AUDITS.map(function(a){return a.city||"Unknown";}))]
-         :key==='type'?[...new Set(ALL_AUDITS.map(function(a){return a.type;}))]
-         :[...new Set(ALL_AUDITS.map(function(a){return a.specialist||"N/A";}))];
+  var all=key==='city'?[...new Set(ALL_AUDITS.map(function(a){return a.city||"Unknown";}))]:
+          key==='type'?[...new Set(ALL_AUDITS.map(function(a){return a.type;}))]:
+          [...new Set(ALL_AUDITS.map(function(a){return a.specialist||"N/A";}))];
   if(key==='city')F.cities=all.slice();
   else if(key==='type')F.types=all.slice();
   else F.specs=all.slice();
   buildFilterOptions();applyFilters();
 }
-
 function clearDD(key){
   if(key==='city')F.cities=[];
   else if(key==='type')F.types=[];
   else F.specs=[];
   buildFilterOptions();applyFilters();
 }
-
-function clearAllFilters(){F={cities:[],types:[],specs:[],yrFrom:2020,yrTo:2030};buildFilterOptions();document.getElementById('yr-from').value=2020;document.getElementById('yr-to').value=2030;document.getElementById('yr-label').textContent='Period';applyFilters();}
-
+function clearAllFilters(){
+  F={cities:[],types:[],specs:[],yrFrom:2020,yrTo:2030};
+  buildFilterOptions();
+  document.getElementById('yr-from').value=2020;
+  document.getElementById('yr-to').value=2030;
+  document.getElementById('yr-label').textContent='Period';
+  applyFilters();
+}
 function applyYearFilter(){
   F.yrFrom=parseInt(document.getElementById('yr-from').value)||2020;
   F.yrTo=parseInt(document.getElementById('yr-to').value)||2030;
@@ -371,33 +384,32 @@ function applyYearFilter(){
   document.getElementById('yr-label').textContent=lbl;
   applyFilters();
 }
-
 function setYears(from,to){document.getElementById('yr-from').value=from;document.getElementById('yr-to').value=to;applyYearFilter();}
-
 function applyFilters(){
   AUDITS=ALL_AUDITS.filter(function(a){
-    var city=a.city||"Unknown", type=a.type, spec=a.specialist||"N/A", yr=a.year||getYear(a.id);
-    var cityOk=F.cities.length===0||F.cities.indexOf(city)>=0;
-    var typeOk=F.types.length===0||F.types.indexOf(type)>=0;
-    var specOk=F.specs.length===0||F.specs.indexOf(spec)>=0;
-    var yrOk=yr>=F.yrFrom&&yr<=F.yrTo;
-    return cityOk&&typeOk&&specOk&&yrOk;
+    var city=a.city||"Unknown",type=a.type,spec=a.specialist||"N/A",yr=a.year||getYear(a.id);
+    return (F.cities.length===0||F.cities.indexOf(city)>=0)
+        && (F.types.length===0||F.types.indexOf(type)>=0)
+        && (F.specs.length===0||F.specs.indexOf(spec)>=0)
+        && yr>=F.yrFrom&&yr<=F.yrTo;
   });
-  // Update button styles
   ['city','type','spec'].forEach(function(k){
     var arr=k==='city'?F.cities:k==='type'?F.types:F.specs;
     var btn=document.getElementById('btn-'+k);
-    if(arr.length>0){btn.classList.add('has-filters');var fc=btn.querySelector('.fc');if(!fc){fc=document.createElement('span');fc.className='fc';btn.appendChild(fc);}fc.textContent=arr.length;}
-    else{btn.classList.remove('has-filters');var fc=btn.querySelector('.fc');if(fc)fc.remove();}
+    if(arr.length>0){
+      btn.classList.add('has-filters');
+      var fc=btn.querySelector('.fc');
+      if(!fc){fc=document.createElement('span');fc.className='fc';btn.appendChild(fc);}
+      fc.textContent=arr.length;
+    }else{
+      btn.classList.remove('has-filters');
+      var fc=btn.querySelector('.fc');if(fc)fc.remove();
+    }
   });
   var btnYr=document.getElementById('btn-yr');
-  var yrActive=F.yrFrom!==2020||F.yrTo!==2030;
-  if(yrActive)btnYr.classList.add('has-filters');else btnYr.classList.remove('has-filters');
-  renderChips();
-  renderResultInfo();
-  renderTab(curPage);
+  (F.yrFrom!==2020||F.yrTo!==2030)?btnYr.classList.add('has-filters'):btnYr.classList.remove('has-filters');
+  renderChips();renderResultInfo();renderTab(curPage);
 }
-
 function renderChips(){
   var chips=[];
   F.cities.forEach(function(v){chips.push({label:v,key:'city',val:v});});
@@ -409,7 +421,6 @@ function renderChips(){
   row.style.display='flex';
   row.innerHTML=chips.map(function(c){return '<span class="chip">'+c.label+'<button onclick="removeChip(\''+c.key+'\',\''+c.val+'\')" aria-label="Remove">×</button></span>';}).join('');
 }
-
 function removeChip(key,val){
   if(key==='city'){var i=F.cities.indexOf(val);if(i>=0)F.cities.splice(i,1);}
   else if(key==='type'){var i=F.types.indexOf(val);if(i>=0)F.types.splice(i,1);}
@@ -417,12 +428,11 @@ function removeChip(key,val){
   else if(key==='yr'){F.yrFrom=2020;F.yrTo=2030;document.getElementById('yr-from').value=2020;document.getElementById('yr-to').value=2030;document.getElementById('yr-label').textContent='Period';}
   buildFilterOptions();applyFilters();
 }
-
 function renderResultInfo(){
   var el=document.getElementById('result-info');
+  if(!el)return;
   el.innerHTML='<strong>'+AUDITS.length+' audit'+(AUDITS.length!==1?'s':'')+' matching</strong> current filters &nbsp;·&nbsp; '+ALL_AUDITS.length+' total';
 }
-
 function toggleDD(id){
   var menu=document.getElementById('dd-'+id);
   var isOpen=menu.classList.contains('open');
@@ -441,11 +451,13 @@ function go(name){
   var titles={overview:"Overview",criteria:"Audit criteria",heatmap:"Standards heatmap",rec:"Recommendations",reports:"Audit reports"};
   document.getElementById("page-title").textContent=titles[name]||name;
   var tb=document.getElementById("topbar-actions");
-  if(name==="rec"){tb.innerHTML='<button onclick="exportWord()" class="flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-white rounded-lg text-xs font-semibold"><span class="material-symbols-outlined" style="font-size:13px;">download</span>Download Word</button>';}
-  else{var html='<button onclick="loadData()" class="flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface-container-low"><span class="material-symbols-outlined" style="font-size:13px;">refresh</span>Refresh</button>';tb.innerHTML=html;}
+  if(name==="rec"){
+    tb.innerHTML='<button onclick="exportWord()" class="flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-white rounded-lg text-xs font-semibold"><span class="material-symbols-outlined" style="font-size:13px;">download</span>Download Word</button>';
+  }else{
+    tb.innerHTML='<button onclick="loadData()" class="flex items-center gap-1.5 px-3 py-1.5 border border-outline-variant rounded-lg text-xs font-medium text-on-surface-variant hover:bg-surface-container-low"><span class="material-symbols-outlined" style="font-size:13px;">refresh</span>Refresh</button>';
+  }
   renderTab(name);
 }
-
 function renderTab(name){
   if(name==="overview")rdOv();
   else if(name==="criteria")rdCrit();
@@ -456,163 +468,312 @@ function renderTab(name){
 
 // ── OVERVIEW ─────────────────────────────────────────────────────
 function rdOv(){
-  var visible=AUDITS;
-  if(!visible.length){
+  if(!AUDITS.length){
     document.getElementById("kpi-row").innerHTML='<div class="col-span-4 text-center py-8 text-sm text-on-surface-variant">No audits match current filters.</div>';
-    document.getElementById("alert-block").innerHTML="";
-    document.getElementById("sec-bars").innerHTML="";
-    document.getElementById("ai-text").innerHTML="";
-    document.getElementById("prog-table").innerHTML="";
+    ["alert-block","sec-bars","ai-text","prog-table"].forEach(function(id){document.getElementById(id).innerHTML="";});
     return;
   }
-  var a=visible[0];
-  var st=gStats(a),pct=st.pct,crit=st.critical,secs=st.secs;
-  var totalCrit=visible.reduce(function(s,x){return s+gStats(x).critical.length;},0);
-  var openRecs=ALL_RECS.filter(function(r){return visible.some(function(a){return a.id===r.auditId;})&&!r.done;}).length;
-  document.getElementById("sec-sub").textContent=a.standard+" · "+a.id+" · "+visible.length+(visible.length>1?" audits shown":" audit shown");
-  var avgPct=Math.round(visible.reduce(function(s,x){return s+gStats(x).pct;},0)/visible.length);
-  var col=avgPct>=80?"#16a34a":avgPct>=50?"#ca8a04":"#dc2626";
+
+  // KPIs — aggregate across ALL filtered audits
+  var allPcts=AUDITS.map(function(a){return gStats(a).pct;});
+  var avgPct=Math.round(allPcts.reduce(function(s,v){return s+v;},0)/allPcts.length);
+  var totalCrit=AUDITS.reduce(function(s,a){return s+gStats(a).critical.length;},0);
+  var totalCriteria=AUDITS.reduce(function(s,a){return s+a.criteria.length;},0);
+  var filtIds=AUDITS.map(function(a){return a.id;});
+  var openRecs=ALL_RECS.filter(function(r){return filtIds.indexOf(r.auditId)>=0&&!r.done;}).length;
+  var col=avgPct>=80?"#16a34a":avgPct>=60?"#ca8a04":"#dc2626";
+
   document.getElementById("kpi-row").innerHTML=[
-    {l:"Avg. compliance",v:avgPct+"%",s:visible.length+" audits",c:col},
-    {l:"Criteria assessed",v:a.criteria.length,s:"In latest audit",c:"#1e40af"},
-    {l:"Critical issues",v:totalCrit,s:"Across filtered audits",c:"#dc2626"},
-    {l:"Open recommendations",v:openRecs,s:"Pending",c:"#d97706"}
-  ].map(function(k){return '<div class="bg-white border border-outline-variant rounded-xl p-4 card-shadow"><div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div><div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div><div class="text-xs text-on-surface-variant">'+k.s+'</div></div>';}).join("");
-  document.getElementById("alert-block").innerHTML=crit.length>0?'<div class="bg-red-50 border border-red-200 border-l-4 border-l-red-500 rounded-xl p-4"><div class="font-bold text-red-800 text-sm mb-2">&#9888; '+crit.length+' critical in latest audit ('+a.id+')</div>'+crit.map(function(c){return'<div class="text-xs text-red-700 mb-1"><code class="font-mono font-bold">'+c.c+'</code> — '+c.n+': '+c.k.replace(/^NON-CONFORMITY:\s*/i,"")+'</div>';}).join("")+'</div>':"";
-  document.getElementById("sec-bars").innerHTML=Object.entries(secs).map(function(e){
-    var nm=e[0],items=e[1],avg=items.reduce(function(a,c){return a+c.v;},0)/items.length;
-    var cr=items.filter(function(i){return i.v===0;}).length,bc=bCol(avg),sn=nm.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,"");
-    return '<div class="mb-4"><div class="flex justify-between mb-1.5"><span class="text-sm text-on-surface">'+sn+'</span><span class="text-sm font-bold" style="color:'+bc+';">'+avg.toFixed(1)+'/3.0'+(cr>0?' <span class="text-red-500 text-xs">'+cr+' crit</span>':"")+'</span></div><div class="h-1.5 bg-surface-container-high rounded-full overflow-hidden"><div class="bar-fill h-full rounded-full" style="width:0%;background:'+bc+';" data-w="'+((avg/3)*100).toFixed(0)+'"></div></div></div>';
+    {l:"Avg. compliance",v:avgPct+"%",s:AUDITS.length+" audits",c:col},
+    {l:"Criteria assessed",v:totalCriteria,s:"Across filtered audits",c:"#1e40af"},
+    {l:"Critical issues",v:totalCrit,s:"Score = 0",c:"#dc2626"},
+    {l:"Open recommendations",v:openRecs,s:"Pending action",c:"#d97706"}
+  ].map(function(k){
+    return '<div class="bg-white border border-outline-variant rounded-xl p-4 card-shadow">'
+      +'<div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div>'
+      +'<div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div>'
+      +'<div class="text-xs text-on-surface-variant">'+k.s+'</div>'
+      +'</div>';
+  }).join("");
+
+  // Alert block — critical issues across all filtered audits
+  var criticals=[];
+  AUDITS.forEach(function(a){gStats(a).critical.forEach(function(c){criticals.push({auditId:a.id,c:c});});});
+  document.getElementById("alert-block").innerHTML=criticals.length>0
+    ?'<div class="bg-red-50 border border-red-200 border-l-4 border-l-red-500 rounded-xl p-4">'
+      +'<div class="font-bold text-red-800 text-sm mb-2">&#9888; '+criticals.length+' critical non-conformities across '+AUDITS.length+' audit'+(AUDITS.length!==1?'s':'')+'</div>'
+      +criticals.slice(0,5).map(function(x){return'<div class="text-xs text-red-700 mb-1"><code class="font-mono font-bold">'+x.c.c+'</code> <span class="text-red-400">('+x.auditId+')</span> — '+x.c.n+'</div>';}).join("")
+      +(criticals.length>5?'<div class="text-xs text-red-500 mt-1">+ '+(criticals.length-5)+' more — see Audit criteria for details</div>':"")
+      +'</div>'
+    :"";
+
+  // Section bars — aggregate across ALL filtered audits
+  var allSecMap={};
+  AUDITS.forEach(function(a){
+    a.criteria.forEach(function(c){
+      if(!allSecMap[c.s])allSecMap[c.s]=[];
+      allSecMap[c.s].push(c.v);
+    });
+  });
+  document.getElementById("sec-sub").textContent=AUDITS.length+" audit"+(AUDITS.length!==1?"s":"")+" · aggregated";
+  document.getElementById("sec-bars").innerHTML=Object.entries(allSecMap).map(function(e){
+    var nm=e[0],vals=e[1];
+    var avg=vals.reduce(function(a,v){return a+v;},0)/vals.length;
+    var crits=vals.filter(function(v){return v===0;}).length;
+    var bc=bCol(avg);
+    var sn=nm.replace(/^[IVX]+[\s\.]+/,"").replace(/^\d+[\s\.]+/,"").replace(/^(reikalavimai|Reikalavimai)/,"").trim();
+    if(sn.length>45)sn=sn.substring(0,45)+"…";
+    return '<div class="mb-4"><div class="flex justify-between mb-1.5">'
+      +'<span class="text-sm text-on-surface" title="'+nm+'">'+sn+'</span>'
+      +'<span class="text-sm font-bold" style="color:'+bc+';">'+avg.toFixed(1)+'/3.0'+(crits>0?' <span class="text-red-500 text-xs font-normal">'+crits+' crit</span>':"")+'</span>'
+      +'</div>'
+      +'<div class="h-2 bg-surface-container-high rounded-full overflow-hidden">'
+      +'<div class="bar-fill h-full rounded-full" style="width:0%;background:'+bc+';" data-w="'+((avg/3)*100).toFixed(0)+'"></div>'
+      +'</div></div>';
   }).join("");
   setTimeout(function(){document.querySelectorAll(".bar-fill").forEach(function(e){e.style.width=e.dataset.w+"%";});},60);
-  var critR=ALL_RECS.filter(function(r){return r.auditId===a.id&&r.p==="critical"&&!r.done;});
-  document.getElementById("ai-text").innerHTML='<strong class="text-on-surface">Latest: '+a.id+' — '+pct+'%</strong> compliance.<br><br><strong class="text-on-surface">Critical:</strong> '+(crit.length>0?crit.slice(0,2).map(function(c){return c.c+" ("+c.n+")";}).join(", ")+(crit.length>2?" +"+(crit.length-2)+" more":"")+" require action.":"None found. ✓")+'<br><br><strong class="text-on-surface">Priority:</strong> '+(critR.length>0?critR.slice(0,2).map(function(r,i){return"("+(i+1)+") "+r.t.substring(0,50)+"...";}).join(" "):"All critical actions resolved. ✓");
-  // Progress: compare audits for same location
-  var sameLoc=ALL_AUDITS.filter(function(x){return x.location===a.location;}).sort(function(a,b){return (a.year||0)-(b.year||0);});
-  document.getElementById("prog-sub").textContent="Progress for "+a.location+" ("+sameLoc.length+" audits)";
-  if(sameLoc.length<2){document.getElementById("prog-table").innerHTML='<div class="p-5 text-sm text-on-surface-variant">Only one audit available for this location — no comparison yet.</div>';return;}
-  var oldest=sameLoc[0],latest=sameLoc[sameLoc.length-1];
-  var prevScores={};oldest.criteria.forEach(function(c){prevScores[c.c]=c.v;});
-  var changed=latest.criteria.filter(function(c){return prevScores[c.c]!==undefined&&prevScores[c.c]!==c.v;});
-  document.getElementById("prog-table").innerHTML='<div class="px-5 py-2 text-xs text-on-surface-variant border-b border-outline-variant/50">Comparing <strong>'+oldest.id+'</strong> → <strong>'+latest.id+'</strong></div><table class="tbl"><thead><tr><th>Code</th><th>Criterion</th><th class="text-center">'+oldest.id+'</th><th class="text-center">'+latest.id+'</th><th class="text-center">Change</th></tr></thead><tbody>'+changed.map(function(c){var prev=prevScores[c.c],diff=c.v-prev,arrow=diff>0?'<span class="text-green-600 font-bold">&#8593; +'+diff+'</span>':diff<0?'<span class="text-red-600 font-bold">&#8595; '+diff+'</span>':'=';return'<tr><td><code class="font-mono text-xs text-secondary font-bold">'+c.c+'</code></td><td class="text-on-surface">'+c.n+'</td><td class="text-center"><span class="'+sClass(prev)+'">'+prev+'</span></td><td class="text-center"><span class="'+sClass(c.v)+'">'+c.v+'</span></td><td class="text-center text-sm">'+arrow+'</td></tr>';}).join("")+(changed.length===0?'<tr><td colspan="5" class="text-center py-4 text-sm text-on-surface-variant">No changes between audits.</td></tr>':"")+'</tbody></table>';
+
+  // AI Summary
+  var best=AUDITS.reduce(function(a,b){return gStats(a).pct>gStats(b).pct?a:b;});
+  var worst=AUDITS.reduce(function(a,b){return gStats(a).pct<gStats(b).pct?a:b;});
+  document.getElementById("ai-text").innerHTML=
+    '<strong class="text-on-surface">'+AUDITS.length+' audit'+(AUDITS.length!==1?'s':'')+' · avg '+avgPct+'% compliance</strong><br><br>'
+    +(AUDITS.length>1?'<strong class="text-on-surface">Best:</strong> '+best.id+' ('+stripCity(best.location)+') — '+gStats(best).pct+'%<br>'
+    +'<strong class="text-on-surface">Needs attention:</strong> '+worst.id+' ('+stripCity(worst.location)+') — '+gStats(worst).pct+'%<br><br>':"")
+    +(totalCrit>0?'<strong class="text-on-surface">Critical issues:</strong> '+totalCrit+' criterion'+(totalCrit!==1?'ia':'')+' scored 0 — require immediate action.<br>':'<strong class="text-on-surface text-green-600">No critical issues</strong> in current selection. ✓<br>')
+    +(openRecs>0?'<br><strong class="text-on-surface">'+openRecs+' open recommendation'+(openRecs!==1?'s':'')+' pending.</strong>':'');
+
+  // Location comparison table
+  var locMap={};
+  AUDITS.forEach(function(a){
+    var key=a.location;
+    if(!locMap[key])locMap[key]=[];
+    locMap[key].push(a);
+  });
+  var locs=Object.entries(locMap).sort(function(a,b){
+    var avgA=a[1].reduce(function(s,x){return s+gStats(x).pct;},0)/a[1].length;
+    var avgB=b[1].reduce(function(s,x){return s+gStats(x).pct;},0)/b[1].length;
+    return avgB-avgA;
+  });
+  document.getElementById("prog-sub").textContent=locs.length+" location"+(locs.length!==1?"s":"")+" · sorted by compliance";
+  document.getElementById("prog-table").innerHTML='<table class="tbl"><thead><tr><th>Location</th><th>Type</th><th class="text-center">Audits</th><th class="text-center">Avg compliance</th><th class="text-center">Critical</th><th>Trend</th></tr></thead><tbody>'
+    +locs.map(function(entry){
+      var loc=entry[0],audits=entry[1];
+      var pcts=audits.map(function(a){return gStats(a).pct;});
+      var avg=Math.round(pcts.reduce(function(s,v){return s+v;},0)/pcts.length);
+      var crits=audits.reduce(function(s,a){return s+gStats(a).critical.length;},0);
+      var c=avg>=80?"#16a34a":avg>=60?"#ca8a04":"#dc2626";
+      var trend="";
+      if(audits.length>1){
+        var sorted=audits.slice().sort(function(a,b){return (a.year||0)-(b.year||0);});
+        var diff=gStats(sorted[sorted.length-1]).pct-gStats(sorted[0]).pct;
+        trend=diff>0?'<span class="text-green-600 font-semibold">&#8593; +'+diff+'%</span>':diff<0?'<span class="text-red-600 font-semibold">&#8595; '+diff+'%</span>':'<span class="text-gray-400">—</span>';
+      }else{trend='<span class="text-gray-400 text-xs">1 audit</span>';}
+      var type=audits[0].type||"";
+      return '<tr><td class="font-medium text-on-surface">'+stripCity(loc)+'<br><span class="text-xs text-on-surface-variant font-normal">'+(audits[0].city||loc)+'</span></td>'
+        +'<td><span class="pill p2">'+type+'</span></td>'
+        +'<td class="text-center text-sm text-on-surface-variant">'+audits.length+'</td>'
+        +'<td class="text-center text-xl font-bold" style="color:'+c+';">'+avg+'%</td>'
+        +'<td class="text-center text-sm font-bold '+(crits>0?"text-red-600":"text-green-600")+'">'+crits+'</td>'
+        +'<td class="text-sm">'+trend+'</td></tr>';
+    }).join('')
+    +'</tbody></table>';
 }
 
 // ── CRITERIA ─────────────────────────────────────────────────────
 function rdCrit(){
   var a=selAuditId?AUDITS.find(function(x){return x.id===selAuditId;}):AUDITS[0];
   if(!a&&AUDITS.length>0)a=AUDITS[0];
-  // Audit selector
   var wrap=document.getElementById("audit-sel-wrap");
-  wrap.innerHTML='<div class="audit-sel">'+AUDITS.map(function(x){return '<button class="audit-chip'+(x.id===(a?a.id:'')?'active':'')+'" onclick="selAuditId=\''+x.id+'\';rdCrit();">'+x.id+'<span class="ml-1 opacity-60 text-xs">'+x.type.substring(0,3)+'</span></button>';}).join('')+'</div>';
-  if(!a){document.getElementById("sec-pills").innerHTML="";document.getElementById("crit-tbody").innerHTML='<tr><td colspan="5" class="text-center py-6 text-sm text-on-surface-variant">No audits match current filters.</td></tr>';return;}
+  wrap.innerHTML='<div class="audit-sel">'+AUDITS.map(function(x){
+    return '<button class="audit-chip'+(x.id===(a?a.id:'')?'active':'')+'" onclick="selAuditId=\''+x.id+'\';rdCrit();">'+x.id+'<span class="ml-1 opacity-60 text-xs">'+x.type.substring(0,3)+'</span></button>';
+  }).join('')+'</div>';
+  if(!a){
+    document.getElementById("sec-pills").innerHTML="";
+    document.getElementById("crit-tbody").innerHTML='<tr><td colspan="5" class="text-center py-6 text-sm text-on-surface-variant">No audits match current filters.</td></tr>';
+    return;
+  }
   var secs=[...new Set(a.criteria.map(function(c){return c.s;}))];
-  document.getElementById("sec-pills").innerHTML=["all"].concat(secs).map(function(s){return'<button class="'+(secF===s?"inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-secondary text-white":"inline-flex px-3 py-1 rounded-full text-xs font-semibold border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary")+'" onclick="secF=\''+s+'\';expRow=null;rdCrit();">'+(s==="all"?"All":s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""))+'</button>';}).join("");
+  document.getElementById("sec-pills").innerHTML=["all"].concat(secs).map(function(s){
+    var active=secF===s;
+    return '<button class="'+(active?"inline-flex px-3 py-1 rounded-full text-xs font-semibold bg-secondary text-white":"inline-flex px-3 py-1 rounded-full text-xs font-semibold border border-outline-variant text-on-surface-variant hover:border-secondary hover:text-secondary")+'" onclick="secF=\''+s+'\';expRow=null;rdCrit();">'+(s==="all"?"All":s.replace(/^[IVX]+[\s\.]+/,"").replace(/^\d+[\s\.]+/,"").substring(0,30))+'</button>';
+  }).join("");
   var filtered=secF==="all"?a.criteria:a.criteria.filter(function(c){return c.s===secF;});
-  document.getElementById("crit-tbody").innerHTML=filtered.map(function(c,i){var exp=expRow===i;return '<tr class="'+(c.v===0?"row-crit":c.v===1?"row-part":"")+' cursor-pointer" onclick="expRow=expRow==='+i+'?null:'+i+';rdCrit();"><td><code class="font-mono text-xs text-secondary font-bold">'+c.c+'</code></td><td class="'+(c.v<=1?"font-semibold text-on-surface":"text-on-surface-variant")+'">'+c.n+'</td><td class="text-center"><span class="'+sClass(c.v)+'">'+c.v+'</span></td><td><span class="'+pClass(c.v)+'">'+sLbl(c.v)+'</span></td><td class="text-xs max-w-xs text-on-surface-variant">'+(c.v<=1?c.k.replace(/^NON-CONFORMITY:\s*/i,""):"—")+'</td></tr>'+(exp?'<tr class="exp-row"><td colspan="5" class="p-4"><div class="text-xs font-bold text-secondary uppercase tracking-wide mb-1">'+c.s+' › '+c.c+'</div><div class="font-semibold text-on-surface mb-2">'+c.n+'</div><div class="text-sm text-on-surface-variant leading-relaxed mb-3">'+c.k+'</div>'+(a.url?'<a href="'+a.url+'" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-secondary bg-secondary-container/30 px-3 py-1.5 rounded-lg font-semibold no-underline"><span class="material-symbols-outlined" style="font-size:13px;">open_in_new</span>View source</a>':"")+'</td></tr>':"");}).join("");
+  document.getElementById("crit-tbody").innerHTML=filtered.map(function(c,i){
+    var exp=expRow===i;
+    return '<tr class="'+(c.v===0?"row-crit":c.v===1?"row-part":"")+' cursor-pointer" onclick="expRow=expRow==='+i+'?null:'+i+';rdCrit();">'
+      +'<td><code class="font-mono text-xs text-secondary font-bold">'+c.c+'</code></td>'
+      +'<td class="'+(c.v<=1?"font-semibold text-on-surface":"text-on-surface-variant")+'">'+c.n+'</td>'
+      +'<td class="text-center"><span class="'+sClass(c.v)+'">'+c.v+'</span></td>'
+      +'<td><span class="'+pClass(c.v)+'">'+sLbl(c.v)+'</span></td>'
+      +'<td class="text-xs max-w-xs text-on-surface-variant">'+(c.v<=1?c.k.replace(/^NON-CONFORMITY:\s*/i,"").substring(0,80)+"…":"—")+'</td>'
+      +'</tr>'
+      +(exp?'<tr class="exp-row"><td colspan="5" class="p-4">'
+        +'<div class="text-xs font-bold text-secondary uppercase tracking-wide mb-1">'+c.s+' › '+c.c+'</div>'
+        +'<div class="font-semibold text-on-surface mb-2">'+c.n+'</div>'
+        +'<div class="text-sm text-on-surface-variant leading-relaxed mb-3">'+c.k+'</div>'
+        +(a.url?'<a href="'+a.url+'" target="_blank" class="inline-flex items-center gap-1.5 text-xs text-secondary bg-secondary-container/30 px-3 py-1.5 rounded-lg font-semibold no-underline"><span class="material-symbols-outlined" style="font-size:13px;">open_in_new</span>View source document</a>':"")
+        +'</td></tr>':"");
+  }).join("");
 }
 
-// ── HEATMAP ──────────────────────────────────────────────────────
+// ── HEATMAP — section-level aggregates ───────────────────────────
 function rdHm(){
-  if(!AUDITS.length){document.getElementById("hm-wrap").innerHTML='<div class="py-8 text-center text-sm text-on-surface-variant">No audits match current filters.</div>';return;}
-  var allCodes=[...new Set(AUDITS.flatMap(function(a){return a.criteria.map(function(c){return c.c;});}))];
-  function hmCls(v){if(v===undefined)return"hm-cell hmx";return"hm-cell hm"+Math.min(v,3);}
-  document.getElementById("hm-wrap").innerHTML='<table style="border-collapse:separate;border-spacing:3px;"><thead><tr><td style="min-width:200px;"></td>'+allCodes.map(function(c){return'<th style="writing-mode:vertical-lr;transform:rotate(180deg);padding:2px 0;font-size:8.5px;font-weight:600;color:#374151;height:72px;text-align:left;white-space:nowrap;font-family:monospace;">'+c+'</th>';}).join("")+'</tr></thead><tbody>'+AUDITS.map(function(a){var sm={};a.criteria.forEach(function(c){sm[c.c]=c.v;});return'<tr><td class="text-xs text-on-surface-variant pr-3 whitespace-nowrap py-0.5"><span class="font-mono text-secondary font-bold text-xs">'+a.id+'</span><br><span class="text-on-surface-variant">'+a.location+'</span></td>'+allCodes.map(function(c){return'<td style="padding:1px;"><div class="'+hmCls(sm[c])+'" title="'+c+': '+(sm[c]!==undefined?sm[c]+"/3":"N/A")+'">'+(sm[c]!==undefined?sm[c]:"—")+'</div></td>';}).join("")+'</tr>';}).join("")+'</tbody></table>';
+  if(!AUDITS.length){
+    document.getElementById("hm-wrap").innerHTML='<div class="py-8 text-center text-sm text-on-surface-variant">No audits match current filters.</div>';
+    return;
+  }
+  // Collect all unique sections, keep insertion order (sorted by first appearance)
+  var allSecs=[...new Set(AUDITS.flatMap(function(a){return a.criteria.map(function(c){return c.s;});}))];
+
+  document.getElementById("hm-wrap").innerHTML='<table style="border-collapse:separate;border-spacing:4px;min-width:300px;">'
+    +'<thead><tr>'
+    +'<td style="min-width:240px;padding-bottom:4px;"></td>'
+    +allSecs.map(function(s){
+      var label=shortSec(s);
+      return '<th title="'+s+'" style="vertical-align:bottom;padding-bottom:4px;width:52px;">'
+        +'<div style="writing-mode:vertical-lr;transform:rotate(180deg);font-size:10px;font-weight:700;color:#374151;height:72px;text-align:left;max-width:52px;overflow:hidden;white-space:nowrap;font-family:monospace;cursor:default;" title="'+s+'">'
+        +s.replace(/^([IVX]+|\d+)[\s\.]*/,"$1. ").substring(0,30)
+        +'</div></th>';
+    }).join('')
+    +'</tr></thead><tbody>'
+    +AUDITS.map(function(a){
+      // Compute per-section averages for this audit
+      var secData={};
+      allSecs.forEach(function(s){
+        var crits=a.criteria.filter(function(c){return c.s===s;});
+        if(crits.length){
+          var sum=crits.reduce(function(x,c){return x+c.v;},0);
+          secData[s]={avg:sum/crits.length,n:crits.length,crit:crits.filter(function(c){return c.v===0;}).length};
+        }
+      });
+      var st=gStats(a);
+      return '<tr>'
+        +'<td style="padding:2px 10px 2px 0;white-space:nowrap;vertical-align:middle;">'
+        +'<div class="flex items-center gap-2">'
+        +'<code class="font-mono text-secondary font-bold text-xs">'+a.id+'</code>'
+        +'<span class="text-xs text-on-surface-variant">'+stripCity(a.location)+'</span>'
+        +'<span class="pill '+(st.pct>=80?"p3":st.pct>=60?"p2":"p0")+'" style="font-size:9px;padding:1px 6px;">'+st.pct+'%</span>'
+        +'</div>'
+        +'</td>'
+        +allSecs.map(function(s){
+          var d=secData[s];
+          if(!d)return '<td style="padding:2px;"><div class="hm-cell hmx" title="No data">—</div></td>';
+          var v=d.avg;
+          var cls=v<1?"hm0":v<2?"hm1":v<2.5?"hm2":"hm3";
+          var tip=s+': '+v.toFixed(1)+'/3.0 ('+d.n+' criteria'+(d.crit>0?', '+d.crit+' critical':'')+')';
+          return '<td style="padding:2px;"><div class="hm-cell '+cls+'" title="'+tip+'">'+v.toFixed(1)+'</div></td>';
+        }).join('')
+        +'</tr>';
+    }).join('')
+    +'</tbody></table>';
 }
 
 // ── RECOMMENDATIONS ──────────────────────────────────────────────
 function rdRec(){
-  var filteredIds=AUDITS.map(function(a){return a.id;});
-  var ar=ALL_RECS.filter(function(r){return filteredIds.indexOf(r.auditId)>=0;});
-  var done=ar.filter(function(r){return r.done;}).length,od=ar.filter(function(r){return !r.done&&new Date(r.d)<new Date();}).length;
+  var filtIds=AUDITS.map(function(a){return a.id;});
+  var ar=ALL_RECS.filter(function(r){return filtIds.indexOf(r.auditId)>=0;});
+  var done=ar.filter(function(r){return r.done;}).length;
+  var od=ar.filter(function(r){return !r.done&&r.d&&new Date(r.d)<new Date();}).length;
   document.getElementById("rec-kpis").innerHTML=[
     {l:"Total",v:ar.length,s:"Filtered audits",c:"#1e40af"},
     {l:"Completed",v:done,s:ar.length?Math.round(done/ar.length*100)+"%":"0%",c:"#16a34a"},
     {l:"Overdue",v:od,s:"Past due date",c:"#dc2626"}
-  ].map(function(k){return'<div class="bg-white border border-outline-variant rounded-xl p-4 card-shadow"><div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div><div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div><div class="text-xs text-on-surface-variant">'+k.s+'</div></div>';}).join("");
-  var metaEl=document.getElementById("rec-meta");if(metaEl)metaEl.textContent=AUDITS.length+" audits · "+ar.length+" recommendations";
-  var today=new Date().toISOString().split("T")[0];
+  ].map(function(k){
+    return '<div class="bg-white border border-outline-variant rounded-xl p-4 card-shadow">'
+      +'<div class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">'+k.l+'</div>'
+      +'<div class="text-3xl font-bold mb-1" style="color:'+k.c+';">'+k.v+'</div>'
+      +'<div class="text-xs text-on-surface-variant">'+k.s+'</div>'
+      +'</div>';
+  }).join("");
+  var metaEl=document.getElementById("rec-meta");
+  if(metaEl)metaEl.textContent=AUDITS.length+" audits · "+ar.length+" recommendations";
   document.getElementById("rec-tbody").innerHTML=ar.map(function(r,i){
     var a=AUDITS.find(function(x){return x.id===r.auditId;})||{};
-    var crit=a.criteria?a.criteria.find(function(c){return c.c===r.c;}):null,sec=crit?crit.s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""):"";
-    var ov=!r.done&&new Date(r.d)<new Date();
-    return'<tr class="'+(ov?"ov":"")+'"><td class="text-center text-xs text-on-surface-variant">'+(i+1)+'</td><td><code class="font-mono text-xs text-secondary font-bold">'+r.auditId+'</code></td><td>'+r.t+'<br><span class="pill '+prC(r.p)+'" style="margin-top:3px;display:inline-flex;">'+prL(r.p)+'</span></td><td class="text-center"><code class="font-mono text-xs text-secondary">'+r.c+'</code></td><td class="text-xs text-on-surface-variant">'+sec+'</td><td class="text-xs text-on-surface-variant">'+r.r+'</td><td class="text-center text-xs '+(ov?"text-red-600 font-semibold":"text-on-surface-variant")+'">'+r.d+'</td><td class="text-center text-base text-green-600">'+(r.done?"✓":"")+'</td></tr>';
+    var crit=a.criteria?a.criteria.find(function(c){return c.c===r.c;}):null;
+    var sec=crit?crit.s.replace(/^[IVX]+[\s\.]+/,"").replace(/^\d+[\s\.]+/,"").substring(0,30):"";
+    var ov=!r.done&&r.d&&new Date(r.d)<new Date();
+    return '<tr class="'+(ov?"ov":"'")+'"><td class="text-center text-xs text-on-surface-variant">'+(i+1)+'</td>'
+      +'<td><code class="font-mono text-xs text-secondary font-bold">'+r.auditId+'</code></td>'
+      +'<td>'+r.t+'<br><span class="pill '+prC(r.p)+'" style="margin-top:3px;display:inline-flex;">'+prL(r.p)+'</span></td>'
+      +'<td class="text-center"><code class="font-mono text-xs text-secondary">'+r.c+'</code></td>'
+      +'<td class="text-xs text-on-surface-variant">'+sec+'</td>'
+      +'<td class="text-xs text-on-surface-variant">'+r.r+'</td>'
+      +'<td class="text-center text-xs '+(ov?"text-red-600 font-semibold":"text-on-surface-variant")+'">'+r.d+'</td>'
+      +'<td class="text-center text-base text-green-600">'+(r.done?"✓":"")+'</td></tr>';
   }).join("")+(ar.length===0?'<tr><td colspan="8" class="text-center py-6 text-sm text-on-surface-variant">No recommendations for current filter.</td></tr>':"");
 }
 
 // ── REPORTS ──────────────────────────────────────────────────────
 function rdRep(){
+  var el=document.getElementById("rep-meta");
+  if(el)el.textContent=AUDITS.length+" audits";
   document.getElementById("rep-tbody").innerHTML=AUDITS.map(function(a){
-    var st=gStats(a),pct=st.pct,crit=st.critical,c=pct>=80?"#16a34a":pct>=60?"#ca8a04":"#dc2626";
-    return'<tr><td><code class="font-mono text-xs text-secondary font-bold">'+a.id+'</code></td><td class="text-on-surface">'+a.location+'</td><td class="text-xs text-on-surface-variant">'+( a.city||"")+'</td><td><span class="pill p2">'+a.type+'</span></td><td class="text-xs text-on-surface-variant">'+(a.specialist||"—")+'</td><td class="text-xs text-on-surface-variant text-center">'+(a.year||getYear(a.id))+'</td><td class="text-center text-xl font-bold" style="color:'+c+';">'+pct+'%</td><td class="text-center text-sm font-bold '+(crit.length>0?"text-red-600":"text-green-600")+'">'+crit.length+'</td><td>'+(a.url?'<a href="'+a.url+'" target="_blank" class="inline-flex items-center gap-1 text-xs text-secondary bg-secondary-container/30 px-2.5 py-1 rounded font-semibold no-underline"><span class="material-symbols-outlined" style="font-size:12px;">open_in_new</span>Open</a>':"-")+'</td></tr>';
+    var st=gStats(a),pct=st.pct,crit=st.critical;
+    var c=pct>=80?"#16a34a":pct>=60?"#ca8a04":"#dc2626";
+    return '<tr>'
+      +'<td><code class="font-mono text-xs text-secondary font-bold">'+a.id+'</code></td>'
+      +'<td class="text-on-surface">'+stripCity(a.location)+'</td>'
+      +'<td class="text-xs text-on-surface-variant">'+(a.city||"")+'</td>'
+      +'<td><span class="pill p2">'+a.type+'</span></td>'
+      +'<td class="text-xs text-on-surface-variant">'+(a.specialist||"—")+'</td>'
+      +'<td class="text-xs text-on-surface-variant text-center">'+(a.year||getYear(a.id))+'</td>'
+      +'<td class="text-center text-xl font-bold" style="color:'+c+';">'+pct+'%</td>'
+      +'<td class="text-center text-sm font-bold '+(crit.length>0?"text-red-600":"text-green-600")+'">'+crit.length+'</td>'
+      +'<td>'+(a.url?'<a href="'+a.url+'" target="_blank" class="inline-flex items-center gap-1 text-xs text-secondary bg-secondary-container/30 px-2.5 py-1 rounded font-semibold no-underline"><span class="material-symbols-outlined" style="font-size:12px;">open_in_new</span>Open</a>':"-")+'</td></tr>';
   }).join("")+(AUDITS.length===0?'<tr><td colspan="9" class="text-center py-6 text-sm text-on-surface-variant">No audits match current filters.</td></tr>':"");
 }
 
 // ── EXPORT WORD ──────────────────────────────────────────────────
 function exportWord(){
   var today=new Date().toISOString().split("T")[0];
-  var filteredIds=AUDITS.map(function(x){return x.id;});
-  var ar=ALL_RECS.filter(function(r){return filteredIds.indexOf(r.auditId)>=0;});
+  var filtIds=AUDITS.map(function(x){return x.id;});
+  var ar=ALL_RECS.filter(function(r){return filtIds.indexOf(r.auditId)>=0;});
   if(!ar.length){alert("No recommendations to export.");return;}
-
   var rows=ar.map(function(r,i){
     var a=AUDITS.find(function(x){return x.id===r.auditId;})||{};
     var crit=a.criteria?a.criteria.find(function(c){return c.c===r.c;}):null;
-    var sec=crit?crit.s.replace(/^[IVX]+\s*skyrius\.\s*/i,"").replace(/^\d+\.\s*/,""):"";
+    var sec=crit?crit.s.replace(/^[IVX]+[\s\.]+/,"").replace(/^\d+[\s\.]+/,""):"";
     var std=(a.standard&&a.standard.indexOf("ISO")>=0)?"LST EN ISO 15189:2023":"VASPVT";
-    var doneDate=r.done?r.d:"";
     return "<tr>"
-      +"<td style=\"border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;\">"+(i+1)+"</td>"
-      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+r.auditId+"</td>"
-      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+r.t+"</td>"
-      +"<td style=\"border:1px solid #000;padding:4px 5px;text-align:center;font-size:8pt;vertical-align:top;\">"+std+"</td>"
-      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+sec+"</td>"
-      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+(a.auditor||"")+"</td>"
-      +"<td style=\"border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;\">"+r.r+"</td>"
-      +"<td style=\"border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;\">"+r.d+"</td>"
-      +"<td style=\"border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;\">"+doneDate+"</td>"
+      +"<td style='border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;'>"+(i+1)+"</td>"
+      +"<td style='border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;'>"+r.auditId+"</td>"
+      +"<td style='border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;'>"+r.t+"</td>"
+      +"<td style='border:1px solid #000;padding:4px 5px;text-align:center;font-size:8pt;vertical-align:top;'>"+std+"</td>"
+      +"<td style='border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;'>"+sec+"</td>"
+      +"<td style='border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;'>"+(a.auditor||"")+"</td>"
+      +"<td style='border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;'>"+r.r+"</td>"
+      +"<td style='border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;'>"+r.d+"</td>"
+      +"<td style='border:1px solid #000;padding:4px 5px;text-align:center;font-size:9pt;vertical-align:top;'>"+(r.done?r.d:"")+"</td>"
       +"</tr>";
   }).join("");
-
-  var locations=[...new Set(AUDITS.map(function(a){return a.location;}))].join(", ");
-
-  var wh="<html xmlns:o=\'urn:schemas-microsoft-com:office:office\' xmlns:w=\'urn:schemas-microsoft-com:office:word\' xmlns=\'http://www.w3.org/TR/REC-html40\'>"
-    +"<head><meta charset=\'utf-8\'><style>"
-    +"@page{margin:2cm 1.5cm;}"
-    +"body{font-family:Arial,sans-serif;font-size:10pt;}"
-    +"h1{text-align:center;font-size:12pt;font-weight:bold;margin:0 0 4pt;}"
-    +"h2{text-align:center;font-size:11pt;font-weight:bold;margin:0 0 14pt;}"
-    +"p{margin:2pt 0;font-size:10pt;}"
-    +"table{border-collapse:collapse;width:100%;margin-top:10pt;}"
-    +"th{border:1px solid #000;padding:4px 5px;background:#d9d9d9;font-size:8.5pt;font-weight:bold;text-align:center;vertical-align:middle;}"
-    +"td{border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;}"
-    +"</style></head><body>"
-    +"<h1>U\u017dDAROSIOS AKCIN\u0116S BENDROV\u0116S \u201eBaltić Medics\u201c</h1>"
-    +"<h2>REKOMENDACIJ\u0172 VEIKLOS GERINIMUI REGISTRAS</h2>"
+  var locs=[...new Set(AUDITS.map(function(a){return a.location;}))].join(", ");
+  var wh="<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>"
+    +"<head><meta charset='utf-8'><style>@page{margin:2cm 1.5cm;}body{font-family:Arial,sans-serif;font-size:10pt;}h1{text-align:center;font-size:12pt;font-weight:bold;margin:0 0 4pt;}h2{text-align:center;font-size:11pt;font-weight:bold;margin:0 0 14pt;}p{margin:2pt 0;font-size:10pt;}table{border-collapse:collapse;width:100%;margin-top:10pt;}th{border:1px solid #000;padding:4px 5px;background:#d9d9d9;font-size:8.5pt;font-weight:bold;text-align:center;vertical-align:middle;}td{border:1px solid #000;padding:4px 5px;font-size:9pt;vertical-align:top;}</style></head><body>"
+    +"<h1>UŽDAROSIOS AKCINĖS BENDROVĖS „Baltić Medics“</h1>"
+    +"<h2>REKOMENDACIJŲ VEIKLOS GERINIMUI REGISTRAS</h2>"
     +"<p><strong>Sudarymo data:</strong> "+today+"</p>"
-    +"<p><strong>Lokacijos:</strong> "+locations+"</p>"
-    +"<p><strong>I\u0161 viso rekomendacij\u0173:</strong> "+ar.length+" &nbsp;&nbsp; <strong>\u012fvykdyta:</strong> "+ar.filter(function(r){return r.done;}).length+"</p>"
+    +"<p><strong>Lokacijos:</strong> "+locs+"</p>"
+    +"<p><strong>Iš viso rekomendacijų:</strong> "+ar.length+" &nbsp;&nbsp; <strong>įvykdyta:</strong> "+ar.filter(function(r){return r.done;}).length+"</p>"
     +"<table><thead><tr>"
-    +"<th style=\'width:28px;\'>Eil. Nr.</th>"
-    +"<th style=\'width:75px;\'>Vidaus audito ataskaitos Nr. ir data*</th>"
+    +"<th style='width:28px;'>Eil. Nr.</th>"
+    +"<th style='width:75px;'>Vidaus audito ataskaitos Nr.*</th>"
     +"<th>Rekomendacija</th>"
-    +"<th style=\'width:90px;\'>Standartas</th>"
-    +"<th style=\'width:100px;\'>Procesas / veikla</th>"
-    +"<th style=\'width:80px;\'>Auditorius</th>"
-    +"<th style=\'width:100px;\'>Atsakingas</th>"
-    +"<th style=\'width:75px;\'>Planuojama \u012fgyvendinimo data</th>"
-    +"<th style=\'width:75px;\'>\u012fgyvendinimo data</th>"
-    +"</tr></thead>"
-    +"<tbody>"+rows+"</tbody></table>"
-    +"<p style=\'margin-top:10pt;font-size:8pt;color:#555;\'>* Stulpelis nepildomas, jeigu rekomendacija ra\u0161oma ne vidaus audito, o bet kurio kito proceso / veiklos vertinimo metu.</p>"
-    +"<p style=\'font-size:8pt;color:#555;\'>VASPVT \u2014 Valstybin\u0117s akreditavimo sveikatos prie\u017ei\u016bros veiklai tarnybos Nacionaliniai akreditavimo standartai \u0161eimos medicinos paslaugai.</p>"
-    +"<p style=\'font-size:8pt;color:#555;\'>LST EN ISO 15189:2023 \u2014 Medicinos laboratorijos. Kokyb\u0117s ir kompetencijos reikalavimai.</p>"
-    +"<br><table style=\'border:none;width:100%;margin-top:20pt;\'><tr>"
-    +"<td style=\'border:none;width:50%;font-size:10pt;\'>Pareng\u0117: ___________________________<br><span style=\'font-size:8pt;color:#555;\'>(vardas, pavard\u0117, para\u0161as)</span></td>"
-    +"<td style=\'border:none;width:50%;font-size:10pt;\'>Data: ___________________________</td>"
-    +"</tr></table>"
-    +"</body></html>";
-
-  var b=new Blob(["\ufeff"+wh],{type:"application/msword"});
+    +"<th style='width:90px;'>Standartas</th>"
+    +"<th style='width:100px;'>Procesas / veikla</th>"
+    +"<th style='width:80px;'>Auditorius</th>"
+    +"<th style='width:100px;'>Atsakingas</th>"
+    +"<th style='width:75px;'>Planuojama įgyvendinimo data</th>"
+    +"<th style='width:75px;'>įgyvendinimo data</th>"
+    +"</tr></thead><tbody>"+rows+"</tbody></table>"
+    +"<p style='margin-top:10pt;font-size:8pt;color:#555;'>* Stulpelis nepildomas, jeigu rekomendacija rašoma ne vidaus audito, o bet kurio kito proceso metu.</p>"
+    +"<p style='font-size:8pt;color:#555;'>VASPVT — Valstybinės akreditavimo sveikatos priežiūros veiklai tarnybos Nacionaliniai akreditavimo standartai.</p>"
+    +"<p style='font-size:8pt;color:#555;'>LST EN ISO 15189:2023 — Medicinos laboratorijos. Kokybės ir kompetencijos reikalavimai.</p>"
+    +"<br><table style='border:none;width:100%;margin-top:20pt;'><tr>"
+    +"<td style='border:none;width:50%;font-size:10pt;'>Parengė: ___________________________<br><span style='font-size:8pt;color:#555;'>(vardas, pavardė, parašas)</span></td>"
+    +"<td style='border:none;width:50%;font-size:10pt;'>Data: ___________________________</td>"
+    +"</tr></table></body></html>";
+  var b=new Blob(["﻿"+wh],{type:"application/msword"});
   var u=URL.createObjectURL(b),el=document.createElement("a");
   el.href=u;el.download="BalticMedics_Rekomendacijos_"+today+".doc";
   el.click();URL.revokeObjectURL(u);
@@ -620,25 +781,28 @@ function exportWord(){
 
 // ── LOAD ─────────────────────────────────────────────────────────
 async function loadData(){
-  document.getElementById("sb-badge").innerHTML='<div class="text-xs font-bold text-on-surface-variant">Loading...</div>';
+  document.getElementById("sb-badge").innerHTML='<div class="text-xs font-bold text-white/50">Refreshing…</div>';
   try{
-    var res=await fetch(DATA_URL+"?t="+Date.now());
+    var res=await fetch(DATA_URL+"?t="+Date.now(),{cache:"no-store"});
     if(!res.ok)throw new Error("HTTP "+res.status);
     var data=await res.json();
     ALL_AUDITS=data.audits||[];ALL_RECS=data.recommendations||[];
     AUDITS=ALL_AUDITS.slice();RECS=ALL_RECS.slice();
-    if(ALL_AUDITS[0]){
-      var a=ALL_AUDITS[0];
-      document.getElementById("sb-badge").innerHTML='<div class="text-xs font-bold text-secondary-fixed-dim">'+ALL_AUDITS.length+' audits loaded</div><div class="text-xs text-white/35 mt-1">'+[...new Set(ALL_AUDITS.map(function(x){return x.city||x.location;}))].length+' locations</div>';
-    }
+    var locs=[...new Set(ALL_AUDITS.map(function(x){return x.city||x.location;}))].length;
+    document.getElementById("sb-badge").innerHTML=
+      '<div class="text-xs font-bold text-secondary-fixed-dim">'+ALL_AUDITS.length+' audits loaded</div>'
+      +'<div class="text-xs text-white/35 mt-1">'+locs+' location'+(locs!==1?'s':'')+'</div>';
     if(data.lastUpdated)document.getElementById("sb-footer").textContent="Updated: "+data.lastUpdated;
-    buildFilterOptions();
-    renderResultInfo();
-    go("overview");
+    buildFilterOptions();renderResultInfo();go("overview");
   }catch(e){
     console.error(e);
-    document.getElementById("sb-badge").innerHTML='<div class="text-xs text-red-400">Load error</div>';
-    document.getElementById("page-overview").innerHTML='<div class="bg-red-50 border border-red-200 border-l-4 border-l-red-500 rounded-xl p-5"><div class="font-bold text-red-800 mb-2">Failed to load data</div><div class="text-sm text-red-700 mb-3">'+e.message+'</div><button onclick="loadData()" class="px-4 py-2 bg-secondary text-white rounded-lg text-sm font-semibold">Retry</button></div>';
+    document.getElementById("sb-badge").innerHTML='<div class="text-xs text-red-400 font-semibold">Load error</div><button onclick="loadData()" class="text-xs text-white/50 mt-1 underline">Retry</button>';
+    document.getElementById("page-overview").innerHTML=
+      '<div class="bg-red-50 border border-red-200 border-l-4 border-l-red-500 rounded-xl p-5">'
+      +'<div class="font-bold text-red-800 mb-1">Failed to load data</div>'
+      +'<div class="text-sm text-red-700 mb-3">'+e.message+'</div>'
+      +'<button onclick="loadData()" class="px-4 py-2 bg-secondary text-white rounded-lg text-sm font-semibold">Retry</button>'
+      +'</div>';
     document.getElementById("page-overview").classList.add("active");
   }
 }
