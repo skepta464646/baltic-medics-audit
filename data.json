@@ -329,6 +329,27 @@
           "n": "Nustačius grėsmę nešališkumui, poveikis turi būti pašalintas arba sumažintas iki minimumo.",
           "v": 3,
           "k": "Nešališkumo grėsmes yra identifikuotos rizikų valdymo plane (forma 6F-PA-8). Numatytos rizikos mažinimo ir kontrolės priemonės."
+        },
+        {
+          "s": 4,
+          "c": "4.2.1",
+          "n": "Konfidencialumas Informacijos valdymas.",
+          "v": 3,
+          "k": "Darbuotojai pasirašę konfidencialumo įsipareigojimus."
+        },
+        {
+          "s": 4,
+          "c": "4.2.2",
+          "n": "Informacijos pateikimas.",
+          "v": 3,
+          "k": "Nustatyta tvarka dėl konfidencialios informacijos atskleidimo teisės aktų nustatytais atvejais."
+        },
+        {
+          "s": 4,
+          "c": "4.2.3",
+          "n": "Personalo atsakomybė.",
+          "v": 3,
+          "k": "Visi darbuotojai, rangovai ir kiti laboratorijos vardu veikiantys asmenys yra pasirašę konfidencialumo įsipareigojimus ir supažindinti su informacijos apsaugos reikalavimais."
         }
       ]
     }
@@ -476,6 +497,42 @@
       "t": "Enhance data management system",
       "r": "IT department",
       "d": "2025-08-30T00:00:00.000Z",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
       "done": false
     },
     {
