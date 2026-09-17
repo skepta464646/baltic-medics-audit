@@ -392,6 +392,20 @@
           "n": "Laboratorija turi nurodyti ir dokumentais įforminti laboratorinės veiklos sritis.",
           "v": 3,
           "k": "Laboratorija yra nustačiusi ir dokumentavusi visas vykdomos laboratorinės veiklos sritis."
+        },
+        {
+          "s": 5,
+          "c": "5.3.2",
+          "n": "Laboratorijos veikla turi būti vykdoma.",
+          "v": 3,
+          "k": "Laboratorijos veikla vykdoma laikantis ISO 15189, teisės aktų bei užsakovų reikalavimų."
+        },
+        {
+          "s": 5,
+          "c": "5.3.3",
+          "n": "Konsultacinė veikla.",
+          "v": 3,
+          "k": "Laboratorija užtikrina konsultacijų prieinamumą laboratorijos naudotojams."
         }
       ]
     }
@@ -539,6 +553,42 @@
       "t": "Enhance data management system",
       "r": "IT department",
       "d": "2025-08-30T00:00:00.000Z",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
       "done": false
     },
     {
