@@ -286,6 +286,51 @@
           "k": ""
         }
       ]
+    },
+    {
+      "id": "20260917-115940",
+      "location": "Taikos pr. 48B, Klaipėda",
+      "type": "Laboratorija",
+      "standard": "ISO 15189:2023",
+      "auditor": "Taikos pr. 48B, Klaipėda",
+      "url": "",
+      "criteria": [
+        {
+          "s": 4,
+          "c": "4.1.a",
+          "n": "Laboratorijos veikla turi būti vykdoma nešališkai.",
+          "v": 3,
+          "k": "Organizacinė struktūra aiškiai apibrėžta dokumentuose. Nenustatyta interesų konfliktų ar veiklų, galinčių turėti įtakos nešališkumui."
+        },
+        {
+          "s": 4,
+          "c": "4.1.b",
+          "n": "Laboratorijos vadovybė turi būti įsipareigojusi užtikrinti nešališkumą.",
+          "v": 3,
+          "k": "Darbuotojai supažindinti su nešališkumo politika."
+        },
+        {
+          "s": 4,
+          "c": "4.1.c",
+          "n": "Laboratorija turi būti atsakinga už savo laboratorinės veiklos nešališkumą.",
+          "v": 3,
+          "k": "Darbuotojai pasirašę nešališkumo ir konfidencialumo įsipareigojimus."
+        },
+        {
+          "s": 4,
+          "c": "4.1.d",
+          "n": "Laboratorija turi stebėti savo veiklą ir ryšius.",
+          "v": 3,
+          "k": "Nešališkumo grėsmės yra įtrauktos į laboratorijos rizikų valdymo planą (forma 6F-PA-8) ir jos periodiškai peržiūrimos."
+        },
+        {
+          "s": 4,
+          "c": "4.1.e",
+          "n": "Nustačius grėsmę nešališkumui, poveikis turi būti pašalintas arba sumažintas iki minimumo.",
+          "v": 3,
+          "k": "Nešališkumo grėsmes yra identifikuotos rizikų valdymo plane (forma 6F-PA-8). Numatytos rizikos mažinimo ir kontrolės priemonės."
+        }
+      ]
     }
   ],
   "recommendations": [
@@ -431,6 +476,114 @@
       "t": "Enhance data management system",
       "r": "IT department",
       "d": "2025-08-30T00:00:00.000Z",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
       "done": false
     }
   ]
