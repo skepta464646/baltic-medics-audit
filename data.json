@@ -357,6 +357,20 @@
           "n": "Reikalavimai dėl pacientų.",
           "v": 3,
           "k": "Pacientams ir laboratorijos naudotojams teikiama aktuali informacija apie tyrimus, jų atlikimą ir rezultatų pateikimą interneto svetainėje adresu www.medtest.lt."
+        },
+        {
+          "s": 5,
+          "c": 5.1,
+          "n": "Laboratorija arba organizacija turi būti juridinis asmuo.",
+          "v": 3,
+          "k": "Laboratorija yra juridinis asmuo, turintis teisinį statusą ir prisiimantis atsakomybę už vykdomą laboratorinę veiklą."
+        },
+        {
+          "s": 5,
+          "c": "5.2.1",
+          "n": "Laboratorijos vadovo kompetencija.",
+          "v": 3,
+          "k": "Vadovo kvalifikacija, kompetencija, atsakomybės ir įgaliojimai dokumentuoti bei atitinka vykdomos laboratorinės veiklos pobūdį ir apimtį."
         }
       ]
     }
@@ -504,6 +518,24 @@
       "t": "Enhance data management system",
       "r": "IT department",
       "d": "2025-08-30T00:00:00.000Z",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
       "done": false
     },
     {
