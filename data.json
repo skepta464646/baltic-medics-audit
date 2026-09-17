@@ -371,6 +371,20 @@
           "n": "Laboratorijos vadovo kompetencija.",
           "v": 3,
           "k": "Vadovo kvalifikacija, kompetencija, atsakomybės ir įgaliojimai dokumentuoti bei atitinka vykdomos laboratorinės veiklos pobūdį ir apimtį."
+        },
+        {
+          "s": 5,
+          "c": "5.2.2",
+          "n": "Laboratorijos vadovo atsakomybė.",
+          "v": 3,
+          "k": "Laboratorijos vadovo atsakomybės ir pareigos yra dokumentuotos."
+        },
+        {
+          "s": 5,
+          "c": "5.2.3",
+          "n": "Pareigų priskyrimas.",
+          "v": 3,
+          "k": "Pareigos ir atsakomybės deleguojamos kvalifikuotiems darbuotojams."
         }
       ]
     }
@@ -518,6 +532,42 @@
       "t": "Enhance data management system",
       "r": "IT department",
       "d": "2025-08-30T00:00:00.000Z",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.2",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis – reagentų šaldytuve užfiksuota +10 °C temperatūra, nors pagal gamintojo nurodymus reagentai turi būti laikomi nuo +2 °C iki +8 °C temperatūroje.",
+      "r": "Quality manager",
+      "d": "",
+      "done": false
+    },
+    {
+      "auditId": "20260917-115940",
+      "c": "6.6.4",
+      "p": "medium",
+      "t": "Nustatyta neatitiktis - reagentai, kurie jau yra priimti naudoti, laikomi kartu su naujai gautais reagentais, kurių veiksmingumo verifikavimas dar nebuvo atliktas.",
+      "r": "Quality manager",
+      "d": "",
       "done": false
     },
     {
