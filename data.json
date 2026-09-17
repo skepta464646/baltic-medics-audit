@@ -439,33 +439,6 @@
       "r": "IT department",
       "d": "2025-08-30T00:00:00.000Z",
       "done": false
-    },
-    {
-      "auditId": "1VA/2025",
-      "c": "6.6.2",
-      "p": "medium",
-      "t": "Fix fridge temperature",
-      "r": "Quality manager",
-      "d": "2025-07-01T00:00:00.000Z",
-      "done": false
-    },
-    {
-      "auditId": "1VA/2025",
-      "c": "5.3.1",
-      "p": "medium",
-      "t": "Provide additional training for lab staff",
-      "r": "Training coordinator",
-      "d": "2025-08-15T00:00:00.000Z",
-      "done": false
-    },
-    {
-      "auditId": "1VA/2025",
-      "c": "7.2.4",
-      "p": "medium",
-      "t": "Review and update quality policies",
-      "r": "Quality manager",
-      "d": "2025-09-01T00:00:00.000Z",
-      "done": false
     }
   ]
 }
